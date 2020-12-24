@@ -1,0 +1,93 @@
+<section>
+    <div class="wrapQues">
+        <h3>שאלות<br> <span>ותשובות</span></h3>
+        <div class="accordionQues">
+            <div class="quesBox" style="background: none;">
+                <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow"
+                            alt=" "
+                            src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
+                        <span class="theQues">שאלה או קושיה</span></a></p>
+                <div class="mishpatiMore" style="display: none;">
+                    <p>תשובה או תירוץ</p>
+                </div>
+            </div>
+            <hr>
+            <div class="quesBox" style="background: none;">
+                <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow"
+                            alt=" "
+                            src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
+                        <span class="theQues">שאלה או קושיה</span></a></p>
+                <div class="mishpatiMore">
+                    <p>תשובה או תירוץ</p>
+                </div>
+            </div>
+            <hr>
+            <div class="quesBox" style="background: none;">
+                <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow"
+                            alt="מ "
+                            src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
+                        <span class="theQues">שאלה או קושיה</span></a></p>
+                <div class="mishpatiMore">
+                    <p>תשובה או תירוץ</p>
+                </div>
+            </div>
+            <hr>
+            <div class="quesBox" style="background: none;">
+                <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow"
+                            alt=" "
+                            src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
+                        <span class="theQues">שאלה או קושיה</span></a></p>
+                <div class="mishpatiMore">
+                    <p>תשובה או תירוץ</p>
+                </div>
+            </div>
+            <hr>
+            <div class="quesBox" style="background: none;">
+                <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow"
+                            alt=" "
+                            src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
+                        <span class="theQues">שאלה או קושיה</span></a></p>
+                <div class="mishpatiMore" style="display: none;">
+                    <p>תשובה או תירוץ</p>
+                </div>
+            </div>
+            <hr>
+            <div class="quesBox" style="background: none;">
+                <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow"
+                            alt=" "
+                            src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
+                        <span class="theQues">שאלה או קושיה</span></a></p>
+                <div class="mishpatiMore">
+                    <p>תשובה או תירוץ</p>
+                </div>
+            </div>
+            <hr>
+            <div class="quesBox" style="background: none;">
+                <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow"
+                            alt=" "
+                            src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
+                        <span class="theQues">שאלה או קושיה</span></a></p>
+                <div class="mishpatiMore">
+                    <p>תשובה או תירוץ</p>
+                </div>
+            </div>
+            <hr>
+            <div class="quesBox" style="background: rgb(251, 205, 205);">
+                <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow"
+                            alt=" "
+                            src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowUp.png">
+                        <span class="theQues">שאלה או קושיה</span></a></p>
+                <div class="mishpatiMore" style="display: block;">
+                    <p>תשובה או תירוץ</p>
+                </div>
+            </div>
+            <hr>
+            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+                <input type="text" placeholder="מייל" name="address" [(ngModel)]="addressText" #address="ngModel">
+                <input type="text" placeholder="נושא" name="subjecct" [(ngModel)]="subjecctText" #subjecct="ngModel">
+                <textarea placeholder="תוכן" name="body" [(ngModel)]="bodyText" #body="ngModel"></textarea>
+                <input type="submit" value="שלח">
+            </form>
+        </div>
+    </div>
+</section>

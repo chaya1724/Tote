@@ -1,0 +1,87 @@
+<div class="wrapQues">
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-1"></div>
+    <div class="col-md-2  select-outline">
+        <select class="PageSelect">
+            <option value="" disabled selected hidden>רמב"ם</option>
+            <option value="1">מדע</option>
+            <option value="2">אהבה </option>
+            <option value="3">זמנים</option>
+            <option value="4">נשים </option>
+            <option value="1">קדושה</option>
+            <option value="2">הפלאה </option>
+            <option value="3">זרעים</option>
+            <option value="4">עבודה </option>
+            <option value="1">קרבונות</option>
+            <option value="2">טהרה</option>
+            <option value="3">נזיקין</option>
+            <option value="4">קנין</option>
+            <option value="1">משפטים</option>
+            <option value="2">שופטים </option>
+        </select>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-2">
+        <select class="PageSelect">
+            <option value="" disabled selected hidden>שולחן ערוך</option>
+            <option value="1">אורח חיים</option>
+            <option value="2">יורה דעה </option>
+            <option value="3">חושן משפט</option>
+            <option value="4">אבן העזר </option>
+        </select>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-2">
+        <select class="PageSelect" (change)="MasectesSelect($event.target.value)">
+            <option value="" selected disabled hidden>ש"ס</option>
+            <option value="125">ברכות</option>
+            <option value="306">שבת</option>
+            <option value="207">עירובין</option>
+            <option value="240">פסחים</option>
+            <option value="67">ראש השנה</option>
+            <option value="173">יומא</option>
+            <option value="110">סוכה</option>
+            <option value="38">ביצה</option>
+            <option value="59">תענית</option>
+            <option value="61">מגילה</option>
+            <option value="55">מועד קטן</option>
+            <option value="51">חגיגה </option>
+            <option value="242">יבמות</option>
+            <option value="222">כתובות</option>
+            <option value="180">נדרים</option>
+            <option value="130">נזיר</option>
+            <option value="96">סוטה</option>
+            <option value="178">גיטין</option>
+            <option value="162">קידושין</option>
+            <option value="236">בבא קמא</option>
+            <option value="235">בבא מציעא</option>
+            <option value="350">בבא בתרא</option>
+            <option value="224">סנהדרין</option>
+            <option value="46">מכות</option>
+            <option value="96">שבועות</option>
+            <option value="150">עבודה זרה</option>
+            <option value="25">הוריות</option>
+            <option value="238">זבחים</option>
+            <option value="217">מנחות</option>
+            <option value="181">חולין</option>
+            <option value="119">בכורות</option>
+            <option value="65">ערכין</option>
+            <option value="65">תמורה</option>
+            <option value="54">כריתות</option>
+            <option value="41">מעילה</option>
+            <option value="143">נדה</option>
+        </select>
+        
+        <div *ngIf="flag > 0 ">
+            <select class="PageSelect" (change)="PageSelect($event.target.value)">
+                <option value="" selected disabled hidden>דף</option>
+                <option *ngFor="let page of pageList  | slice:0:flag" [value]='page'>
+                    {{page}}
+                </option>
+            </select>
+        </div>
+        
+        <div class="col-md-1"></div>
+    </div>
+   
+</div>

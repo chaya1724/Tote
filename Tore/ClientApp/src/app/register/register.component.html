@@ -1,0 +1,141 @@
+<div class="wrapQues">
+    <div class="accordionLogin">
+        <h2>הרשמה</h2>
+        <div class="quesBox" style="background: none;">
+            <form #userForm="ngForm" (ngSubmit)="register(); userForm.reset()">
+                <div class="form-group">
+                    <label for="username">מייל</label>
+                    <input type="text" class="form-control" [(ngModel)]="registrationUserName" name="username"
+                        #username="ngModel" />
+                </div>
+                <div class="form-group">
+                    <label for="password">סיסמא</label>
+                    <input type="password" class="form-control" [(ngModel)]="registrationPassword" name="password"
+                        #password="ngModel" />
+                </div>
+                <!-- <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        הרשמה
+                    </button>
+                    <a routerLink="/login" class="btn btn-link">חזרה</a>
+                </div> -->
+                <div id="PaiementData" style="margin-top: 30px; display: block;">
+                    <div id="ClientAmountSpan" class="SpanDiv">
+                        <span class="SpanLbl"><span style="color: indianred">*</span><span id="AmountLabel">:סך הכל
+                                לתשלום</span></span><br>
+                        <div style="position: relative">
+                            <input id="AmountTxt" name="nope" dir="ltr" type="tel" maxlength="10" class="form-control"
+                                autocomplete="off" style="text-align: right; width: 100%;"
+                                onkeyup="PressedCard(this);CalculateAmount()"
+                                onkeydown="TabNextElement(event,'TashloumimTxt')"><br>
+                            <!-- <div id="AmountImgDiv" style="position: absolute; left: 3px; bottom: 0">
+                          <img id="AmountImg" src="Files/Nis.png" style="width: 30px">
+                           </div> -->
+                        </div>
+                       </div>
+                       <!-- <span id="Currency" style="margin: 5px; display: none;"><strong id="CurrencyLbl">מטבע: </strong>
+                         <label for="Shekel">
+                        <input type="radio" name="currency" id="Shekel" checked="checked"
+                            style="-webkit-appearance: radio;" onchange="CurrencyChange()"><span
+                            id="CurrencyLblShekel">שקל</span></label>&nbsp;&nbsp;<label for="Dollar">
+                        <input type="radio" name="currency" id="Dollar" style="-webkit-appearance: radio;"
+                       
+                        onchange="CurrencyChange()"><span id="CurrencyLblDollar">דולר</span></label></span> -->
+                </div>
+
+
+                <div id="ClientTashlumimSpan" class="SpanDiv">
+                    <span class="SpanLbl"><span style="color: indianred; display: inline;"
+                            id="TashloumimStar">*</span><span id="TashloumimLabel">:מספר תשלומים</span></span><br>
+                    <input id="TashloumimTxt" name="nope" dir="ltr" type="tel" maxlength="5" class="form-control"
+                        autocomplete="off" style="text-align: right; width: 50%; width: 100%;"
+                        onkeyup="PressedCard(this);CalculateAmount()"
+                        onkeydown="TabNextElement(event,'DayTxt','CardTxt')" placeholder=""><br>
+                    <span id="TashloumimAlertTxt" style="margin: 5px; display: none;"></span>
+                </div>
+
+                <div id="ClientKevaDaySpan" class="SpanDiv" style="display: none;">
+                    <span class="SpanLbl"><span style="color: indianred">*</span><span id="KevaDayLbl">:יום גביה בכל
+                            חודש</span><span id="MasavDay" style="font-size: small; display: none;"><br>
+                            (1-5-10-15-20-25-28)</span></span><br>
+                    <input id="DayTxt" dir="ltr" name="nope" type="tel" maxlength="2" class="form-control"
+                        autocomplete="off" style="text-align: right; width: 100%; display: none;"
+                        onkeyup="PressedCard(this);CalculateAmount()"
+                        onkeydown="TabNextElement(event,'CardTxt','BankTxt')"><br>
+                </div>
+                <div id="Blank2" class="SpanDiv" style="display: none;">&nbsp;</div>
+
+                <div id="ClientCardSpan" class="SpanDiv" style="position: relative">
+                    <span class="SpanLbl"><span style="color: indianred">*</span><span id="ClientCardLbl">:מספר
+                            כרטיס אשראי</span></span><br>
+                    <div style="position: relative">
+                        <input id="CardTxt" dir="ltr" type="tel" name="cardnumber" maxlength="30" class="form-control"
+                            style="text-align: right; width: 100%;" onkeyup="PressedCard(this)"
+                            onkeydown="TabNextElement(event,'TokefTxt')"><br>
+                        <!-- <div id="CardImgDiv" style="position: absolute; left: 3px; bottom: 0">
+                        <img src="Files/Cb.png" style="width: 30px">
+                    </div> -->
+                    </div>
+                    <div id="ClientChooseCard"
+                        style="display: inline-block; margin-top: 2px; font-family: Arial; font-size: small; cursor: pointer; color: white; background-color: #80d6e0; padding: 3px 10px; border-radius: 3px; display: none; -webkit-user-select: none"
+                        onclick="OpenClientZone('ChooseCard',true,'Pay')">הצג רשימת כרטיסים שמורים</div>
+                    <div id="DeleteClientChooseCard"
+                        style="display: inline-block; margin-top: 2px; font-family: Arial; font-size: small; cursor: pointer; color: white; background-color: #fa8072; padding: 3px 10px; border-radius: 3px; display: none; -webkit-user-select: none"
+                        onclick="DeleteChooseCard()">ביטול שימוש בכרטיס שמור</div>
+
+                </div>
+
+                <div id="ClientTokefSpan" class="SpanDiv">
+                    <span class="SpanLbl"><span style="color: indianred">*</span><span
+                            id="ClientTokefLbl">:תוקף</span></span><br>
+                    <input id="TokefTxt" dir="ltr" type="tel" name="expiry" maxlength="5" placeholder="לדוגמא 0426"
+                        class="form-control" style="text-align: right; width: 100%;"><br>
+                </div>
+                <div id="ClientCVVSpan" class="SpanDiv">
+                    <span class="SpanLbl"><span style="color: indianred">*</span><span id="ClientCVVLbl"> ספרות בגב
+                            הכרטיס </span></span><br>
+                    <input id="CvvTxt" name="cvv" dir="ltr" type="tel" maxlength="4" class="form-control"
+                        autocomplete="off" style="text-align: right; width: 100%;"><br>
+                </div>
+                <!-- <div id="Blank1" class="SpanDiv" style="display: inline-block">&nbsp;</div> -->
+
+                <!-- <div>
+                <div id="ClientBankSpan" class="SpanDiv" style="width: 16%; display: none;">
+                    <span class="SpanLbl"><span style="color: indianred">*</span><span id="ClientBankLbl">מספר
+                            בנק:</span></span><br>
+                    <input id="BankTxt" name="nope" dir="ltr" type="tel" maxlength="2" class="TextBox"
+                        autocomplete="off" style="text-align: right; width: 100%"><br>
+                </div>
+                <div id="ClientSnifSpan" class="SpanDiv" style="width: 20%; display: none;">
+                    <span class="SpanLbl"><span style="color: indianred">*</span><span id="ClientSnifLbl">מספר סניף:</span></span><br>
+                    <input id="SnifTxt" name="nope" dir="ltr" type="tel" maxlength="3" class="TextBox"
+                        autocomplete="off" style="text-align: right; width: 100%"><br>
+                </div>
+                <div id="ClientAccountSpan" class="SpanDiv" style="width: 40%; display: none;">
+                    <span class="SpanLbl"><span style="color: indianred">*</span><span id="ClientAccountLbl">מספר חשבון:</span></span><br>
+                    <input id="AccountTxt" name="nope" dir="ltr" type="tel" maxlength="9" class="TextBox"
+                        autocomplete="off" style="text-align: right; width: 100%;"><br>
+                       </div>
+                      </div> -->
+
+
+                <div id="PayBt" style="margin-top: 30px; text-align: center">
+                    <!-- <div id="Takanon" style="-webkit-user-select: none; font-size: 15px">
+                       <label for="TakanonCb" style="cursor: pointer;">
+                        <input type="checkbox" id="TakanonCb" style="cursor: pointer"><span id="TakanonLbl1">אני מסכים
+                            ל</span></label><span onclick="$('#TakanonDiv').show()" id="TakanonLbl2"
+                        style="color: blue; cursor: pointer">תקנון האתר</span>.
+                        </div> -->
+                    <input [disabled]="loading" type="button" id="PayBtBt"
+                        style="width: 60%; cursor: pointer; color: white" value="אישור תשלום" class="NewCardCss"
+                        onclick="PayBtClick()">
+                </div>
+                <!-- <div id="PaiementWait" style="text-align: center; margin-top: 20px; display: none">
+                    <img src="Files/wait.gif"><br>
+                    <span id="WaitText">ממתין לאישור עסקה</span>
+                </div> -->
+            </form>
+        </div>
+    </div>
+</div>

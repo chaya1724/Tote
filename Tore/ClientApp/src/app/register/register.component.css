@@ -1,0 +1,461 @@
+hr {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #000000;
+}
+ .wrapQues {
+    padding: 2% 0 1% 0;
+    background: repeating-linear-gradient(-55deg, #2cd5c4, #2cd5c4 12px, gray 14px, gray 14px);
+    text-align: center;
+    height: 650px;
+    margin-top: 15px;
+
+}
+
+   .accordionQues {
+    background: #ffffff;
+    padding:8% 6% 8% 6%;
+    border: 0px solid green;
+    margin-top: 6%;
+    margin-left:60px ;
+}
+.accordionLogin {
+    max-width: 50%;
+    background: #ffffff;
+    padding:8% 6% 8% 6%;
+    border: 0px solid green;
+    margin-top: 2%;
+    margin-left: 200px;
+}
+
+   .wrapQues h3 {
+    padding: 2% 0 2% 0;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'simpler-bold';
+    /*background: #2dd5c4;*/
+}
+
+   .wrapQues h3 span {
+    font-family: 'simpler-black';
+}
+
+   .wrapQues h3 span.line {
+    width: 7%;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #000000;
+}
+ 
+
+   .accordionQues .quesBox {
+    padding: 1em 0 0.5em 0;
+    border: 0px solid green;
+}
+
+
+   .accordionQues .quesBox .questions {
+    text-align: right;
+    width: 98%;
+    margin: 0 auto;
+    /*padding: 0 5% 0 0;*/
+    border: 0px solid red;
+}
+
+   .accordionQues .quesBox .questions a {
+    width: 100%;
+    display: inline-block;
+    text-decoration: none;
+    color: #000000;
+    font-family: 'simpler-bold';
+    font-size: 1.3em;
+    padding: 1% 0 0 1%;
+    border: 0px solid blue;
+}
+
+   .accordionQues .quesBox .questions a img {
+    float: left;
+    width: 23px;
+}
+
+   .accordionQues .quesBox .questions a span.theQues {
+    width: 85%;
+    margin: 0 0.5em 0 0;
+    float: right;
+    border: 0px solid red;
+}
+
+   .accordionQues .quesBox .mishpatiMore {
+    display: none;
+    font-size: 1.2em;
+    text-align: right;
+    line-height: 120%;
+    /*padding: 0 3.5% 0 0;*/
+    width: 95%;
+    margin: 0 auto;
+    border: 0px solid red;
+}
+
+   .accordionQues .quesBox .mishpatiMore p {
+    width: 95%; 
+}
+
+   .accordionQues .quesBox .mishpatiMore a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+   .accordionQues .quesBox .mishpatiMore ul.quesList {
+    width: 95%;
+    list-style-type: lower-alpha;
+    border: 0px solid green;
+}
+
+   .accordionQues .quesBox .mishpatiMore ul.quesList li {
+    display: list-item;
+}
+
+/* @media screen and (max-width: 1024px) {
+
+       .accordionQues {
+        max-width: 90%;
+    }
+
+       .wrapQues h3 {
+        font-size: 8em;
+        padding: 5% 0 5% 0;
+    }
+
+       .accordionQues .quesBox .questions {
+        width: 95%;
+    }
+
+       .accordionQues .quesBox .questions a {
+        font-size: 4.5em;
+        padding: 3% 0 3% 0;
+    }
+
+       .accordionQues .quesBox .mishpatiMore {
+        width: 95%;
+        font-size: 4.5em;
+        text-align: justify;
+        line-height: 100%;
+        padding: 0 3% 1em 0;
+        box-sizing: border-box;
+        border: 0px solid green;
+    }
+
+       .accordionQues .quesBox .questions a img {
+        width: 1em;
+        margin: 1% 0 0 0;
+    }
+
+       .accordionQues .quesBox .mishpatiMore ul.quesList li {
+        margin: 0 0 5% 0;
+    }
+} */
+::-webkit-input-placeholder {
+    color: #d0d0d0;
+    font-weight: normal
+}
+
+.ClosingBt {
+    -webkit-user-select: none;
+    float: right;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 0px 10px 0px 10px;
+    background-color: salmon;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 50px auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    color: #808080;
+    font-family: 'Assistant', sans-serif;
+    /* -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75); */
+    background-color: white;
+    max-width: 500px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.modal-open {
+    /*overflow:hidden;*/
+    position: fixed;
+}
+
+.RowsBt {
+    text-align: center;
+    color: #43919f;
+    text-align: center;
+    background-color: #f2f2f3;
+    border-radius: 5px;
+    border: 0px;
+    width: 20%;
+    padding: 5px;
+    font-weight: bold;
+    margin: 10px;
+    margin-top: 2px;
+}
+
+.GroupeDivCss {
+    font-family: 'Assistant', sans-serif;
+    font-weight: bold;
+    font-size: larger;
+    color: white;
+    line-height: 25px;
+    margin: 10px;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid;
+    border-color: #cdd4d4;
+    border-radius: 5px;
+    cursor: pointer
+}
+
+    .GroupeDivCss:hover {
+        background-color: #fef1f1
+    }
+
+
+
+input[type="radio"] {
+    -webkit-appearance: radio;
+}
+
+input[type=checkbox] {
+    -webkit-appearance: checkbox;
+}
+
+.GroupeBtCss {
+    line-height: 25px;
+    white-space: normal;
+    text-align: right;
+    padding: 10px;
+    width: 100%;
+    font-weight: bold;
+    font-size: large;
+    display: inline-block;
+    border: 0px;
+    color: cadetblue;
+}
+
+
+.ClientZoneBt {
+    cursor: pointer;
+    width: 300px;
+    max-width: 100%;
+    margin: 5px auto;
+    padding: 10px;
+    /* -webkit-box-sizing: border-box; */
+    border-radius: 5px;
+    color: #737171;
+    font-size: small;
+    border-bottom: 1px solid #c3c3c3;
+    font-weight: 600;
+    -webkit-user-select: none;
+}
+
+.TextBoxCard {
+    font-family: 'Assistant', sans-serif;
+    color: #e08e0e;
+    background-color: #faf9f9;
+    border: 2px solid #febb52;
+    font-size: large;
+    border-radius: 5px;
+    text-align: right;
+    padding: 5px;
+    width: 95%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+.NewCardCss {
+    color: white;
+    white-space: normal;
+    text-align: center;
+    background-color: cadetblue;
+    font-family: 'Assistant', sans-serif;
+    border-radius: 3px;
+    padding: 5px;
+    border: 0px;
+    width: 45%;
+    font-size: large;
+    margin: 8px 0px;
+    cursor: pointer
+}
+
+    .NewCardCss:focus {
+        background-color: #387b7d;
+    }
+
+    .NewCardCss:hover {
+        background-color: #387b7d;
+    }
+
+input {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+.ClosingBt {
+    -webkit-user-select: none;
+    float: right;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: salmon;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    margin: -10px;
+}
+
+.WelcomBt {
+    font-family: 'Assistant', sans-serif;
+    color: cadetblue;
+    white-space: normal;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: none;
+    padding: 10px;
+    display: inline-block;
+    width: 90%;
+    max-width: 500px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    font-weight: normal;
+    font-size: medium;
+    border-radius: 5px;
+    border: 1px solid cadetblue;
+    margin-top: 10px;
+    -webkit-appearance: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea:focus, input[type=text]:focus, input[type=tel]:focus, input[type=email]:focus {
+    outline: none;
+    background-color: #effaff;
+    /*background:linear-gradient(90deg, rgba(117,195,239,0.1) 0%, rgba(117,195,239,0.1) 98%, rgba(117,195,239,1) 100%);*/
+}
+
+/* .TextBox {
+    -webkit-appearance: none;
+    font-family: 'Assistant', sans-serif;
+    font-weight: 600;
+    font-size: medium;
+    color: black;
+    background: #fafafa;
+    text-align: right;
+    padding: 9px 6px;
+    border-color: #eee;
+    border-style: solid;
+    border-width: 0px;
+    padding-right: 10px;
+    border-radius: 2px;
+    /* -webkit-box-sizing: border-box; */
+    /* box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08); */
+ 
+
+.SpanDiv {
+    width: 40%;
+    /* -webkit-box-sizing: border-box; */
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+    margin: 2%;
+    margin-top: 10px;
+}
+
+.SpanLbl {
+    text-align: right;
+    width: 100%;
+    font-weight: 600;
+    color: #808080;
+    -webkit-user-select: none;
+    font-size: 14px
+}
+
+@media screen and (max-width: 500px) {
+    .SpanDiv {
+        width: 80% !important
+    }
+
+    #Blank1, #Blank2 {
+        display: none !important
+    }
+}
+
+.WelcomCss {
+    line-height: 25px;
+    color: white;
+    white-space: normal;
+    text-align: center;
+    background-color: #fb7c7c;
+    font-family: 'Assistant', sans-serif;
+    border-radius: 5px;
+    padding: 10px;
+    border: 0px;
+    width: 100%;
+    font-weight: bold;
+    font-size: larger;
+    /* -webkit-box-sizing: border-box */
+}
+
+.SmallIcon {
+    width: 40px;
+    margin-top: 8px;
+    vertical-align: top;
+    opacity: 0.5;
+}
+
+iframe {
+    width: 1px;
+    min-width: 100%;
+    *width: 100%;
+}

@@ -1,0 +1,20 @@
+.PageSelect
+{
+    font-weight: bold;
+    width: 150px;
+    height: 70px;
+    cursor: pointer;
+    position: absulut;
+    color: rgb(161,65,225);
+    border-color: rgb(156,18,235);
+    border-width: 2px;
+    padding: 20px;
+}
+.wrapQues {
+    padding: 2% 0 1% 0;
+    background: repeating-linear-gradient(-55deg, #2cd5c4, #2cd5c4 12px, gray 14px, gray 14px);
+    text-align: center;
+    height: 650px;
+    margin-top: 15px;
+
+}

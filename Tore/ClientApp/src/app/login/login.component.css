@@ -1,0 +1,157 @@
+hr {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #000000;
+}
+ .wrapQues {
+    padding: 2% 0 1% 0;
+    background: repeating-linear-gradient(-55deg, #2cd5c4, #2cd5c4 12px, gray 14px, gray 14px);
+    text-align: center;
+    height: 650px;
+    margin-top: 15px;
+
+}
+
+   .accordionQues {
+    background: #ffffff;
+    padding:8% 6% 8% 6%;
+    border: 0px solid green;
+    margin-top: 6%;
+    margin-left:60px ;
+}
+.accordionLogin {
+    max-width: 50%;
+    background: #ffffff;
+    padding:8% 6% 8% 6%;
+    border: 0px solid green;
+    margin-top: 7%;
+    margin-left: 200px;
+}
+
+   .wrapQues h3 {
+    padding: 2% 0 2% 0;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'simpler-bold';
+    /*background: #2dd5c4;*/
+}
+
+   .wrapQues h3 span {
+    font-family: 'simpler-black';
+}
+
+   .wrapQues h3 span.line {
+    width: 7%;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #000000;
+}
+ 
+
+   .accordionQues .quesBox {
+    padding: 1em 0 0.5em 0;
+    border: 0px solid green;
+}
+
+
+   .accordionQues .quesBox .questions {
+    text-align: right;
+    width: 98%;
+    margin: 0 auto;
+    /*padding: 0 5% 0 0;*/
+    border: 0px solid red;
+}
+
+   .accordionQues .quesBox .questions a {
+    width: 100%;
+    display: inline-block;
+    text-decoration: none;
+    color: #000000;
+    font-family: 'simpler-bold';
+    font-size: 1.3em;
+    padding: 1% 0 0 1%;
+    border: 0px solid blue;
+}
+
+   .accordionQues .quesBox .questions a img {
+    float: left;
+    width: 23px;
+}
+
+   .accordionQues .quesBox .questions a span.theQues {
+    width: 85%;
+    margin: 0 0.5em 0 0;
+    float: right;
+    border: 0px solid red;
+}
+
+   .accordionQues .quesBox .mishpatiMore {
+    display: none;
+    font-size: 1.2em;
+    text-align: right;
+    line-height: 120%;
+    /*padding: 0 3.5% 0 0;*/
+    width: 95%;
+    margin: 0 auto;
+    border: 0px solid red;
+}
+
+   .accordionQues .quesBox .mishpatiMore p {
+    width: 95%; 
+}
+
+   .accordionQues .quesBox .mishpatiMore a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+   .accordionQues .quesBox .mishpatiMore ul.quesList {
+    width: 95%;
+    list-style-type: lower-alpha;
+    border: 0px solid green;
+}
+
+   .accordionQues .quesBox .mishpatiMore ul.quesList li {
+    display: list-item;
+}
+
+/* @media screen and (max-width: 1024px) {
+
+       .accordionQues {
+        max-width: 90%;
+    }
+
+       .wrapQues h3 {
+        font-size: 8em;
+        padding: 5% 0 5% 0;
+    }
+
+       .accordionQues .quesBox .questions {
+        width: 95%;
+    }
+
+       .accordionQues .quesBox .questions a {
+        font-size: 4.5em;
+        padding: 3% 0 3% 0;
+    }
+
+       .accordionQues .quesBox .mishpatiMore {
+        width: 95%;
+        font-size: 4.5em;
+        text-align: justify;
+        line-height: 100%;
+        padding: 0 3% 1em 0;
+        box-sizing: border-box;
+        border: 0px solid green;
+    }
+
+       .accordionQues .quesBox .questions a img {
+        width: 1em;
+        margin: 1% 0 0 0;
+    }
+
+       .accordionQues .quesBox .mishpatiMore ul.quesList li {
+        margin: 0 0 5% 0;
+    }
+} */
