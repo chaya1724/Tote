@@ -22,14 +22,23 @@
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-2">
-        <select class="PageSelect">
+        <select class="PageSelect" (change)="SimenSelect($event.target.value)">
             <option value="" disabled selected hidden>שולחן ערוך</option>
-            <option value="1">אורח חיים</option>
-            <option value="2">יורה דעה </option>
-            <option value="3">חושן משפט</option>
-            <option value="4">אבן העזר </option>
-        </select>
+            <option value="697">אורח חיים</option>
+            <option value="403">יורה דעה </option>
+            <option value="427">חושן משפט</option>
+            <option value="178">אבן העזר </option>
+        </select> 
+        <div *ngIf="flag1 > 0 ">
+            <select class="PageSelect" (change)="SimenSelect($event.target.value)">
+                <option value="" selected disabled hidden>סימן</option>
+                <option *ngFor="let simen of simenList  | slice:0:flag1" [value]='simen'>
+                   סימן {{simen}}
+                </option>
+            </select>
+        </div>
     </div>
+
     <div class="col-md-2"></div>
     <div class="col-md-2">
         <select class="PageSelect" (change)="MasectesSelect($event.target.value)">
@@ -80,7 +89,7 @@
                 </option>
             </select>
         </div>
-        
+
         <div class="col-md-1"></div>
     </div>
    
