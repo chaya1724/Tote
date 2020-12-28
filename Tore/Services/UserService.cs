@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Tore.Entities;
 using Tore.Interfaces;
+using Tore.Models;
 
 namespace Tore.Services
 {
@@ -68,6 +69,47 @@ namespace Tore.Services
                 return true;
             }
         }
+        public async Task<IEnumerable<Question>> GetAllQuestion()
+        {
+            var SqlQuery = "SELECT * FROM question";
+
+            using (IDbConnection conn = Connection)
+            {
+                try
+                {
+                    conn.Open();
+                    var result = conn.Query<Question>(SqlQuery);
+                    return result.ToList();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+        }
+        public bool CreateQuestion(Question question)
+        {
+            var result = 0;
+            var SqlQuery = "INSERT INTO tore.question(questionId,questionText,emailFromSendQuestion,questionPath) VALUES(@Id,@QuestionText,@EmailFromSendQuestion,@QuestionPath)";
+
+            using (IDbConnection conn = Connection)
+            {
+                try
+                {
+                    conn.Open();
+                    result = conn.Execute(SqlQuery, new { question.Id, question.QuestionText, question.EmailFromSendQuestion , question.QuestionPath });
+
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                    return false;
+                }
+                return true;
+            }
+        }
+
     }
 }
 

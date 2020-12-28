@@ -13,6 +13,9 @@ import { MainComponent } from './main/main.component';
 import { QuestionComponent } from './question/question.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AnswerComponent } from './answer/answer.component';
+// import {BrowserAnimationsModule} from '@angular/platform browser/animations';
+// import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -24,12 +27,16 @@ import { RegisterComponent } from './register/register.component';
     MainComponent,
     QuestionComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
+    FormsModule, 
+    // BrowserAnimationsModule,
+    //   MdButtonModule,
+    //  MdCheckboxModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -38,10 +45,11 @@ import { RegisterComponent } from './register/register.component';
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'question', component: QuestionComponent },
-
+      { path: 'answer', component: AnswerComponent },
     ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

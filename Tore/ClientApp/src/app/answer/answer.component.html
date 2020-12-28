@@ -1,0 +1,10 @@
+<div class="wrapQues">
+    <div class="rout">
+        <p>&nbsp;תשובה עבור מסכת&nbsp;{{mailService.selectedMaseches}}&nbsp;דף&nbsp;{{mailService.selectedpage}}</p>
+    </div>
+    <div class="accordionQues">
+        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder=" כתוב כאן את תשובתך " rows="5" name="body" [(ngModel)]="bodyText" #body="ngModel"></textarea>
+        <br>    
+        <input (click)="onSubmit()"  type="submit" value="שלח">
+    </div>
+</div>

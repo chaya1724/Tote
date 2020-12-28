@@ -4,8 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { User } from 'src/models/User';
 import { UserService } from '../user.service';
-// import { UserService } from '../services/user.service';
-// import { UserAcount } from '../models/UserAcount';
+import swal from 'sweetalert';
+
 
 @Component({
   selector: 'app-register',
@@ -23,17 +23,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
   PayBtClick() {
-      //  alert('הרשמתך נקלטה בהצלחה');
-      //    this.router.navigate(['/main']);   
     this.userService.user = new User(1,this.registrationUserName,this.registrationPassword);
     this.userService.register().subscribe(
       good => {
         this.good = good;
         if (this.good) {
-        alert('הרשמתך נקלטה בהצלחה');
+          swal('הרשמתך נקלטה בהצלחה');
       this.router.navigate(['/main']);
         } else {
-        alert('!!!הרשמתך  לא נקלטה ');
+          swal("!!!הרשמתך נכשלה - נסה שוב ");
       this.loading=false;
         }
       });

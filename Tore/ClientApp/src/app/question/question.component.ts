@@ -3,6 +3,10 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Email } from 'src/Models/Email';
 import { MailService } from '../mail.service';
+import swal from 'sweetalert';
+import { UserService } from '../user.service';
+import { User } from 'src/models/User';
+import { Question } from 'src/Models/Question';
 
 @Component({
   selector: 'app-question',
@@ -10,25 +14,30 @@ import { MailService } from '../mail.service';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-  subjecctText:string;
-  bodyText:string;
-  addressText:string;
-  constructor(private mailService:MailService,private router: Router) { }
+  questionText: string;
+  constructor(private mailService: MailService, private userService: UserService, private router: Router)
+   { 
+     this.userService.questionList=new Array<Question>();
+   }
 
   ngOnInit() {
-    this.subjecctText="";
-    this.bodyText="";
-    this.addressText="";
-    this.mailService.email=new Email("","","")
+    this.userService.user = new User(0, this.userService.user.Email, "");
+    this.userService.getAllQuestion().subscribe(
+      questionList=>{
+      this.userService.questionList=questionList;
+      console.log(this.userService.questionList);
+      });
   }
-  onSubmit(contactForm: NgForm) {
+  QuestionSend() {
     debugger;
-    this.mailService.email.address=this.addressText;
-    this.mailService.email.body=this.bodyText;
-    this.mailService.email.subject=this.subjecctText;
-    this.mailService.SendMail().subscribe(
-    good => {debugger;
-alert("!תזכה למצוות - תשובתך נשלחה בהצחה")  }
-);
+    this.userService.question = new Question(1, this.questionText, this.userService.user.Email, this.mailService.selectedMaseches)// + this.mailService.selectedpage
+    this.userService.SendQuestion().subscribe(
+      good => {
+        swal('שאלתך נשלחה בהצלחה!', "תשובות ישלחו אליך למייל");
+      }
+    );
+  }
+  Answer() {
+    this.router.navigate(['/answer']);
   }
 }

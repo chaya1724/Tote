@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/User';
  import { UserService } from '../user.service';
-// import { first } from 'rxjs/operators';
+ import swal from 'sweetalert';
 
 @Component({
   selector: 'app-login',
@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
   }
   Login(){
     debugger;
-    this.user.Email = this.userNameText;
-    this.user.Password = this.passwordText;
+    this.userService.user.Email = this.userNameText;
+    this.userService.user.Password = this.passwordText;
     this.userService.getAll()
     .subscribe(Users => {
       this.Users = Users;
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           return;
         }
       }
-      alert("הפרטים שגויים - נסה שוב");
+      swal("הפרטים שגויים - נסה שוב");
     });
   }
 }

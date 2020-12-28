@@ -7,10 +7,14 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class MailService {
-  email:Email;
+  email: Email;
+  selectedpage: string = "ב";
+  selectedMaseches: string = "שבת";
   constructor(private http: HttpClient) { }
-  SendMail():Observable<any>{debugger;
-    return  this.http.post<any>("https://localhost:44307/api/Mail/SendMail" , this.email);
-  
-    }
+  SendMail(): Observable<any> {
+    debugger;
+    return this.http.post<any>("https://localhost:44307/api/Mail/SendMail", this.email);
+
+  }
+
 }

@@ -15,8 +15,8 @@ namespace Tore.Controllers
         public void SendMail([FromBody] Email email, string from = null, string PathToFile = null)
         {        
             MailMessage msg = new MailMessage();
-            msg.From = new MailAddress("chaya1724@gmail.com");
-            msg.To.Add(email.Address);
+            msg.From = new MailAddress("marochesukushios@gmail.com","ללמוד וללמד");
+            msg.To.Add(email.Address);            
             msg.Subject = email.Subject;
             msg.Body = email.Body;
             if (PathToFile != null)
@@ -40,7 +40,7 @@ namespace Tore.Controllers
                 {
                     client.EnableSsl = true;
                     client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential("chaya1724@gmail.com", "025001724tnt");
+                    client.Credentials = new NetworkCredential("marochesukushios@gmail.com", "025806056tnt");
                     client.Host = "smtp.gmail.com";
                     client.Port = 587;
                     client.DeliveryMethod = SmtpDeliveryMethod.Network;
