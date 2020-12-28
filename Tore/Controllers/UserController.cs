@@ -20,7 +20,6 @@ namespace Tore.Controllers
         {
             _userService = userService;
         }
-
         [HttpGet("GetAllUsers")]
         public async Task<IActionResult> GetAllUsers()
         {
