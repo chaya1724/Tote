@@ -17,15 +17,38 @@
             <div>
                 <div class="row">
                     <div>
-                        <input class="btn btn-secondary" class="btn btn-secondary" type="button" value="תירוץ הקושיא"
-                            (click)="Answer()">
+
                     </div>
-                    <div >
+                    <div>
                         <ol style="list-style-type:none;">
-                            <li *ngFor="let question of userService.questionList">
-                                <textarea class="form-control" class="mytextarea" rows="3" placeholder={{question.questionText}}></textarea>
+                            <li *ngFor="let question of questionListShow">
+                                <div class="row">
+                                    <textarea class="form-control" class="mytextarea" rows="3"
+                                        placeholder={{question.questionText}}></textarea>
+                                    <div *ngIf="!showAnswer">
+                                        <input class="btn btn-primary" type="button" value="תירוץ הקושיא"
+                                            (click)="Answer()" style="border-radius: 50px; ">
+                                    </div>
+                                    <div *ngIf="showAnswer">
+                                        <ol style="list-style-type:none;">
+                                            <li *ngFor="let answer of answerListShow">
+                                                <textarea class="form-control" class="mytextarea" rows="2"
+                                                    placeholder={{answer.answerBody}}></textarea>
+                                                <input class="btn btn-primary" type="button" value="להוספת תירוץ נוסף"
+                                                    (click)="Answer()" style="border-radius: 50px; ">
+                                                <input class="btn btn-primary" type="button" value="להשגת התירוץ"
+                                                    (click)="Answer()" style="border-radius: 50px; ">
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <br>
                             </li>
                         </ol>
+                    </div>
+                    <div *ngIf="NoQuestionListShow">
+                        <textarea class="form-control" class="mytextarea" rows="4"
+                            placeholder="טרם שאלו קושיות לדף זה"></textarea>
                     </div>
                 </div>
                 <br>

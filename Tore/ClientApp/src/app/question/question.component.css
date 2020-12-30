@@ -172,6 +172,5 @@ input, textarea {
     direction: RTL; 
    }
    .mytextarea{
-       width: 600px;
-       
+       width: 700px;
    }

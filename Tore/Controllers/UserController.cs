@@ -44,5 +44,18 @@ namespace Tore.Controllers
             return _userService.CreateQuestion(question);
 
         }
+        [HttpPost("UpdateAnswer")]
+        public bool UpdateAnswer([FromBody] Answer answer)
+        {
+            return _userService.UpdateAnswer(answer);
+
+        }
+        
+        [HttpGet("getAllAnswers")]
+        public async Task<IActionResult> getAllAnswers()
+        {
+            var answers = await _userService.getAllAnswers();
+            return Ok(answers);
+        }
     }
 }

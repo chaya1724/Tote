@@ -25,3 +25,66 @@
   ::ng-deep .langSelect.mat-select {
     display: inline;
   }
+  .text{
+    height: 35px;
+    width: 45px;
+    margin-left: -57px; 
+      position: absolute;
+      background:none;
+      border: none;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 35px;
+  }
+  
+  .Text{
+    width: 45px;
+       height: 35px;
+       margin-left: -7px;
+       position: absolute;
+       background:none;
+       border: none;
+       text-decoration: none;
+       display: inline-block;
+       font-size: 35px;
+  }
+  .TExt{
+    width: 45px;
+       height: 35px;
+       margin-left: 42px;
+       position: absolute;
+       background:none;
+       border: none;
+       display: inline-block;
+       font-size: 35px;
+  }
+  .answer{
+
+    margin-top: 100px;;
+    margin-left: 450px;
+   /* background-image: url('../../assets/homePage.png'); */
+  font-weight: bold;
+  font-weight: bold;
+  width: 150px;
+  height: 70px;
+  cursor: pointer;
+  position: absulut;
+  color: rgb(161,65,225);
+  border-color: rgb(156,18,235);
+  border-width: 2px;
+  }
+.question{
+      
+        margin-left: 35px;
+        margin-top: 100px;
+        /* background-image: url('../../assets/back.png'); */
+        font-weight: bold;
+        font-weight: bold;
+    width: 150px;
+    height: 70px;
+    cursor: pointer;
+    position: absulut;
+    color: rgb(161,65,225);
+    border-color: rgb(156,18,235);
+    border-width: 2px;
+          }

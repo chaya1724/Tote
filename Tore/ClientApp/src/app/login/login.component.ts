@@ -13,27 +13,24 @@ import { User } from 'src/models/User';
 export class LoginComponent implements OnInit {
 
   returnUrl: string;
-  Users: any[];
-  i: any
    user: User;
-  userNameText:string ="";
+  emailText:string ="";
   passwordText:string ="";
 
   constructor(private router: Router,private userService:UserService) { }
 
   ngOnInit() {
-    this.user=new User(0,this.userNameText,this.passwordText);
+    // this.user=new User(0,this.emailText,this.passwordText);
   }
   Login(){
     debugger;
-    this.userService.user.Email = this.userNameText;
+    this.userService.user.Email = this.emailText;
     this.userService.user.Password = this.passwordText;
     this.userService.getAll()
     .subscribe(Users => {
-      this.Users = Users;
-      for (let u of this.Users) {
-        if (u.email == this.user.Email) {
-          debugger;
+      this.userService.Users = Users;
+      for (let u of this.userService.Users) {          debugger;
+        if (u.email == this.userService.user.Email&&u.password == this.userService.user.Password) {
           this.router.navigate(['/main']);
           return;
         }
@@ -42,5 +39,6 @@ export class LoginComponent implements OnInit {
     });
   }
 }
+
 
 

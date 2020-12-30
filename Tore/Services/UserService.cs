@@ -91,14 +91,14 @@ namespace Tore.Services
         public bool CreateQuestion(Question question)
         {
             var result = 0;
-            var SqlQuery = "INSERT INTO tore.question(questionId,questionText,emailFromSendQuestion,questionPath) VALUES(@Id,@QuestionText,@EmailFromSendQuestion,@QuestionPath)";
+            var SqlQuery = "INSERT INTO tore.question(questionId,questionText,emailFromSendQuestion,questionPath) VALUES(@QuestionId,@QuestionText,@EmailFromSendQuestion,@QuestionPath)";
 
             using (IDbConnection conn = Connection)
             {
                 try
                 {
                     conn.Open();
-                    result = conn.Execute(SqlQuery, new { question.Id, question.QuestionText, question.EmailFromSendQuestion , question.QuestionPath });
+                    result = conn.Execute(SqlQuery, new { question.QuestionId, question.QuestionText, question.EmailFromSendQuestion , question.QuestionPath });
 
                 }
                 catch (Exception e)
@@ -107,6 +107,46 @@ namespace Tore.Services
                     return false;
                 }
                 return true;
+            }
+        }
+        public bool UpdateAnswer(Answer answer)
+        {
+            var result = 0;
+            var SqlQuery = "INSERT INTO tore.answer(answerId,answerBody,questionId) VALUES(@AnswerId,@QuestionText,@QuestionId)";
+
+            using (IDbConnection conn = Connection)
+            {
+                try
+                {
+                    conn.Open();
+                    result = conn.Execute(SqlQuery, new { answer.AnswerId, answer.AnswerBody, answer.QuestionId });
+
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                    return false;
+                }
+                return true;
+            }
+        }
+        public async Task<IEnumerable<Answer>> getAllAnswers()
+        {
+            var SqlQuery = "SELECT * FROM tore.answer";
+
+            using (IDbConnection conn = Connection)
+            {
+                try
+                {
+                    conn.Open();
+                    var result = conn.Query<Answer>(SqlQuery);
+                    return result.ToList();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
             }
         }
 

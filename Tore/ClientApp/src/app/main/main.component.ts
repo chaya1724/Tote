@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Email } from 'src/Models/Email';
 import { MailService } from '../mail.service';
 import { UserService } from '../user.service';
+import swal from 'sweetalert';
 
 // import {MdSelect} from '@angular/material';
 
@@ -15,6 +16,7 @@ import { UserService } from '../user.service';
 })
 export class MainComponent implements OnInit {
   mySelect:any;
+  hide:boolean=true;
   flag:any;
   masecesPerse:any;
   flag1:number;
@@ -53,18 +55,26 @@ mishpotim:string[]=["שכירות","שאלה ופקדון","מלוה ולוה","
 shoiftim:string[]=["סנהדרין והעונשין המסורין להם","עדות","ממרים","אבל","מלכים ומלחמותיהם"];
 alefbrt:string[]=["א","ב","ג","ד","ה","ו","ז","ח","ט","י","יא","יב","יג","יד","טו","טז","יז","יח","יט","כ","כא","כב","כג","כד","כה","כו","כז","כח","כט","לו","לא","לב","לג","לד","לה","לו","לז","לח","לט","מ","מא","מב","מג","מד","מה","מו","מז","מח","מט"]
 selected: string = "";
-items: any[] = [
-];
+items: any[] = [];
+
 constructor(private mailService:MailService,private router: Router,private userService:UserService) { }
  ngOnInit() {
+
  }
 //  @ViewChild(MatSelect) mySelector: MatSelect;
 
 openSelector() {
     // this.mySelector.open();
 }
+question()
+{
+
+}
+answer()
+{}
  selectOption(maseces)
   {
+    this.hide=false;
      this.masecesPerse=JSON.parse(maseces);
      this.selected=this.masecesPerse.numOfPage;
     this.mailService.selectedMaseches=this.masecesPerse.maseces;

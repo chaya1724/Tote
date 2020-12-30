@@ -13,8 +13,10 @@ namespace Tore.Interfaces
         public Task<IEnumerable<User>> GetAllUsers();
         public bool CreateUser(User userAcount);
         public Task<IEnumerable<Question>> GetAllQuestion();
-        public bool CreateQuestion(Question question);
+        public bool CreateQuestion(Question question); 
+        public bool UpdateAnswer(Answer answer); 
+        public Task<IEnumerable<Answer>> getAllAnswers();
 
-        
+
     }
 }

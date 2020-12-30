@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { User } from 'src/models/User';
@@ -16,14 +16,30 @@ export class RegisterComponent implements OnInit {
   loading = false;
   submitted = false;
   good: boolean;
-  registrationUserName:string="";
+  registrationEmail:string="";
   registrationPassword:string="";
   registrationAge:number=0;
   constructor(private router: Router,private userService:UserService) { }
   ngOnInit() {
+    this.userService.getAll()
+    .subscribe(Users => {
+      this.userService.Users = Users;
+    });
   }
-  PayBtClick() {
-    this.userService.user = new User(1,this.registrationUserName,this.registrationPassword);
+public isValid(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+  register() {debugger
+    if(this.registrationEmail=="")
+    swal(' הזן כתובת מייל');
+    if(!this.isValid(this.registrationEmail)){
+      swal(' כתובת מייל שגויה');
+      return;
+      }
+      if(this.registrationPassword=="")
+      swal('הזן סיסמא חזקה');
+    this.userService.user = new User(this.userService.Users.length+1,this.registrationEmail,this.registrationPassword);
     this.userService.register().subscribe(
       good => {
         this.good = good;

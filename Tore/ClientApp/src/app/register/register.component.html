@@ -37,20 +37,17 @@
                     <label for="ClientNameTxt" class="SpanLbl"><span style="color: indianred">*</span><span
                             id="ClientNameLbl">שם משפחה ושם פרטי:</span></label><br>
                     <input id="ClientNameTxt" name="nope" dir="rtl" type="text" maxlength="50" class="form-control"
-                        autocomplete="off" style="text-align: right; width: 50%; width: 100%"
-                        onkeyup="PressedCard(this)" onkeydown="TabNextElement(event,'ZeoutTxt')"><br>
+                        autocomplete="off" style="text-align: right; width: 50%; width: 100%"><br>
                 </div>
                 <div id="ZeoutSpan" class="SpanDiv">
                     <label for="ZeoutTxt" class="SpanLbl"><span id="NeedZeout"
                             style="color: indianred; display: none">*</span><span id="ZeoutLbl">תעודת
                             זהות:</span></label><br>
                     <input id="ZeoutTxt" name="nope" dir="ltr" type="tel" maxlength="9" class="form-control"
-                        autocomplete="off" style="text-align: right; width: 100%"
-                        onkeydown="TabNextElement(event,'AdresseTxt')">
+                        autocomplete="off" style="text-align: right; width: 100%">
                     <div id="LogInLbl" dir="rtl"
                         style="text-align: right; font-size: small; font-family: Arial; margin-top: 2px; -webkit-user-select: none; opacity: 0.6">
                         <span id="LogInLbl1">משתמש רשום?</span> <span id="LogInLbl2"
-                            onclick="OpenLogIn($('#ZeoutTxt').val(),false)"
                             style="cursor: pointer; color: cornflowerblue;">לחץ כאן</span>
                     </div>
                     <div id="ClientZoneLbl" dir="rtl"
@@ -58,59 +55,39 @@
                         onclick="OpenClientZone()">כניסה לאזור אישי</div>
                     <div id="ClientFastLogIn" dir="rtl"
                         style="text-align: right; font-size: small; font-family: Arial; margin-top: 2px; -webkit-user-select: none; color: white; background-color: #f8d486; padding: 3px 10px; cursor: pointer; border-radius: 3px; display: none"
-                        onclick="Login(true)">אתה מוכר :) לחץ כאן</div>
+                        (click)="Login(true)">אתה מוכר :) לחץ כאן</div>
                 </div>
                 <div id="PasswordSpan" class="SpanDiv">
                     <label for="PasswordTxt" id="PasswordLbl" class="SpanLbl"><span id="NeedPhone"
                             style="color: indianred; display: none;">*</span><span
                             id="PhoneLblTxt">סיסמא:</span></label><br>
                     <input id="PasswordTxt" name="nope" dir="ltr" type="tel" maxlength="16" class="form-control"
-                        autocomplete="off" style="text-align: right; width: 100%" onkeyup="PressedCard(this)"
-                        onkeydown="TabNextElement(event,'MailTxt')"><br>
+                        autocomplete="off" style="text-align: right; width: 100%"><br>
                 </div>
                 <div id="MailSpan" class="SpanDiv">
                     <label for="MailTxt" class="SpanLbl"><span id="NeedMail"
                             style="color: indianred; display: none;">*</span><span id="MailLbl">מייל:</span></label><br>
 
                     <input id="MailTxt" name="nope" dir="ltr" type="email" maxlength="50" class="form-control"
-                        autocomplete="off" style="text-align: left; width: 100%" onkeyup="PressedCard(this)"
-                        onkeydown="TabNextElement(event,'AvourTxt')" onfocus="$('#MailHelper').show()"><br>
-
-                    <div style="position: relative">
-                        <div id="ClientMailSpanAlert"
-                            style="font-size: small; color: rgb(185, 141, 141); box-sizing: border-box; width: 100%; opacity: 0.8; display: none;">
-                            קבלה תשלח למייל זה.</div>
-                        <div style="font-size: small; padding: 2px 0px; display: none; position: absolute; left: 0; top: 4px; user-select: none; z-index: 1; background-color: white; box-shadow: rgba(158, 158, 158, 0.55) 0px 0px 3px 0px; padding: 3px; box-sizing: border-box; text-align: left;"
-                            id="MailHelper">
-                            <div dir="ltr">
-                                <div style="background-color: #f7f7f7; padding: 2px 5px; border-radius: 2px; margin: 2px; cursor: pointer"
-                                    onclick="AddDomain($(this).html())">@gmail.com</div>
-                                <div style="background-color: #f7f7f7; padding: 2px 5px; border-radius: 2px; margin: 2px; cursor: pointer"
-                                    onclick="AddDomain($(this).html())">@hotmail.com</div>
-                                <div style="background-color: #f7f7f7; padding: 2px 5px; border-radius: 2px; margin: 2px; cursor: pointer"
-                                    onclick="AddDomain($(this).html())">@bezeqint.net</div>
-                                <div style="background-color: #f7f7f7; padding: 2px 5px; border-radius: 2px; margin: 2px; cursor: pointer"
-                                    onclick="AddDomain($(this).html())">@okmail.co.il</div>
-                            </div>
-                        </div>
-                    </div>
+                    [(ngModel)]="registrationEmail" name="email"
+                    #email="ngModel"
+                        autocomplete="off" style="text-align: left; width: 100%"><br>
+   
                 </div>
+
                 <div id="PhoneSpan" class="SpanDiv">
                     <label for="PhoneTxt" id="PhoneLbl" class="SpanLbl"><span id="NeedPhone"
                             style="color: indianred; display: none;">*</span><span
                             id="PhoneLblTxt">טלפון:</span></label><br>
                     <input id="PhoneTxt" name="nope" dir="ltr" type="tel" maxlength="16" class="form-control"
-                        autocomplete="off" style="text-align: right; width: 100%" onkeyup="PressedCard(this)"
-                        onkeydown="TabNextElement(event,'MailTxt')"><br>
+                        autocomplete="off" style="text-align: right; width: 100%"><br>
                 </div>
                 <div id="ClientAmountSpan" class="SpanDiv">
                     <span class="SpanLbl"><span style="color: indianred">*</span><span id="AmountLabel">:סך הכל
                             לתשלום</span></span><br>
                     <div style="position: relative">
                         <input id="AmountTxt" name="nope" dir="ltr" type="tel" maxlength="10" class="form-control"
-                            autocomplete="off" style="text-align: right; width: 100%;"
-                            onkeyup="PressedCard(this);CalculateAmount()"
-                            onkeydown="TabNextElement(event,'TashloumimTxt')"><br>
+                            autocomplete="off" style="text-align: right; width: 100%;"><br>
                     </div>
                 </div>
 
@@ -119,9 +96,7 @@
                     <span class="SpanLbl"><span style="color: indianred; display: inline;"
                             id="TashloumimStar">*</span><span id="TashloumimLabel">:מספר תשלומים</span></span><br>
                     <input id="TashloumimTxt" name="nope" dir="ltr" type="tel" maxlength="5" class="form-control"
-                        autocomplete="off" style="text-align: right; width: 50%; width: 100%;"
-                        onkeyup="PressedCard(this);CalculateAmount()"
-                        onkeydown="TabNextElement(event,'DayTxt','CardTxt')" placeholder=""><br>
+                        autocomplete="off" style="text-align: right; width: 50%; width: 100%;"><br>
                     <span id="TashloumimAlertTxt" style="margin: 5px; display: none;"></span>
                 </div>
 
@@ -130,9 +105,7 @@
                             חודש</span><span id="MasavDay" style="font-size: small; display: none;"><br>
                             (1-5-10-15-20-25-28)</span></span><br>
                     <input id="DayTxt" dir="ltr" name="nope" type="tel" maxlength="2" class="form-control"
-                        autocomplete="off" style="text-align: right; width: 100%; display: none;"
-                        onkeyup="PressedCard(this);CalculateAmount()"
-                        onkeydown="TabNextElement(event,'CardTxt','BankTxt')"><br>
+                        autocomplete="off" style="text-align: right; width: 100%; display: none;"><br>
                 </div>
                 <div id="Blank2" class="SpanDiv" style="display: none;">&nbsp;</div>
 
@@ -141,19 +114,8 @@
                             כרטיס אשראי</span></span><br>
                     <div style="position: relative">
                         <input id="CardTxt" dir="ltr" type="tel" name="cardnumber" maxlength="30" class="form-control"
-                            style="text-align: right; width: 100%;" onkeyup="PressedCard(this)"
-                            onkeydown="TabNextElement(event,'TokefTxt')"><br>
-                        <!-- <div id="CardImgDiv" style="position: absolute; left: 3px; bottom: 0">
-                        <img src="Files/Cb.png" style="width: 30px">
-                    </div> -->
+                            style="text-align: right; width: 100%;"><br>
                     </div>
-                    <div id="ClientChooseCard"
-                        style="display: inline-block; margin-top: 2px; font-family: Arial; font-size: small; cursor: pointer; color: white; background-color: #80d6e0; padding: 3px 10px; border-radius: 3px; display: none; -webkit-user-select: none"
-                        onclick="OpenClientZone('ChooseCard',true,'Pay')">הצג רשימת כרטיסים שמורים</div>
-                    <div id="DeleteClientChooseCard"
-                        style="display: inline-block; margin-top: 2px; font-family: Arial; font-size: small; cursor: pointer; color: white; background-color: #fa8072; padding: 3px 10px; border-radius: 3px; display: none; -webkit-user-select: none"
-                        onclick="DeleteChooseCard()">ביטול שימוש בכרטיס שמור</div>
-
                 </div>
 
                 <div id="ClientTokefSpan" class="SpanDiv">
@@ -168,44 +130,14 @@
                     <input id="CvvTxt" name="cvv" dir="ltr" type="tel" maxlength="4" class="form-control"
                         autocomplete="off" style="text-align: right; width: 100%;"><br>
                 </div>
-                <!-- <div id="Blank1" class="SpanDiv" style="display: inline-block">&nbsp;</div> -->
-
-                <!-- <div>
-                <div id="ClientBankSpan" class="SpanDiv" style="width: 16%; display: none;">
-                    <span class="SpanLbl"><span style="color: indianred">*</span><span id="ClientBankLbl">מספר
-                            בנק:</span></span><br>
-                    <input id="BankTxt" name="nope" dir="ltr" type="tel" maxlength="2" class="TextBox"
-                        autocomplete="off" style="text-align: right; width: 100%"><br>
-                </div>
-                <div id="ClientSnifSpan" class="SpanDiv" style="width: 20%; display: none;">
-                    <span class="SpanLbl"><span style="color: indianred">*</span><span id="ClientSnifLbl">מספר סניף:</span></span><br>
-                    <input id="SnifTxt" name="nope" dir="ltr" type="tel" maxlength="3" class="TextBox"
-                        autocomplete="off" style="text-align: right; width: 100%"><br>
-                </div>
-                <div id="ClientAccountSpan" class="SpanDiv" style="width: 40%; display: none;">
-                    <span class="SpanLbl"><span style="color: indianred">*</span><span id="ClientAccountLbl">מספר חשבון:</span></span><br>
-                    <input id="AccountTxt" name="nope" dir="ltr" type="tel" maxlength="9" class="TextBox"
-                        autocomplete="off" style="text-align: right; width: 100%;"><br>
-                       </div>
-                      </div> -->
-
 
                 <div id="PayBt" style="margin-top: 30px; text-align: center">
-                    <!-- <div id="Takanon" style="-webkit-user-select: none; font-size: 15px">
-                       <label for="TakanonCb" style="cursor: pointer;">
-                        <input type="checkbox" id="TakanonCb" style="cursor: pointer"><span id="TakanonLbl1">אני מסכים
-                            ל</span></label><span onclick="$('#TakanonDiv').show()" id="TakanonLbl2"
-                        style="color: blue; cursor: pointer">תקנון האתר</span>.
-                        </div> -->
-                    <input [disabled]="loading" type="button" id="PayBtBt"
+
+                    <input [disabled]="loading" type="submit" id="PayBtBt"
                         style="width: 60%; cursor: pointer; color: white" value="אישור תשלום" class="NewCardCss"
-                        onclick="PayBtClick()">
+                        >
                 </div>
-                <!-- <div id="PaiementWait" style="text-align: center; margin-top: 20px; display: none">
-                    <img src="Files/wait.gif"><br>
-                    <span id="WaitText">ממתין לאישור עסקה</span>
-                </div> -->
+
             </form>
         </div>
     </div>
-</div>

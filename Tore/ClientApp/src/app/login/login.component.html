@@ -66,14 +66,14 @@
                 <div class="quesBox" style="background: none;">
                     <form #userForm="ngForm" (ngSubmit)="Login(); userForm.reset()">
                         <div class="form-group">
-                            <label for="username">מייל</label>
-                            <input type="email" class="form-control" [(ngModel)]="userNameText" name="username"
-                                #username="ngModel" />
+                            <label for="email">מייל</label>
+                            <input type="email" class="form-control" [(ngModel)]="emailText" name="email"
+                                #email="ngModel" email pattern="^'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'" required />
                         </div>
                         <div class="form-group">
                             <label for="password">סיסמא</label>
                             <input type="password" class="form-control" [(ngModel)]="passwordText" name="password"
-                                #password="ngModel" />
+                                #password="ngModel" required />
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">
