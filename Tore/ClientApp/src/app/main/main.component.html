@@ -30,6 +30,7 @@
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-2">
+            <div *ngIf="hideSeif && hideSimen">
             <select class="PageSelect" (change)="SimenSelect($event.target.value)">
                 <option value="" disabled selected hidden>שולחן ערוך</option>
                 <option value="697">אורח חיים</option>
@@ -37,11 +38,22 @@
                 <option value="427">חושן משפט</option>
                 <option value="178">אבן העזר </option>
             </select>
-            <div *ngIf="flag1 > 0 ">
-                <select class="PageSelect" (change)="SimenSelect($event.target.value)">
-                    <option value="" selected disabled hidden>סימן</option>
-                    <option *ngFor="let simen of simenList  | slice:0:flag1" [value]='simen'>
-                        סימן {{simen}}
+            </div>
+            <div *ngIf="hideSeif && !hideSimen">
+                <div *ngIf="kindOfSO > 0 ">
+                    <select class="PageSelect" (change)="SeifSelect($event.target.value)">
+                        <option value="" selected disabled hidden>סימן</option>
+                        <option *ngFor="let simen of simenList  | slice:0:kindOfSO" [value]='simen'>
+                            סימן {{simen}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div *ngIf="!hideSeif">
+                <select class="PageSelect" (change)="SeifSpesifiSelect($event.target.value)">
+                    <option value="" selected disabled hidden>סעיף</option>
+                    <option *ngFor="let AB of alefbet  | slice:0:numOfSeif " [value]='AB'>
+                        סעיף {{AB}}
                     </option>
                 </select>
             </div>
@@ -108,6 +120,5 @@
             <button class="answer" (click)="answer()">לתרץ קושיא</button>
             <button class="question" (click)="question()">לשאול שאלה</button>
         </div> -->
-            <!-- <img  src = "../../assets/back.png" alt="lo">|<img  src = "../../assets/conaction.png" alt="lo"> -->
+        <!-- <img  src = "../../assets/back.png" alt="lo">|<img  src = "../../assets/conaction.png" alt="lo"> -->
     </div>
-</div>

@@ -1,7 +1,13 @@
 <section>
     <div class="wrapQues">
         <div class="rout">
-            <p>&nbsp;שאלות עבור מסכת&nbsp;{{mailService.selectedMaseches}}&nbsp;דף&nbsp;{{mailService.selectedpage}}</p>
+            <div *ngIf="!userService.flagShowPath">
+                <p>&nbsp;שאלות עבור&nbsp;{{userService.pathSO}}</p>
+            </div>
+            <div *ngIf="userService.flagShowPath">
+                <p>&nbsp;שאלות עבור מסכת&nbsp;{{mailService.selectedMaseches}}&nbsp;דף&nbsp;{{mailService.selectedpage}}
+                </p>
+            </div>
         </div>
         <div class="accordionQues">
             <label for="exampleFormControlTextarea1">{{userService.user.Email}}&nbsp;משתמש&nbsp;</label>
@@ -34,9 +40,7 @@
                                             <li *ngFor="let answer of answerListShow">
                                                 <textarea class="form-control" class="mytextarea" rows="2"
                                                     placeholder={{answer.answerBody}}></textarea>
-                                                <input class="btn btn-primary" type="button" value="להוספת תירוץ נוסף"
-                                                    (click)="Answer()" style="border-radius: 50px; ">
-                                                <input class="btn btn-primary" type="button" value="להשגת התירוץ"
+                                                <input class="btn btn-primary" type="button" value=" להשגת התירוץ או הוספת תירוץ נוסף"
                                                     (click)="Answer()" style="border-radius: 50px; ">
                                             </li>
                                         </ol>

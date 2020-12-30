@@ -16,6 +16,10 @@ export class UserService {
   questionList:Question[];
   answerList:Answer[];
   Users: any[];
+  pathSO:string;
+  pathShas:string;
+  pathRambam:string;
+  flagShowPath:boolean=true;
   baseUrl = "https://localhost:44307/api/User/";
 
     constructor(private http: HttpClient) { }

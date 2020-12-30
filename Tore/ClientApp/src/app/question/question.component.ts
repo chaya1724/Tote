@@ -30,14 +30,11 @@ export class QuestionComponent implements OnInit {
   ngOnInit() {
     this.userService.user = new User(0, this.userService.user.Email, "");
     this.userService.getAllQuestion().subscribe(
-      questionListFromDB => {
+      questionListFromDB => {debugger
         this.userService.questionList = questionListFromDB;
         for (var q of this.userService.questionList) {
-          if (q.questionPath == this.mailService.selectedMaseches) {
+          if (q.questionPath == this.userService.pathShas) {
             this.questionListShow.push(q);
-          }
-          if (q.answer != null) {
-            this.showAnswer = true;
           }
         }
         if (this.questionListShow.length == 0)
@@ -52,6 +49,7 @@ export class QuestionComponent implements OnInit {
           for (var a of this.userService.answerList) {
             if (q.questionId == a.questionId) {
               debugger;
+              this.showAnswer = true;
                this.flag=q.questionId
                this.answerListShow.push(a);
             }

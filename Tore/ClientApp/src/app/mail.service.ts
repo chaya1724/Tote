@@ -8,8 +8,8 @@ import { Observable, of } from 'rxjs';
 })
 export class MailService {
   email: Email;
-  selectedpage: string = "ב";
-  selectedMaseches: string = "שבת";
+  selectedpage: string;
+  selectedMaseches: string;
   constructor(private http: HttpClient) { }
   SendMail(): Observable<any> {
     debugger;
