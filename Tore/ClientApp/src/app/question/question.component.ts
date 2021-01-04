@@ -28,8 +28,8 @@ export class QuestionComponent implements OnInit {
   }
 
   ngOnInit() {debugger
-    if(this.userService.currentPath==null)
-    this.userService.currentPath = this.userService.getCurrentPath();debugger
+    // if(this.userService.currentPath==null)
+    // this.userService.currentPath = this.userService.getCurrentPath();debugger
     this.userService.user = new User(0, this.userService.user.Email, "");
     this.userService.getAllQuestion().subscribe(
       questionListFromDB => {

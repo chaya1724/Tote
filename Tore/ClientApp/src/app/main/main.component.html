@@ -123,17 +123,22 @@
     </div>
     <br>
     <br>
-    <h4>שאלות וקושיות שנשאלו לאחרונה</h4>
+    <h4> מעבר לשאלות וקושיות שנשאלו לאחרונה</h4>
     <div class="accordionQues">
         <ol style="list-style-type:none;">
             <li *ngFor="let question of userService.questionList;let i=index">
                 <div class="box">
                     <p>{{question.questionPath}}</p>
-                    <button style="width: 90%; cursor: pointer;" type="button" class="btn btn-dark"
+                    <button style="width: 90%; cursor: pointer;" type="button" class="btn btn-info"
                         (click)="lastQuestion(question.questionId)">{{question.questionText}}</button>
                 </div>
             </li>
             <br>
         </ol>
     </div>
+    <div ng-controller="main">
+        <div (click)="toggle()"> {{count}} options selected</div>  
+    <div *ngIf="showOptions">
+        <label *ngFor="let option of options">{{option}}<input type="checkbox" ng-model="selected[$index]" (change)="update()"/><br/></label>
+      </div></div>
 </div>

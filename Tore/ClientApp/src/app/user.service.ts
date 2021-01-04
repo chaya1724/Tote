@@ -27,7 +27,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     if(this.currentPath==null)debugger;
-     this.currentPath=this.getCurrentPath();
+    //  this.currentPath=this.getCurrentPath();
    }
 
   getAll(): Observable<any[]> {
@@ -48,17 +48,17 @@ export class UserService {
   getAllAnswers(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl + 'getAllAnswers');
   }
-  getCurrentPath(): string {
-    if (this.pathRambam == null && this.pathSO == null) {
-      return this.currentPath = this.pathShas;
-    }
-    else if (this.pathRambam == null && this.pathShas == null) {
-      return this.currentPath = this.pathSO;
-    }
-    else {
-      return this.currentPath = this.pathRambam;
-    }
-  }
+  // getCurrentPath(): string {
+  //   if (this.pathRambam == null && this.pathSO == null) {
+  //     return this.currentPath = this.pathShas;
+  //   }
+  //   else if (this.pathRambam == null && this.pathShas == null) {
+  //     return this.currentPath = this.pathSO;
+  //   }
+  //   else {
+  //     return this.currentPath = this.pathRambam;
+  //   }
+ // }
 }
 
 

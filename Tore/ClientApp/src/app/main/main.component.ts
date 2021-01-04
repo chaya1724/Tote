@@ -101,7 +101,7 @@ export class MainComponent implements OnInit {
   }
   PageSelect(page: any) {
     this.mailService.selectedpage = page;
-    this.userService.pathShas = "מסכת " + this.mailService.selectedMaseches + " דף " + this.mailService.selectedpage;
+    this.userService.currentPath = "מסכת " + this.mailService.selectedMaseches + " דף " + this.mailService.selectedpage;
     this.router.navigate(['/question']);
   }
 
@@ -141,7 +141,7 @@ export class MainComponent implements OnInit {
     if (this.kindOfSO == 178) {
       this.nameSO = "אבן העזר";
     }
-    this.userService.pathSO = "שולחן ערוך - " + this.nameSO + ", " + "סימן " + this.simenFlag + " " + "סעיף " + this.nameSeif;
+    this.userService.currentPath = "שולחן ערוך - " + this.nameSO + ", " + "סימן " + this.simenFlag + " " + "סעיף " + this.nameSeif;
     this.router.navigate(['/question']);
   }
   RambamSelect(num) {
@@ -173,10 +173,28 @@ export class MainComponent implements OnInit {
         this.userService.currentPath = q.questionPath;
         debugger;
       }
-      else{
+      else {
 
       }
-    }debugger
+    } debugger
     this.router.navigate(['/question']);
   }
+  showOptions: boolean = false;
+  toggle = function () {
+    this.showOptions = !this.showOptions;
+  }
+  count: number;
+  options:any[] = ['Car', 'Lorry', 'Motorbike', 'Bus', 'Train', 'Airplane']
+  newSelected: any[] = [];
+  update = function () {
+    // this.count = this.selected.filter(isSelected).length
+    // console.log(this.selected.filter(isSelected));
+  }
+}
+
+
+function isSelected(element) { return element; }
+{
+
+
 }
