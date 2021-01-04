@@ -1,5 +1,6 @@
 <div class="wrapQues">
-    <div class="row" style="margin-top: 20px;">
+    <h3 style="text-align:center;margin-top: 5px;"> בחר את מיקום השאלה</h3>
+    <div class="row" style="margin-top: 15px;">
         <div class="col-md-1"></div>
         <div class="col-md-2  select-outline">
             <select class="PageSelect" (change)="RambamSelect($event.target.value)">
@@ -31,13 +32,13 @@
         <div class="col-md-2"></div>
         <div class="col-md-2">
             <div *ngIf="hideSeif && hideSimen">
-            <select class="PageSelect" (change)="SimenSelect($event.target.value)">
-                <option value="" disabled selected hidden>שולחן ערוך</option>
-                <option value="697">אורח חיים</option>
-                <option value="403">יורה דעה </option>
-                <option value="427">חושן משפט</option>
-                <option value="178">אבן העזר </option>
-            </select>
+                <select class="PageSelect" (change)="SimenSelect($event.target.value)">
+                    <option value="" disabled selected hidden>שולחן ערוך</option>
+                    <option value="697">אורח חיים</option>
+                    <option value="403">יורה דעה </option>
+                    <option value="427">חושן משפט</option>
+                    <option value="178">אבן העזר </option>
+                </select>
             </div>
             <div *ngIf="hideSeif && !hideSimen">
                 <div *ngIf="kindOfSO > 0 ">
@@ -65,7 +66,7 @@
                 <select class="PageSelect" (change)="selectOption($event.target.value)">
                     <option value="" selected disabled hidden>ש"ס</option>
                     <option value='{"numOfPage":"125","maseces":"ברכות"}'>ברכות</option>
-                    <option value='{"numOfPage":"306","maseces":"שבת"}'>שבת</option>
+                    <option value='{"numOfPage":"312","maseces":"שבת"}'>שבת</option>
                     <option value='{"numOfPage":"207","maseces":"עירובין"}'>עירובין</option>
                     <option value='{"numOfPage":"240","maseces":"פסחים"}'>פסחים</option>
                     <option value='{"numOfPage":"67", "maseces":"ראש השנה"}'>ראש השנה</option>
@@ -110,15 +111,29 @@
                     </option>
                 </select>
             </div>
-            <!-- <mat-select #select [(ngModel)]="setLang">
-            <mat-option (click)="changeLang()" value="en">English</mat-option>
-            <mat-option (click)="changeLang()" value="de">Deutsch</mat-option>
-          </mat-select> -->
             <div class="col-md-1"></div>
         </div>
+
         <!-- <div class="row">
+                            ////////////////////////placeholder={{question.questionText}}></textarea>  
             <button class="answer" (click)="answer()">לתרץ קושיא</button>
             <button class="question" (click)="question()">לשאול שאלה</button>
         </div> -->
         <!-- <img  src = "../../assets/back.png" alt="lo">|<img  src = "../../assets/conaction.png" alt="lo"> -->
     </div>
+    <br>
+    <br>
+    <h4>שאלות וקושיות שנשאלו לאחרונה</h4>
+    <div class="accordionQues">
+        <ol style="list-style-type:none;">
+            <li *ngFor="let question of userService.questionList;let i=index">
+                <div class="box">
+                    <p>{{question.questionPath}}</p>
+                    <button style="width: 90%; cursor: pointer;" type="button" class="btn btn-dark"
+                        (click)="lastQuestion(question.questionId)">{{question.questionText}}</button>
+                </div>
+            </li>
+            <br>
+        </ol>
+    </div>
+</div>

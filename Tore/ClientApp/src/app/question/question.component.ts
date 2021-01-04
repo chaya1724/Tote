@@ -14,64 +14,100 @@ import { Question } from 'src/Models/Question';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-  questionText: string;
-  flag:number;
+  questionText: string="";
+  flag: number;
+  flagUntilAnswers: any[] = [0];
   NoQuestionListShow: boolean = false;
-  questionListShow: any[];
   answerListShow: any[];
   showAnswer: boolean = false;
+
   constructor(private mailService: MailService, private userService: UserService, private router: Router) {
     this.userService.questionList = new Array<Question>();
-    this.questionListShow = new Array<any>();
+    this.userService.questionListShow = new Array<any>();
     this.answerListShow = new Array<any>();
-
   }
 
-  ngOnInit() {
+  ngOnInit() {debugger
+    if(this.userService.currentPath==null)
+    this.userService.currentPath = this.userService.getCurrentPath();debugger
     this.userService.user = new User(0, this.userService.user.Email, "");
     this.userService.getAllQuestion().subscribe(
-      questionListFromDB => {debugger
-        this.userService.questionList = questionListFromDB;
+      questionListFromDB => {
+        this.userService.questionList = questionListFromDB;//מקבל את כל השאלות מה DB
         for (var q of this.userService.questionList) {
-          if (q.questionPath == this.userService.pathShas) {
-            this.questionListShow.push(q);
+          if (q.questionPath == this.userService.currentPath) {//ממיין את כל השאלות לפי הדף הספציפי
+            this.userService.questionListShow.push(q);
           }
         }
-        if (this.questionListShow.length == 0)
+        if (this.userService.questionListShow.length == 0)//אם אין עדיין שאלות לדף הספציפי
           this.NoQuestionListShow = true;
         console.log(this.userService.questionList);
-        console.log(this.userService.answerList);
       });
     this.userService.getAllAnswers().subscribe(
-      answerListFromDB => {
-        this.userService.answerList = answerListFromDB;
-        for (var q of this.questionListShow) {
+      answerListFromDB => {debugger
+        this.userService.answerList = answerListFromDB;//מקבל את כל התשובות מה DB
+        for (var q of this.userService.questionListShow) {
           for (var a of this.userService.answerList) {
             if (q.questionId == a.questionId) {
-              debugger;
               this.showAnswer = true;
-               this.flag=q.questionId
-               this.answerListShow.push(a);
+              this.answerListShow.push(a);debugger
             }
           }
+          this.flagUntilAnswers.push(this.answerListShow.length);
         }
+        console.log(this.userService.questionListShow);
+        console.log(this.answerListShow);
+        console.log(this.flagUntilAnswers);
       });
   }
   QuestionSend() {
-    debugger;
-    this.userService.question = new Question(this.userService.questionList.length + 1, this.questionText, this.userService.user.Email, this.mailService.selectedMaseches)// + this.mailService.selectedpage
+    if(this.questionText!=""){
+    this.userService.question = new Question(this.userService.questionList.length + 1, this.questionText, this.userService.user.Email, this.userService.currentPath)
     this.userService.SendQuestion().subscribe(
       good => {
-        if (good)
-          swal('שאלתך נשלחה בהצלחה!', "תשובות ישלחו אליך למייל");
-        else {
-          swal("יש בעיה בשליחת השאלה");
-
-        }
-      }
-    );
+        swal('שאלתך נשלחה בהצלחה!', "תשובות ישלחו אליך למייל");
+        this.showQuestionWhisAnswers()
+      });
+    }
+    else{
+      swal("אנא הכנס שאלה");
+    }
   }
-  Answer() {
+  Answer(indexOfQues) {
+    this.userService.indexOfQustion = indexOfQues;
+    console.log(this.userService.indexOfQustion);
     this.router.navigate(['/answer']);
   }
+  showQuestionWhisAnswers() {
+    this.userService.getAllQuestion().subscribe(
+      questionListFromDB => {
+        this.userService.questionList = questionListFromDB;//מקבל את כל השאלות מה DB
+        for (var q of this.userService.questionList) {
+          if (q.questionPath == this.userService.currentPath) {//ממיין את כל השאלות לפי הדף הספציפי
+            this.userService.questionListShow.push(q);
+          }
+        }
+        if (this.userService.questionListShow.length == 0)//אם אין עדיין שאלות לדף הספציפי
+          this.NoQuestionListShow = true;
+        console.log(this.userService.questionList);
+      });
+    this.userService.getAllAnswers().subscribe(
+      answerListFromDB => {
+        this.userService.answerList = answerListFromDB;//מקבל את כל התשובות מה DB
+        for (var q of this.userService.questionListShow) {
+          for (var a of this.userService.answerList) {
+            if (q.questionId == a.questionId) {
+              this.showAnswer = true;
+              this.answerListShow.push(a);
+            }
+          }
+          this.flagUntilAnswers.push(this.answerListShow.length);
+        }
+        console.log("questionListShow:        " + this.userService.questionListShow);
+        console.log("answerListShow:        " + this.answerListShow);
+        console.log("flagUntilAnswers:        " + this.flagUntilAnswers);
+      });
+  }
 }
+
+

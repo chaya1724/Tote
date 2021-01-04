@@ -1,13 +1,7 @@
 <section>
     <div class="wrapQues">
         <div class="rout">
-            <div *ngIf="!userService.flagShowPath">
-                <p>&nbsp;שאלות עבור&nbsp;{{userService.pathSO}}</p>
-            </div>
-            <div *ngIf="userService.flagShowPath">
-                <p>&nbsp;שאלות עבור מסכת&nbsp;{{mailService.selectedMaseches}}&nbsp;דף&nbsp;{{mailService.selectedpage}}
-                </p>
-            </div>
+            <p>&nbsp;שאלות עבור&nbsp;{{userService.currentPath}}</p>
         </div>
         <div class="accordionQues">
             <label for="exampleFormControlTextarea1">{{userService.user.Email}}&nbsp;משתמש&nbsp;</label>
@@ -15,49 +9,37 @@
                 [(ngModel)]="questionText" #body="ngModel" placeholder=" כתוב כאן את קושייתך או שאלתך"></textarea>
             <br>
             <input type="button" (click)="QuestionSend()" style="text-align: left;" class="form-control"
-                class="btn btn-primary btn-lg" value="שלח">
+                class="btn btn-primary btn-lg" value="שלח קושיא">
         </div>
         <br>
         <div class="accordionQues">
             <label for="exampleFormControlInput">השאלות והקושיות שנשאלו עד עתה</label>
-            <div>
-                <div class="row">
-                    <div>
-
+            <ol style="list-style-type:none;">
+                <li *ngFor="let question of userService.questionListShow;let i=index">
+                    <div class="row">
+                        <textarea class="form-control" class="mytextarea" rows="3"
+                            placeholder={{question.questionText}}></textarea>
+                        <div *ngIf="showAnswer">
+                            <ol style="list-style-type:none">
+                                <li
+                                    *ngFor="let i=index; let answer of answerListShow | slice:flagUntilAnswers[i]:flagUntilAnswers[i+1]">
+                                    <textarea class="form-control" class="mytextarea" rows="2"
+                                        placeholder={{answer.answerBody}}></textarea>
+                                </li>
+                            </ol>
+                        </div>
+                        <input class="btn btn-primary" type="button" value="תירוץ הקושיא" (click)="Answer(i)"
+                            style="border-radius: 50px; ">
                     </div>
-                    <div>
-                        <ol style="list-style-type:none;">
-                            <li *ngFor="let question of questionListShow">
-                                <div class="row">
-                                    <textarea class="form-control" class="mytextarea" rows="3"
-                                        placeholder={{question.questionText}}></textarea>
-                                    <div *ngIf="!showAnswer">
-                                        <input class="btn btn-primary" type="button" value="תירוץ הקושיא"
-                                            (click)="Answer()" style="border-radius: 50px; ">
-                                    </div>
-                                    <div *ngIf="showAnswer">
-                                        <ol style="list-style-type:none;">
-                                            <li *ngFor="let answer of answerListShow">
-                                                <textarea class="form-control" class="mytextarea" rows="2"
-                                                    placeholder={{answer.answerBody}}></textarea>
-                                                <input class="btn btn-primary" type="button" value=" להשגת התירוץ או הוספת תירוץ נוסף"
-                                                    (click)="Answer()" style="border-radius: 50px; ">
-                                            </li>
-                                        </ol>
-                                    </div>
-                                </div>
-                                <br>
-                            </li>
-                        </ol>
-                    </div>
-                    <div *ngIf="NoQuestionListShow">
-                        <textarea class="form-control" class="mytextarea" rows="4"
-                            placeholder="טרם שאלו קושיות לדף זה"></textarea>
-                    </div>
-                </div>
-                <br>
-                <br>
+                    <br>
+                </li>
+            </ol>
+            <div *ngIf="NoQuestionListShow">
+                <textarea class="form-control" class="mytextarea" rows="4"
+                    placeholder="טרם נשאלו קושיות לדף זה"></textarea>
             </div>
         </div>
+        <br>
+        <br>
     </div>
 </section>

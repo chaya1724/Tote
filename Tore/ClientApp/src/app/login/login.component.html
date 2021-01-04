@@ -3,61 +3,17 @@
     <div class="row">
         <div class="col">
             <div class="accordionQues">
-                <h4>שאלות שנשאלו לאחרונה</h4>
-                <div class="quesBox" style="background: none;">
-                    <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow" alt=" "
-                                src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
-                            <span class="theQues">שאלה או קושיה</span></a></p>
-                    <div class="mishpatiMore" style="display: none;">
-                        <p>תשובה או תירוץ</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="quesBox" style="background: none;">
-                    <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow" alt=" "
-                                src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
-                            <span class="theQues">שאלה או קושיה</span></a></p>
-                    <div class="mishpatiMore">
-                        <p>תשובה או תירוץ</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="quesBox" style="background: none;">
-                    <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow" alt=" "
-                                src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
-                            <span class="theQues">שאלה או קושיה</span></a></p>
-                    <div class="mishpatiMore" style="display: none;">
-                        <p>תשובה או תירוץ</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="quesBox" style="background: none;">
-                    <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow" alt=" "
-                                src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
-                            <span class="theQues">שאלה או קושיה</span></a></p>
-                    <div class="mishpatiMore">
-                        <p>תשובה או תירוץ</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="quesBox" style="background: none;">
-                    <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow" alt=" "
-                                src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
-                            <span class="theQues">שאלה או קושיה</span></a></p>
-                    <div class="mishpatiMore" style="display: none;">
-                        <p>תשובה או תירוץ</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="quesBox" style="background: none;">
-                    <p class="questions"><a href="javascript:void(0);"><img title="" class="theArrow" alt=" "
-                                src="https://www.012mobile.co.il/globalassets/global/fiberready/quesans/images/arrowdown.png">
-                            <span class="theQues">שאלה או קושיה</span></a></p>
-                    <div class="mishpatiMore">
-                        <p>תשובה או תירוץ</p>
-                    </div>
-                </div>
-                <hr>
+                <h6>שאלות שנשאלו לאחרונה</h6>
+                <ol style="list-style-type:none;">
+                    <li *ngFor="let question of userService.questionListShow;let i=index">
+                        <div class="box">
+                            <button style="width: 350px;" type="button">
+                                :{{question.questionPath}} 
+                                <div style="font-weight: bold;">{{question.questionText}}</div>
+                            </button>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </div>
         <div class="col">

@@ -45,7 +45,7 @@ public isValid(email) {
         this.good = good;
         if (this.good) {
           swal('הרשמתך נקלטה בהצלחה');
-      this.router.navigate(['/main']);
+      this.router.navigate(['/login']);
         } else {
           swal("!!!הרשמתך נכשלה - נסה שוב ");
       this.loading=false;

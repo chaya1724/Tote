@@ -8,24 +8,25 @@ hr {
     background: repeating-linear-gradient(-55deg, #2cd5c4, #2cd5c4 12px, gray 14px, gray 14px);
     text-align: center;
     height: 650px;
-    margin-top: 15px;
-
+    width: 97%;
 }
 
    .accordionQues {
     background: #ffffff;
-    padding:8% 6% 8% 6%;
+    padding:8% 6% 10% 6%;
     border: 0px solid green;
-    margin-top: 6%;
     margin-left:60px ;
+    height: 85%;
+    margin-top: 5%;
+
 }
 .accordionLogin {
-    max-width: 50%;
+    max-width: 60%;
     background: #ffffff;
     padding:8% 6% 8% 6%;
     border: 0px solid green;
     margin-top: 7%;
-    margin-left: 200px;
+    margin-left: 150px;
 }
 
    .wrapQues h3 {
@@ -50,7 +51,7 @@ hr {
  
 
    .accordionQues .quesBox {
-    padding: 1em 0 0.5em 0;
+    /* padding: 1em 0 0.5em 0; */
     border: 0px solid green;
 }
 

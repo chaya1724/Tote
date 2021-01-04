@@ -112,7 +112,7 @@ namespace Tore.Services
         public bool UpdateAnswer(Answer answer)
         {
             var result = 0;
-            var SqlQuery = "INSERT INTO tore.answer(answerId,answerBody,questionId) VALUES(@AnswerId,@QuestionText,@QuestionId)";
+            var SqlQuery = "INSERT INTO tore.answer(answerId,answerBody,questionId) VALUES(@AnswerId,@AnswerBody,@QuestionId)";
 
             using (IDbConnection conn = Connection)
             {

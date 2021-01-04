@@ -1,17 +1,15 @@
 export class Question {
 
-    quesrionId: number;
+    questionId: number;
     questionText:string
     emailFromSendQuestion: string;
     questionPath:string;
-    answer:string;
 
     constructor(Id:number, QuestionText: string,EmailFromSendQuestion: string,QuestionPath:string) {
-      this.quesrionId = Id;
+      this.questionId = Id;
       this.questionText = QuestionText;
       this.emailFromSendQuestion = EmailFromSendQuestion;
       this.questionPath = QuestionPath;
     }
   }
-  ////////////////////////////////////////////
   

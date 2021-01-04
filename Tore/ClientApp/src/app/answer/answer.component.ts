@@ -14,6 +14,7 @@ export class AnswerComponent implements OnInit {
   subjecctText: string;
   bodyText: string;
   addressText: string;
+  QuestionIdnum:number;
   constructor(private mailService: MailService, private userService: UserService) { }
 
   ngOnInit() {
@@ -22,29 +23,26 @@ export class AnswerComponent implements OnInit {
     this.addressText ="pinchas1724@gmail.com";
     this.mailService.email = new Email("", "", "")
   }
-  onSubmit() {
-    debugger;
-//////////////////////////////צריך לדאוג ל questionId אמיתי!!!!!!!!!!!!!!!!!!!!!!!!
-    var QuestionId = this.userService.questionList.length
-    this.userService.answer=new Answer(this.userService.answerList.length,this.bodyText,QuestionId) 
-    this.userService.SendAnswer().subscribe(
+  sendAns() {
+    this.QuestionIdnum = this.userService.questionListShow[this.userService.indexOfQustion].questionId;
+    this.mailService.email.address = this.userService.questionListShow[this.userService.indexOfQustion].emailFromSendQuestion;
+    this.mailService.email.body =  this.userService.questionListShow[this.userService.indexOfQustion].questionText+"\n"+this.bodyText;
+    this.mailService.email.subject =this.userService.currentPath;
+
+    this.userService.answer=new Answer(this.userService.answerList.length,this.bodyText,this.QuestionIdnum) 
+    this.userService.SendAnswer().subscribe(//הכנסת התשובה ל DB
       good => {
         swal('"!תזכה למצוות - תשובתך נשלחה בהצלחה"');
-      });
-    
-     
+      });debugger
+      this.mailService.SendMail().subscribe();
+
+
+
     if (this.addressText != "") {
-      this.mailService.email.address = this.userService.questionList[1].emailFromSendQuestion;
-      this.mailService.email.body = this.bodyText;
-      this.mailService.email.subject ="מסכת"+this.mailService.selectedMaseches+",דף"+this.mailService.selectedpage;
-      this.mailService.SendMail().subscribe(
-        good => {
-          swal('"!תזכה למצוות - תשובתך נשלחה בהצלחה"');
-        }
-      );
+      
     }
     else {
-      swal('אנא הזן כתובת מייל');
+      swal('כדי לשלוח תשובה היכנס למערכת תחילה');
     }
   }
 }
