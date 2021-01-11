@@ -21,7 +21,7 @@ export class QuestionComponent implements OnInit {
   answerListShow: any[];
   showAnswer: boolean = false;
 
-  constructor(private mailService: MailService, private userService: UserService, private router: Router) {
+  constructor(public mailService: MailService, public userService: UserService, public router: Router) {
     this.userService.questionList = new Array<Question>();
     this.userService.questionListShow = new Array<any>();
     this.answerListShow = new Array<any>();
@@ -48,7 +48,7 @@ export class QuestionComponent implements OnInit {
         this.userService.answerList = answerListFromDB;//מקבל את כל התשובות מה DB
         for (var q of this.userService.questionListShow) {
           for (var a of this.userService.answerList) {
-            if (q.questionId == a.questionId) {
+            if (q.Id == a.questionId) {
               this.showAnswer = true;
               this.answerListShow.push(a);debugger
             }
@@ -60,7 +60,7 @@ export class QuestionComponent implements OnInit {
         console.log(this.flagUntilAnswers);
       });
   }
-  QuestionSend() {
+  QuestionSend() {debugger
     if(this.questionText!=""){
     this.userService.question = new Question(this.userService.questionList.length + 1, this.questionText, this.userService.user.Email, this.userService.currentPath)
     this.userService.SendQuestion().subscribe(
@@ -96,7 +96,7 @@ export class QuestionComponent implements OnInit {
         this.userService.answerList = answerListFromDB;//מקבל את כל התשובות מה DB
         for (var q of this.userService.questionListShow) {
           for (var a of this.userService.answerList) {
-            if (q.questionId == a.questionId) {
+            if (q.Id == a.questionId) {
               this.showAnswer = true;
               this.answerListShow.push(a);
             }

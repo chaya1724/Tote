@@ -15,7 +15,7 @@ export class AnswerComponent implements OnInit {
   bodyText: string;
   addressText: string;
   QuestionIdnum:number;
-  constructor(private mailService: MailService, private userService: UserService) { }
+  constructor(public mailService: MailService, public userService: UserService) { }
 
   ngOnInit() {
     this.subjecctText = "";

@@ -98,7 +98,7 @@ namespace Tore.Services
                 try
                 {
                     conn.Open();
-                    result = conn.Execute(SqlQuery, new { question.QuestionId, question.QuestionText, question.EmailFromSendQuestion , question.QuestionPath });
+                    result = conn.Execute(SqlQuery, new { question.Id, question.QuestionText, question.EmailFromSendQuestion , question.QuestionPath });
 
                 }
                 catch (Exception e)
@@ -119,7 +119,7 @@ namespace Tore.Services
                 try
                 {
                     conn.Open();
-                    result = conn.Execute(SqlQuery, new { answer.AnswerId, answer.AnswerBody, answer.QuestionId });
+                    result = conn.Execute(SqlQuery, new { answer.Id, answer.AnswerBody, answer.QuestionId });
 
                 }
                 catch (Exception e)

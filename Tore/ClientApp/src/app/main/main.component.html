@@ -1,5 +1,30 @@
 <div class="wrapQues">
-    <h3 style="text-align:center;margin-top: 5px;"> בחר את מיקום השאלה</h3>
+    <div class="row">
+        <div class="col">
+            <img class="logo" src="../../assets/logo6.JPG" alt="lo">
+            <h6 class="logo">"ללמוד וללמד"</h6>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+            <img style="margin-left: 130px;cursor: pointer;" src="../../assets/back.png" alt="lo" (click)="back()">|<img
+                src="../../assets/conaction.png" alt="lo">
+            <br>
+            <div *ngIf="!userService.flagSelectedPage">
+                <button class="form-control" style="width:400px;margin-left: 120px;"
+                    (click)="spezhifiPageSelected()">לקבלת מיילים עבור שאלות
+                    מדפים או סימנים ספציפיים</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!userService.flagSelectedPage">
+        <h3 style="text-align:center;margin-bottom: 35px;"> בחר את מיקום השאלה</h3>
+    </div>
+    <div *ngIf="userService.flagSelectedPage">
+        <h4 style="text-align:center;">בחר את מיקומם של השאלות של הדפים או הסעיפים הספציפיים
+            שתרצה לקבל
+            למייל שלך </h4>
+    </div>
     <div class="row" style="margin-top: 15px;">
         <div class="col-md-1"></div>
         <div class="col-md-2  select-outline">
@@ -103,17 +128,58 @@
                     <option value='{"numOfPage":"143","maseces":"נדה"}'>נדה</option>
                 </select>
             </div>
-            <div *ngIf="selected > 0 ">
+            <div *ngIf="flagMasechesSelected">
                 <select class="PageSelect" (change)="PageSelect($event.target.value)">
                     <option value="" selected disabled hidden>דף</option>
                     <option *ngFor="let selectedpage of pageList  | slice:0:selected" [value]='selectedpage'>
-                        {{selectedpage}}
+                        דף {{selectedpage}}
                     </option>
                 </select>
             </div>
+            <div *ngIf="!spezhifiSelected1">
+                <select class="PageSelect">
+                    <option selected disabled hidden>דף</option>
+                </select>
+            </div>
+            <div *ngIf="spezhifiSelected">
+                <div *ngIf="spezhifiSelected1">
+                    <select class="PageSelect">
+                        <option selected disabled hidden>דף</option>
+                    </select>
+                </div>
+                <div class="checkboxes">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="custom-control custom-checkbox"
+                                *ngFor="let selectedpage of pageList  | slice:0:selected">
+                                <input type="checkbox" id="check1"
+                                    (change)="onChange($event.target.checked, selectedpage)"
+                                    [checked]="checked(selectedpage)">
+                                {{selectedpage}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div *ngIf="spezhifiSelected">
+                <select class="PageSelect" (change)="PageSelect($event.target.value)">
+                    <option value="" selected disabled hidden>דף</option>
+                </select>
+                <div class="checkboxes">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let selectedpage of pageList  | slice:0:selected">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="check1"
+                                    (change)="onChange($event.target.checked, selectedpage)"
+                                    [checked]="checked(selectedpage)">
+                                <label class="custom-control-label" for="check1">דף {{selectedpage}}</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
             <div class="col-md-1"></div>
         </div>
-
         <!-- <div class="row">
                             ////////////////////////placeholder={{question.questionText}}></textarea>  
             <button class="answer" (click)="answer()">לתרץ קושיא</button>
@@ -123,22 +189,22 @@
     </div>
     <br>
     <br>
-    <h4> מעבר לשאלות וקושיות שנשאלו לאחרונה</h4>
-    <div class="accordionQues">
-        <ol style="list-style-type:none;">
-            <li *ngFor="let question of userService.questionList;let i=index">
-                <div class="box">
-                    <p>{{question.questionPath}}</p>
-                    <button style="width: 90%; cursor: pointer;" type="button" class="btn btn-info"
-                        (click)="lastQuestion(question.questionId)">{{question.questionText}}</button>
-                </div>
-            </li>
-            <br>
-        </ol>
+    <div *ngIf="userService.flagSelectedPage">
+        <button class="answer" (click)="spezhifiPagOk()">לסיום לחץ אישור</button>
     </div>
-    <div ng-controller="main">
-        <div (click)="toggle()"> {{count}} options selected</div>  
-    <div *ngIf="showOptions">
-        <label *ngFor="let option of options">{{option}}<input type="checkbox" ng-model="selected[$index]" (change)="update()"/><br/></label>
-      </div></div>
+    <div *ngIf="!userService.flagSelectedPage">
+        <h4> מעבר לשאלות וקושיות שנשאלו לאחרונה</h4>
+        <div class="accordionQues">
+            <ol style="list-style-type:none;">
+                <li *ngFor="let question of userService.questionList;let i=index">
+                    <div class="box">
+                        <p>{{question.questionPath}}</p>
+                        <button style="width: 90%; cursor: pointer;" type="button" class="btn btn-info"
+                            (click)="lastQuestion(question.questionId)">{{question.questionText}}</button>
+                    </div>
+                </li>
+                <br>
+            </ol>
+        </div>
+    </div>
 </div>

@@ -10,55 +10,46 @@ import { Answer } from 'src/Models/Answer';
 
 export class UserService {
 
-  user: User = new User(0, "abc1724@gmail.com", "");
-  question: Question;
-  answer: Answer;
-  questionList: Question[];
-  questionListShow: any[];
-  answerList: Answer[];
-  Users: any[];
-  indexOfQustion: number;
-  pathSO: string;
-  pathShas: string;
-  pathRambam: string;
-  currentPath: string;
+  public user: User = new User(0, "abc1724@gmail.com", "");
+  public question: Question;
+  public answer: Answer;
+  public questionList: Question[];
+  public questionListShow: any[];
+  public answerList: Answer[];
+  public Users: any[];
+  public indexOfQustion: number;
+  public pathSO: string;
+  public pathShas: string;
+  public pathRambam: string;
+ public currentPath: string;
+ flagSelectedPage:boolean=false
+  baseUserUrl = "https://localhost:44307/api/Users/";
+  baseQuestionsUrl = "https://localhost:44307/api/Questions/";
+  baseAnswersUrl = "https://localhost:44307/api/Answers/";
 
-  baseUrl = "https://localhost:44307/api/User/";
 
   constructor(private http: HttpClient) {
-    if(this.currentPath==null)debugger;
-    //  this.currentPath=this.getCurrentPath();
    }
 
-  getAll(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl + 'GetAllUsers');
+  getAll(): Observable<any[]> {debugger
+    return this.http.get<any[]>(this.baseUserUrl + 'GetUsers');
   }
-  register(): Observable<boolean> {
-    return this.http.post<boolean>(this.baseUrl + 'Register', this.user);
-  }
-  SendQuestion(): Observable<any> {
-    return this.http.post<boolean>(this.baseUrl + 'Question', this.question);
+  register(): Observable<any> {
+    return this.http.post<any>(this.baseUserUrl + 'PostUser', this.user);
   }
   getAllQuestion(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl + 'GetAllQuestion');
-  }
-  SendAnswer(): Observable<any> {
-    return this.http.post<any>(this.baseUrl + 'UpdateAnswer', this.answer);
+    return this.http.get<any[]>(this.baseQuestionsUrl + 'GetQuestions');
+  } 
+  SendQuestion(): Observable<any> {
+    return this.http.post<any>(this.baseQuestionsUrl + 'PostQuestion', this.question);
   }
   getAllAnswers(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl + 'getAllAnswers');
+    return this.http.get<any[]>(this.baseAnswersUrl + 'GetAnswers');
   }
-  // getCurrentPath(): string {
-  //   if (this.pathRambam == null && this.pathSO == null) {
-  //     return this.currentPath = this.pathShas;
-  //   }
-  //   else if (this.pathRambam == null && this.pathShas == null) {
-  //     return this.currentPath = this.pathSO;
-  //   }
-  //   else {
-  //     return this.currentPath = this.pathRambam;
-  //   }
- // }
+  SendAnswer(): Observable<any> {
+    return this.http.post<any>(this.baseAnswersUrl + 'PostAnswer', this.answer);
+  }
+
 }
 
 

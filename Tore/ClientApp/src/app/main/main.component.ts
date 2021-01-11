@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Email } from 'src/Models/Email';
 import { MailService } from '../mail.service';
 import { UserService } from '../user.service';
+// import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+
 import swal from 'sweetalert';
 
 // import {MdSelect} from '@angular/material';
@@ -22,6 +24,21 @@ export class MainComponent implements OnInit {
   kindOfSO: number;
   simenFlag: number;
   AhlocesFlag: number;
+  i: number;
+  numOfSeif: number;
+  hideSeif: boolean = true;
+  hideSimen: boolean = true;
+  nameSO: string;
+  nameSimen: string;
+  nameSeif: string;
+  selected: any;
+  flagMasechesSelected: boolean = false;
+  spezhifiSelected: boolean = false;
+  items: any[] = [];
+  hlocesList: string[];
+  chackBoxselected: any[] = [];
+  listOfSpzhifiPages: any[] = [];
+
   pageList: string[] = ["ב", ":ב", ".ג", ":ג", ".ד", ":ד", ".ה", ":ה", ".ו", ":ו", ".ז", ":ז", ".ח", ":ח", ".ט", ":ט", ".י", ":י", ".יא", ":יא", ".יב", ":יב", ".יג", ":יג", ".יד", ":יד", ".טו", ":טו", ".טז", ":טז", ".יז", ":יז", ".יח", ":יח", ".יט", ":יט", ".כ", ":כ", ".כא", ":כא", ".כב", ":כב", ".כג", ":כג", ".כד", ":כד", ".כה", ":כה", ".כו", ":כו", ".כז", ":כז", ".כח", ":כח", ".כט", ":כט", ".ל", ":ל", ".לא", ":לא", ".לב", ":לב", ".לג", ":לג", ".לד", ":לד", ".לה", ":לה", ".לו", ":לו", ".לז", ":לז", ".לח", ":לח", ".לט", ":לט", ".מ", ":מ", ".מא", ":מא", ".מב", ":מב", ".מג", ":מג", ".מד", ":מד", ".מה", ":מה", ".מו", ":מו", ".מז", ":מז", ".מח", ":מח", ".מט", ":מט", ".נ", ":נ", ".נא", ":נא", ".נב", ":נב", ".נג", ":נג", ".נד", ":נד", ".נה", ":נה", ".נו", ":נו", ".נז", ":נז", ".נח", ":נח", ".נט", ":נט", ".ס", ":ס", ".סא", ":סא", ".סב", ":סב", ".סג", ":סג", ".סד", ":סד", ".סה", ":סה", ".סו", ":סו", ".סז", ":סז", ".סח", ":סח", ".סט", ":סט", ".ע", ":ע", ".עא", ":עא", ".עב", ":עב", ".עג", ":עג", ".עד", ":עד", ".עה", ":עה", ".עו", ":עו", ".עז", ":עז", ".עח", ":עח", ".עט", ":עט", ".פ", ":פ", ".פא", ":פא", ".פב", ":פב", ".פג", ":פג", ".פד", ":פד", ".פה", ":פה", ".פו", ":פו", ".פז", ":פז", ".פח", ":פח", ".פט", ":פט", ".צ", ":צ", ".צא", ":צא", ".צב", ":צב", ".צג", ":צג", ".צד", ":צד", ".צה", ":צה", ".צו", ":צו", ".צז", ":צז", ".צח", ":צח", ".צט", ":צט", ".ק", ":ק", ".קא", ":קא", ".קב", ":קב", ".קג", ":קג", ".קד", ":קד", ".קה", ":קה", ".קו", ":קו", ".קז", ":קז", ".קח", ":קח", ".קט", ":קט", ".קי", ":קי", ".קיא", ":קיא", ".קיב", ":קיב", ".קיג", ":קיג", ".קיד", ":קיד", ".קטו", ":קטו", ".קטז", ":קטז", ".קיז", ":קיז", ".קיח", ":קיח", ".קיט", ":קיט", ".קכ",
     ":קכ", ".קכא", ":קכא", ".קכב", ":קכב", ".קכג", ":קכג", ".קכד", ":קכד", ".קכה", ":קכה", ".קכו", ":קכו", ".קכז", ":קכז", ".קכח", ":קכח", ".קכט", ":קכט", ".קל", ":קל", ".קלא", ":קלא", ".קלב", ":קלב", ".קלג", ":קלג", ".קלד", ":קלד", ".קלה", ":קלה", ".קלו", ":קלו", ".קלז", ":קלז", ".קלח", ":קלח", ".קלט", ":קלט", ".קמ", ":קמ", ".קמא", ":קמא", ".קמב", ":קמב", ".קמג", ":קמג", ".קמד", ":קמד", ".קמה", ":קמה", ".קמו", ":קמו", ".קמז", ":קמז", ".קמח", ":קמח", ".קמט", ":קמט", ".קנ", ":קנ", ".קנא", ":קנא", ".קנב", ":קנב", ".קנג", ":קנג", ".קנד", ":קנד", ".קנה", ":קנה", ".קנו", ":קנו", ".קנז", ":קנז", ".קנח", ":קנח", ".קנט", ":קנט", ".קס", ":קס", ".קסא", ":קסא", ".קסב", ":קסב", ".קסג", ":קסג", ".קסד", ":קסד", ".קסה", ":קסה", ".קסו", ":קסו", ".קסז", ":קסז", ".קסח", ":קסח", ".קסט", ":קסט", ".קע", ":קע", , ".קעא", ":קעא", ".קעב", ":קעב", ".קעג", ":קעג", ".קעד", ":קעד", ".קעה", ":קעה", ".קעו", ":קעו", ".קעז", ":קעז",]
   simenList: string[] = ["א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "יא", "יב", "יג", "יד", "טו", "טז", "יז", "יח", "יט", "כ", "כא", "כב", "כג", "כד", "כה", "כו", "כז", "כח", "כט", "ל", "לא", "לב", "לג", "לד", "לה", "לו", "לז", "לח", "לט", "מ", "מא", "מב", "מג", "מד", "מה", "מו", "מז", "מח", "מט", "נ", "נא", "נב", "נג", "נד", "נה", "נו", "נז", "נח", "נט",
@@ -39,7 +56,6 @@ export class MainComponent implements OnInit {
     "תקעו", "תקעז", "תקעח", "תקעט", "תקפ", "תקפא", "תקפב", "תקפג", "תקפד", "תקפה", "תקפו", "תקפז", "תקפח", "תקפט", "תקצ", "תקצא", "תקצב", "תקצג", "תקצד", "תקצה", "תקצו", "תקצז", "תקצח", "תקצט", "תר", "תרא", "תרב", "תרג", "תרד", "תרה", "תרו", "תרז", "תרח", "תרט", "תרי", "תריא", "תריב", "תריג", "תריד", "תרטו", "תרטז", "תריז",
     "תריח", "תריט", "תרכ", "תרכא", "תרכב", "תרכג", "תרכד", "תרכה", "תרכו", "תרכז", "תרכח", "תרכט", "תרל", "תרלא", "תרלב", "תרלג", "תרלד", "תרלה", "תרלו", "תרלז", "תרלח", "תרלט", "תרמ", "תרמא", "תרמב", "תרמג", "תרמד", "תרמה", "תרמו", "תרמז", "תרמח", "תרמט", "תרנ", "תרנא", "תרנב", "תרנג", "תרנד", "תרנה", "תרנו", "תרנז",
     "תרנח", "תרנט", "תרס", "תרסא", "תרסב", "תרסג", "תרסד", "תרסה", "תרסו", "תרסז", "תרסח", "תרסט", "תרע", "תרעא", "תרעב", "תרעג", "תרעד", "תרעה", "תרעו", "תרעז", "תרעח", "תרעט", "תרפ", "תרפא", "תרפב", "תרפג", "תרפד", "תרפה", "תרפו", "תרפז", "תרפח", "תרפט", "תרצ", "תרצא", "תרצב", "תרצג", "תרצד", "תרצה", "תרצו", "תרצז"];
-  hlocesList: string[];
   mado: string[] = ["יסודי התורה", "דעות", "תלמוד תורה", "עבודת כוכבים וחקותיהם", "תשובה"];
   ahvo: string[] = ["קריאת שמע", "תפילה וברכת כהנים", "תפילין ומזוזה וספר תורה", "ציצית", "ברכות", "מילה,"];
   zmanim: string[] = ["שבת", "עירובין", "שביתת עשור", "שביתת יום טוב", "חמץ ומצה", "שופר וסוכה ולולב", "שקלים", "קידוש החודש", "תעניות", "מגילה וחנוכה"];
@@ -57,8 +73,6 @@ export class MainComponent implements OnInit {
   alefbet: string[] = ["א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "יא", "יב", "יג", "יד", "טו", "טז", "יז", "יח", "יט", "כ", "כא", "כב", "כג", "כד", "כה", "כו", "כז", "כח", "כט", "לו", "לא", "לב", "לג", "לד", "לה", "לו", "לז", "לח", "לט", "מ", "מא", "מב", "מג", "מד", "מה", "מו", "מז", "מח", "מט", "נ", "נא", "נב", "נג", "נד", "נה", "נו", "נז", "נח", "נט"
     , "ס", "סא", "סב", "סג", "סד", "סה", "סו", "סז", "סח", "סט", "ע", "עא", "עב", "עג", "עד", "עה", "עו", "עז", "עח", "עט", "פ", "פא", "פב", "פג", "פד", "פה", "פו", "פז", "פח", "פט", "צ", "צא", "צב", "צג", "צד", "צה", "צו", "צז", "צח", "צט", "ק", "קא", "קב", "קג", "קד", "קה", "קו"
     , "קז", "קח", "קט", "קי", "קיא", "קיב", "קיג", "קיד", "קיה", "קיו", "קיז", "קיח", "קיט", "קכ", "קכא", "קכב", "קכג", "קכד", "קכה", "קכו", "קכז", "קכח", "קכט", "קל", "קלא", "קלב", "קלג", "קלד", "קלה", "קלו", "קלז", "קלח", "קלט", "קקמ", "קמא", "קמב", "קמג", "קמד", "קמה", "קמו"];
-  selected: string = "";
-  items: any[] = [];
   orachChaimSeifim: number[] = [9, 6, 17, 23, 1, 4, 7, 4, 17, 6, 12, 15, 3, 3, 5, 6, 1, 3, 3, 2, 2, 4, 1, 3, 6, 13, 2, 11, 3, 1, 5, 2, 52, 5, 4, 1, 3, 3, 13, 10, 8, 1, 3, 9, 1, 2, 9, 14, 1, 1, 1, 9, 1, 26, 3, 22, 5, 2, 7, 5, 5, 26, 5, 9, 4, 3, 10, 1, 1, 2, 5, 7, 5, 4, 6, 6, 8, 2, 1, 9, 1, 2, 2, 5, 1, 2, 1, 3, 1, 8, 27, 6, 10, 4, 9, 4, 2, 5, 5, 3, 1, 4, 5, 3, 8, 1, 3, 4,
     12, 3, 8, 3, 2, 9, 9, 1, 1, 8, 1, 4, 1, 3, 3, 6, 12, 2, 4, 2, 45, 2, 1, 8, 2, 1, 2, 14, 1, 6, 1, 11, 3, 8, 2, 5, 4, 3, 4, 8, 1, 1, 5, 12, 1, 22, 15, 2, 1, 1, 13, 20, 15, 4, 10, 2, 2, 2, 1, 20, 17, 3, 22, 5, 2, 3, 8, 6, 1, 5, 7, 6, 5, 10, 7, 12, 6, 5, 2, 4, 10, 2, 5, 3, 2, 6, 3, 3, 4, 4, 1, 11, 2, 4, 18, 8, 13, 5, 6, 1, 18, 3, 2, 6, 2, 3, 1, 4, 14, 8, 9, 9, 2, 2, 4, 6, 13, 10,
     1, 3, 3, 2, 5, 1, 3, 2, 2, 4, 4, 1, 2, 2, 17, 1, 1, 2, 6, 6, , 6, 4, 4, 2, 2, 7, 8, 9, 3, 1, 8, 1, 7, 2, 4, 3, 17, 1, 4, 13, 3, 13, 1, 2, 17, 10, 7, 4, 12, 5, 5, 1, 7, 2, 1, 7, 1, 7, 7, 5, 1, 10, 2, 2, 6, 2, 3, 5, 1, 8, 5, 15, 10, 1, 51, 13, 27, 3, 23, 14, 22, 52, 5, 9, 9, 10, 10, 12, 13, 12, 7, 19, 17, 20, 19, 6, 10, 15, 16, 13, 4, 49, 9, 11, 10, 4, 3, 27, 5, 13, 4, 8, 7,
@@ -75,16 +89,12 @@ export class MainComponent implements OnInit {
     3, 6, 8, 4, 3, 4, 20, 9, 11, 8, 10, 1, 2, 4, 2, 19, 1, 8, 5, 1, 1, 1, 4, 6, 3, 10, 3, 12, 12, 10, 8, 13, 11, 9, 2, 4, 6, 1, 11, 7, 9, 3, 3, 6, 9, 1, 1, 9, 4, 4, 1, 1, 5, 4, 2, 4, 1, 16, 20, 12, 12, 1, 4, 6, 1, 10, 2, 5, 5, 4, 2, 1, 3, 2, 3, 5, 4, 2, 4, 38, 7, 5, 3, 2, 3, 1, 7, 18, 3, 44, 14, 2, 4, 11, 5, 1, 10];
   evenHoezerSeifim: number[] = [14, 11, 9, 37, 14, 15, 23, 5, 2, 7, 8, 4, 14, 1, 31, 6, 58, 1, 2, 2, 7, 20, 7, 1, 10, 4, 10, 23, 10, 11, 9, 4, 2, 4, 15, 12, 27, 39, 7, 8, 4, 5, 2, 12, 3, 8, 4, 7, 3, 7, 11, 3, 1, 7, 4, 1, 2, 4, 1, 2, 13, 2, 6, 4, 13, 11, 10, 7, 12, 4, 1, 9, 12, 5, 13, 5, 8, 3, 18, 2, 8, 2, 1, 19, 2, 2, 12, 4, 20, 5, 8, 32, 7, 7, 21, 2, 7, 2, 16, 4, 9, 8, 6,
     7, 2, 10, 3, 4, 2, 17, 18, 10, 12, 10, 6, 11, 19, 11, 11, 8, 2, 5, 9, 23, 50, 3, 7, 34, 22, 9, 4, 3, 10, 5, 7, 5, 4, 18, 11, 69, 19, 23, 7, 10, 5, 3, 2, 7, 4, 1, 12, 1, 24, 22, 13, 10, 6, 7, 8, 9, 5, 8, 8, 5, 9, 6, 9, 56, 57, 20, 10, 16, 17, 7, 14, 8, 5, 22];
+  spezhifiSelected1: boolean=true;
 
-  i: number;
-  numOfSeif: number;
-  hideSeif: boolean = true;
-  hideSimen: boolean = true;
-  nameSO: string;
-  nameSimen: string;
-  nameSeif: string;
-  constructor(private mailService: MailService, private router: Router, private userService: UserService) { }
+
+  constructor(public mailService: MailService, public router: Router, public userService: UserService) { }
   ngOnInit() {
+    this.mailService.selectedMasechesAndPages=new Array<string>()
     this.userService.pathRambam = null;
     this.userService.pathSO = null;
     this.userService.pathShas = null;
@@ -98,13 +108,17 @@ export class MainComponent implements OnInit {
     this.masecesPerse = JSON.parse(maseces);
     this.selected = this.masecesPerse.numOfPage;
     this.mailService.selectedMaseches = this.masecesPerse.maseces;
+    if (this.userService.flagSelectedPage == true) {
+      this.spezhifiSelected = true;
+    } else {
+      this.flagMasechesSelected = true;
+    }
   }
   PageSelect(page: any) {
     this.mailService.selectedpage = page;
     this.userService.currentPath = "מסכת " + this.mailService.selectedMaseches + " דף " + this.mailService.selectedpage;
     this.router.navigate(['/question']);
   }
-
   SimenSelect(numOfSimonim) {
     this.hideSimen = false;
     this.kindOfSO = numOfSimonim;
@@ -169,32 +183,72 @@ export class MainComponent implements OnInit {
   lastQuestion(questionId: number) {
     debugger;
     for (let q of this.userService.questionList) {
-      if (q.questionId == questionId) {
+      if (q.Id == questionId) {
         this.userService.currentPath = q.questionPath;
-        debugger;
       }
       else {
 
       }
-    } debugger
+    }
     this.router.navigate(['/question']);
   }
-  showOptions: boolean = false;
-  toggle = function () {
-    this.showOptions = !this.showOptions;
+  // check if the item are selected
+  checked(selectedpage) {
+    debugger;
+    if (this.chackBoxselected.indexOf(selectedpage) != -1) {
+      return true;
+    }
   }
-  count: number;
-  options:any[] = ['Car', 'Lorry', 'Motorbike', 'Bus', 'Train', 'Airplane']
-  newSelected: any[] = [];
-  update = function () {
-    // this.count = this.selected.filter(isSelected).length
-    // console.log(this.selected.filter(isSelected));
+  // when checkbox change, add/remove the item from the array
+  onChange(checked, selectedpage) {
+    if (checked) {
+      this.chackBoxselected.push(selectedpage);
+    } else {
+      this.chackBoxselected.splice(this.chackBoxselected.indexOf(selectedpage), 1)
+    }
+    this.listOfSpzhifiPages = this.chackBoxselected;
+  }
+  spezhifiPageSelected() {
+    this.userService.flagSelectedPage = true;
+    //  this.spezhifiSelected=true;
+  }
+  spezhifiPagOk() {
+    swal({
+      title: " האם ברצונך לבחור רשימה זו"+" "+this.listOfSpzhifiPages,
+      text: "",
+      icon: "info",
+      buttons: [' כן', ' לא']
+    })
+      .then((willDelete) => {
+        if (willDelete) {//כן
+          alert(this.listOfSpzhifiPages);
+          this.spezhifiSelected = false;
+          this.spezhifiSelected1 = false;
+        }
+        else { //לא
+         debugger;
+          for(let page of this.listOfSpzhifiPages){
+            this.mailService.selectedMasechesAndPages.push("מסכת " + this.mailService.selectedMaseches + " דף " + page);
+          }
+          debugger;
+          this.mailService.selectedMasechesAndPages;
+          this.userService.user.Email;
+          this.spezhifiSelected = false;
+          this.spezhifiSelected1 = false;
+        }
+      });
+  }
+  back() {
+    if (this.userService.flagSelectedPage == true) {
+      this.userService.flagSelectedPage = false;
+      this.spezhifiSelected = false;
+      this.spezhifiSelected1 = false;
+    }
+    else {
+      this.router.navigate(['/login']);
+    }
   }
 }
 
 
-function isSelected(element) { return element; }
-{
 
-
-}

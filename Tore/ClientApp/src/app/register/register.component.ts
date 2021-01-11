@@ -17,9 +17,9 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   good: boolean;
   registrationEmail:string="";
-  registrationPassword:string="";
+  registrationPassword:string="123";
   registrationAge:number=0;
-  constructor(private router: Router,private userService:UserService) { }
+  constructor(public router: Router,public userService:UserService) { }
   ngOnInit() {
     this.userService.getAll()
     .subscribe(Users => {
@@ -30,6 +30,8 @@ public isValid(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
+Login()
+{}
   register() {debugger
     if(this.registrationEmail=="")
     swal(' הזן כתובת מייל');

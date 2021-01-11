@@ -1,5 +1,14 @@
 <div class="wrapQues">
-    <h1>"ברוכים הבאים ל - "ללמוד וללמד</h1>
+    <div class="row">
+        <div class="col-md-2">
+            <img style="margin-left: 50px;" src="../../assets/1233.png" alt="lo">
+        </div>
+        <div class="col-md-10">
+            <h1 style="margin-left: 50px;margin-top: 30px;">"ברוכים הבאים"</h1>
+        </div>
+    </div>
+    <!-- <img class="logo" src="../../assets/logoNew.png" alt="lo"> -->
+
     <div class="row">
         <div class="col">
             <div class="accordionQues">
@@ -8,7 +17,7 @@
                     <li *ngFor="let question of userService.questionListShow;let i=index">
                         <div class="box">
                             <button style="width: 350px;" type="button">
-                                :{{question.questionPath}} 
+                                :{{question.questionPath}}
                                 <div style="font-weight: bold;">{{question.questionText}}</div>
                             </button>
                         </div>
@@ -33,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">
-                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                <span *ngIf="loading"></span>
                                 כניסה
                             </button>
                             <a routerLink="/register" class="btn btn-link">הרשמה</a>
@@ -43,4 +52,5 @@
             </div>
         </div>
     </div>
+
 </div>

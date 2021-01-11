@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Tore.DBModels;
 using Tore.Interfaces;
 using Tore.Services;
 
@@ -22,12 +24,21 @@ namespace Tore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<MyDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("connectionString")));
+
             services.AddControllersWithViews();
-            // In production, the Angular files will be served from this directory
+            //In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+           
+            //services.AddSpaStaticFiles(configuration =>
+            //{
+            //    configuration.RootPath = "wwwroot";
+            //});
+
             ServicesRegistration(services);
         }
 
@@ -44,7 +55,7 @@ namespace Tore
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseSpaStaticFiles();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())

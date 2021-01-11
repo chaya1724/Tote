@@ -63,18 +63,17 @@
   }
   .answer{
 
-    margin-top: 100px;;
-    margin-left: 450px;
-   /* background-image: url('../../assets/homePage.png'); */
+  margin-top: 200px;
+  margin-left: 10%;
   font-weight: bold;
-  font-weight: bold;
-  width: 150px;
-  height: 70px;
+  width: 250px;
+  height: 50px;
   cursor: pointer;
   position: absulut;
-  color: rgb(161,65,225);
-  border-color: rgb(156,18,235);
+  color: #12b4a4;
+  border-color: #12b4a4;
   border-width: 2px;
+  background-color: azure;
   }
 .question{
       
@@ -104,14 +103,19 @@
         
            .accordionQues {
             max-width: 85%;
-            height: 70%;
+            height: 400px;
             overflow-y: scroll; 
             margin: 0 auto;
             background: #ffffff;
             padding: 2% 3% 2% 3%;
             border: 0px solid green;
         }
-        
+        .logo{
+            margin-top: 10px;
+            padding-left:-100px;
+            /* width: 30;
+            height: 10; */
+        }
            .wrapQues h3 {
             padding: 2% 0 2% 0;
             margin: 0 auto;
@@ -286,4 +290,23 @@
             text-align: center;
             background: transparent;
             color: black;
+            position: relative;
            }
+          .checkboxes  {
+            margin: 0;
+            list-style: none;
+            overflow: auto;
+            border: 1px solid #080808;
+            padding: 2px;
+            text-align: center;
+            color: #12b4a4;
+            height: 450px;
+            width: 150px;
+            position: absolute;
+            margin-left: 3px;
+            /* background-color: #2cd5c4; */
+          }
+           .spezhifiPagOk{
+           margin-top: 450px;
+           position: absolute;
+       }
