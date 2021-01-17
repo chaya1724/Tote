@@ -1,12 +1,12 @@
 export class Question {
 
-    Id: number;
+    id: number;
     questionText:string
     emailFromSendQuestion: string;
     questionPath:string;
 
     constructor(Id:number, QuestionText: string,EmailFromSendQuestion: string,QuestionPath:string) {
-      this.Id = Id;
+      this.id = Id;
       this.questionText = QuestionText;
       this.emailFromSendQuestion = EmailFromSendQuestion;
       this.questionPath = QuestionPath;

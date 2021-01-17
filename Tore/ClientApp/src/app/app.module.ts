@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AnswerComponent } from './answer/answer.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './header/header.component';
 
 // import {BrowserAnimationsModule} from '@angular/platform browser/animations';
 // import {MdButtonModule, MdCheckboxModule} from '@angular/material';
@@ -30,7 +31,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     QuestionComponent,
     LoginComponent,
     RegisterComponent,
-    AnswerComponent
+    AnswerComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -49,6 +51,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
       { path: 'register', component: RegisterComponent },
       { path: 'question', component: QuestionComponent },
       { path: 'answer', component: AnswerComponent },
+      { path: 'header', component: HeaderComponent },
+
     ])
   ],
   providers: [],

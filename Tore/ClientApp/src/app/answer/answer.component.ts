@@ -23,23 +23,23 @@ export class AnswerComponent implements OnInit {
     this.addressText ="pinchas1724@gmail.com";
     this.mailService.email = new Email("", "", "")
   }
-  sendAns() {
-    this.QuestionIdnum = this.userService.questionListShow[this.userService.indexOfQustion].questionId;
+  sendAns() {debugger
+    this.QuestionIdnum = this.userService.questionListShow[this.userService.indexOfQustion].id;
     this.mailService.email.address = this.userService.questionListShow[this.userService.indexOfQustion].emailFromSendQuestion;
-    this.mailService.email.body =  this.userService.questionListShow[this.userService.indexOfQustion].questionText+"\n"+this.bodyText;
+    this.mailService.email.body = this.userService.questionListShow[this.userService.indexOfQustion].questionText+this.bodyText;
+    // this.mailService.email.body = this.userService.questionListShow[this.userService.indexOfQustion].questionText+"\n"+"תשובה"+"\n"+this.bodyText;
+
     this.mailService.email.subject =this.userService.currentPath;
 
-    this.userService.answer=new Answer(this.userService.answerList.length,this.bodyText,this.QuestionIdnum) 
+    this.userService.answer=new Answer(this.userService.answerList.length+1,this.bodyText,this.QuestionIdnum) 
     this.userService.SendAnswer().subscribe(//הכנסת התשובה ל DB
-      good => {
+      good => {debugger
         swal('"!תזכה למצוות - תשובתך נשלחה בהצלחה"');
+
       });debugger
       this.mailService.SendMail().subscribe();
 
-
-
-    if (this.addressText != "") {
-      
+    if (this.addressText != "") {      
     }
     else {
       swal('כדי לשלוח תשובה היכנס למערכת תחילה');

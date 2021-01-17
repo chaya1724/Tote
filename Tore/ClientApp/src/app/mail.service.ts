@@ -10,12 +10,12 @@ export class MailService {
   email: Email;
   selectedpage: string;
   selectedMaseches: string;
-  selectedMasechesAndPages: string[];
+  selectedMasechesAndPages: string[]=[];
   constructor(private http: HttpClient) {
    }
   SendMail(): Observable<any> {
     debugger;
-    return this.http.post<any>("https://localhost:44307/api/Mail/SendMail", this.email);
+    return this.http.post<any>("http://lilmodulelamed-api.brotech.co.il/api/Mail/SendMail", this.email);
 
   }
 

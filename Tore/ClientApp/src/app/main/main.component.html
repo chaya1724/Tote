@@ -1,8 +1,8 @@
 <div class="wrapQues">
-    <div class="row">
+    <app-header></app-header>
+    <!-- <div class="row">
         <div class="col">
-            <img class="logo" src="../../assets/logo6.JPG" alt="lo">
-            <h6 class="logo">"ללמוד וללמד"</h6>
+            <img style="margin-left: 50px;margin-top: 5px;" src="../../assets/1233.png" alt="lo">
         </div>
         <div class="col">
         </div>
@@ -16,16 +16,16 @@
                     מדפים או סימנים ספציפיים</button>
             </div>
         </div>
-    </div>
-    <div *ngIf="!userService.flagSelectedPage">
+    </div> -->
+    <!-- <div *ngIf="!userService.flagSelectedPage">
         <h3 style="text-align:center;margin-bottom: 35px;"> בחר את מיקום השאלה</h3>
     </div>
     <div *ngIf="userService.flagSelectedPage">
         <h4 style="text-align:center;">בחר את מיקומם של השאלות של הדפים או הסעיפים הספציפיים
             שתרצה לקבל
             למייל שלך </h4>
-    </div>
-    <div class="row" style="margin-top: 15px;">
+    </div> -->
+    <div class="row" style="margin-top: 60px;">
         <div class="col-md-1"></div>
         <div class="col-md-2  select-outline">
             <select class="PageSelect" (change)="RambamSelect($event.target.value)">
@@ -97,7 +97,7 @@
                     <option value='{"numOfPage":"67", "maseces":"ראש השנה"}'>ראש השנה</option>
                     <option value='{"numOfPage":"173","maseces":"יומא"}'>יומא</option>
                     <option value='{"numOfPage":"110","maseces":"סוכה"}'>סוכה</option>
-                    <option value='{"numOfPage":"38", "maseces":"ביצה"}'>ביצה</option>
+                    <option value='{"numOfPage":"78", "maseces":"ביצה"}'>ביצה</option>
                     <option value='{"numOfPage":"59", "maseces":"תענית"}'>תענית</option>
                     <option value='{"numOfPage":"61", "maseces":"מגילה"}'>מגילה</option>
                     <option value='{"numOfPage":"55", "maseces":"מועד קטן"}'>מועד קטן</option>
@@ -200,7 +200,7 @@
                     <div class="box">
                         <p>{{question.questionPath}}</p>
                         <button style="width: 90%; cursor: pointer;" type="button" class="btn btn-info"
-                            (click)="lastQuestion(question.questionId)">{{question.questionText}}</button>
+                            (click)="lastQuestion(question.id)">{{question.questionText}}</button>
                     </div>
                 </li>
                 <br>

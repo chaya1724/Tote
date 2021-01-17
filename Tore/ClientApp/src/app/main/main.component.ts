@@ -73,7 +73,7 @@ export class MainComponent implements OnInit {
   alefbet: string[] = ["א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "יא", "יב", "יג", "יד", "טו", "טז", "יז", "יח", "יט", "כ", "כא", "כב", "כג", "כד", "כה", "כו", "כז", "כח", "כט", "לו", "לא", "לב", "לג", "לד", "לה", "לו", "לז", "לח", "לט", "מ", "מא", "מב", "מג", "מד", "מה", "מו", "מז", "מח", "מט", "נ", "נא", "נב", "נג", "נד", "נה", "נו", "נז", "נח", "נט"
     , "ס", "סא", "סב", "סג", "סד", "סה", "סו", "סז", "סח", "סט", "ע", "עא", "עב", "עג", "עד", "עה", "עו", "עז", "עח", "עט", "פ", "פא", "פב", "פג", "פד", "פה", "פו", "פז", "פח", "פט", "צ", "צא", "צב", "צג", "צד", "צה", "צו", "צז", "צח", "צט", "ק", "קא", "קב", "קג", "קד", "קה", "קו"
     , "קז", "קח", "קט", "קי", "קיא", "קיב", "קיג", "קיד", "קיה", "קיו", "קיז", "קיח", "קיט", "קכ", "קכא", "קכב", "קכג", "קכד", "קכה", "קכו", "קכז", "קכח", "קכט", "קל", "קלא", "קלב", "קלג", "קלד", "קלה", "קלו", "קלז", "קלח", "קלט", "קקמ", "קמא", "קמב", "קמג", "קמד", "קמה", "קמו"];
-  orachChaimSeifim: number[] = [9, 6, 17, 23, 1, 4, 7, 4, 17, 6, 12, 15, 3, 3, 5, 6, 1, 3, 3, 2, 2, 4, 1, 3, 6, 13, 2, 11, 3, 1, 5, 2, 52, 5, 4, 1, 3, 3, 13, 10, 8, 1, 3, 9, 1, 2, 9, 14, 1, 1, 1, 9, 1, 26, 3, 22, 5, 2, 7, 5, 5, 26, 5, 9, 4, 3, 10, 1, 1, 2, 5, 7, 5, 4, 6, 6, 8, 2, 1, 9, 1, 2, 2, 5, 1, 2, 1, 3, 1, 8, 27, 6, 10, 4, 9, 4, 2, 5, 5, 3, 1, 4, 5, 3, 8, 1, 3, 4,
+  orachChaimSeifim: number[] = [9, 6, 17, 23, 1, 4, 4, 17, 6, 12, 15, 3, 3, 5, 6, 1, 3, 3, 2, 2, 4, 1, 3, 6, 13, 2, 11, 3, 1, 5, 2, 52, 5, 4, 1, 3, 3, 13, 10, 8, 1, 3, 9, 1, 2, 9, 14, 1, 1, 1, 9, 1, 26, 3, 22, 5, 2, 7, 5, 5, 26, 5, 9, 4, 3, 10, 1, 1, 2, 5, 7, 5, 4, 6, 6, 8, 2, 1, 9, 1, 2, 2, 5, 1, 2, 1, 3, 1, 8, 27, 6, 10, 4, 9, 4, 2, 5, 5, 3, 1, 4, 5, 3, 8, 1, 3, 4,
     12, 3, 8, 3, 2, 9, 9, 1, 1, 8, 1, 4, 1, 3, 3, 6, 12, 2, 4, 2, 45, 2, 1, 8, 2, 1, 2, 14, 1, 6, 1, 11, 3, 8, 2, 5, 4, 3, 4, 8, 1, 1, 5, 12, 1, 22, 15, 2, 1, 1, 13, 20, 15, 4, 10, 2, 2, 2, 1, 20, 17, 3, 22, 5, 2, 3, 8, 6, 1, 5, 7, 6, 5, 10, 7, 12, 6, 5, 2, 4, 10, 2, 5, 3, 2, 6, 3, 3, 4, 4, 1, 11, 2, 4, 18, 8, 13, 5, 6, 1, 18, 3, 2, 6, 2, 3, 1, 4, 14, 8, 9, 9, 2, 2, 4, 6, 13, 10,
     1, 3, 3, 2, 5, 1, 3, 2, 2, 4, 4, 1, 2, 2, 17, 1, 1, 2, 6, 6, , 6, 4, 4, 2, 2, 7, 8, 9, 3, 1, 8, 1, 7, 2, 4, 3, 17, 1, 4, 13, 3, 13, 1, 2, 17, 10, 7, 4, 12, 5, 5, 1, 7, 2, 1, 7, 1, 7, 7, 5, 1, 10, 2, 2, 6, 2, 3, 5, 1, 8, 5, 15, 10, 1, 51, 13, 27, 3, 23, 14, 22, 52, 5, 9, 9, 10, 10, 12, 13, 12, 7, 19, 17, 20, 19, 6, 10, 15, 16, 13, 4, 49, 9, 11, 10, 4, 3, 27, 5, 13, 4, 8, 7,
     14, 3, 1, 1, 2, 19, 3, 1, 1, 5, 3, 1, 2, 3, 2, 5, 2, 3, 14, 1, 3, 2, 12, 36, 5, 8, 15, 1, 5, 1, 8, 6, 19, 1, 4, 4, 4, 1, 5, 2, 4, 7, 20, 1, 2, 4, 9, 1, 1, 1, 2, 2, 8, 3, 3, 1, 2, 18, 11, 11, 1, 1, 1, 1, 1, 9, 1, 3, 4, 13, 3, 1, 1, 1, 2, 4, 5, 1, 5, 1, 2, 1, 7, 4, 1, 3, 4, 1, 8, 2, 1, 2, 2, 11, 4, 1, 3, 4, 2, 4, 4, 2, 11, 3, 8, 3, 4, 12, 7, 1, 7, 27, 7, 9, 4, 6, 3, 2, 1, 6, 7, 5, 7,
@@ -90,18 +90,26 @@ export class MainComponent implements OnInit {
   evenHoezerSeifim: number[] = [14, 11, 9, 37, 14, 15, 23, 5, 2, 7, 8, 4, 14, 1, 31, 6, 58, 1, 2, 2, 7, 20, 7, 1, 10, 4, 10, 23, 10, 11, 9, 4, 2, 4, 15, 12, 27, 39, 7, 8, 4, 5, 2, 12, 3, 8, 4, 7, 3, 7, 11, 3, 1, 7, 4, 1, 2, 4, 1, 2, 13, 2, 6, 4, 13, 11, 10, 7, 12, 4, 1, 9, 12, 5, 13, 5, 8, 3, 18, 2, 8, 2, 1, 19, 2, 2, 12, 4, 20, 5, 8, 32, 7, 7, 21, 2, 7, 2, 16, 4, 9, 8, 6,
     7, 2, 10, 3, 4, 2, 17, 18, 10, 12, 10, 6, 11, 19, 11, 11, 8, 2, 5, 9, 23, 50, 3, 7, 34, 22, 9, 4, 3, 10, 5, 7, 5, 4, 18, 11, 69, 19, 23, 7, 10, 5, 3, 2, 7, 4, 1, 12, 1, 24, 22, 13, 10, 6, 7, 8, 9, 5, 8, 8, 5, 9, 6, 9, 56, 57, 20, 10, 16, 17, 7, 14, 8, 5, 22];
   spezhifiSelected1: boolean=true;
+  userData:any[]=[];
 
 
   constructor(public mailService: MailService, public router: Router, public userService: UserService) { }
   ngOnInit() {
-    this.mailService.selectedMasechesAndPages=new Array<string>()
+    this.mailService.selectedMasechesAndPages=[];
     this.userService.pathRambam = null;
     this.userService.pathSO = null;
     this.userService.pathShas = null;
     this.userService.getAllQuestion().subscribe(
       questionListFromDB => {
-        this.userService.questionList = questionListFromDB; debugger
-      });
+      try{
+      this.userService.questionList = JSON.parse(questionListFromDB);
+        }
+      catch (e) {
+        questionListFromDB=this.userData;
+        console.log(questionListFromDB);
+        console.log("zv gucs cv!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      }
+    });
   }
   selectOption(maseces) {
     this.hide = false;
@@ -182,12 +190,12 @@ export class MainComponent implements OnInit {
   }
   lastQuestion(questionId: number) {
     debugger;
+
     for (let q of this.userService.questionList) {
-      if (q.Id == questionId) {
+      if (q.id == questionId) {
         this.userService.currentPath = q.questionPath;
       }
       else {
-
       }
     }
     this.router.navigate(['/question']);
@@ -241,8 +249,10 @@ export class MainComponent implements OnInit {
   back() {
     if (this.userService.flagSelectedPage == true) {
       this.userService.flagSelectedPage = false;
+    this.flagMasechesSelected=false;
       this.spezhifiSelected = false;
-      this.spezhifiSelected1 = false;
+      this.spezhifiSelected1 = true;
+      this.hide=true;
     }
     else {
       this.router.navigate(['/login']);

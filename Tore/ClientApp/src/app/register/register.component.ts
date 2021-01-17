@@ -15,7 +15,7 @@ import swal from 'sweetalert';
 export class RegisterComponent implements OnInit {
   loading = false;
   submitted = false;
-  good: boolean;
+  good: any;
   registrationEmail:string="";
   registrationPassword:string="123";
   registrationAge:number=0;
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.userService.getAll()
     .subscribe(Users => {
-      this.userService.Users = Users;
+      this.userService.Users =  JSON.parse(Users);
     });
   }
 public isValid(email) {

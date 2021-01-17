@@ -19,13 +19,5 @@ namespace Tore.DBModels
 
     }
 }
-//public Natural_wayEntities()
-//  : base("name=Natural_wayEntities")
-//{
-//}
 
-//protected override void OnModelCreating(DbModelBuilder modelBuilder)
-//{
-//    throw new UnintentionalCodeFirstException();
-//}
 

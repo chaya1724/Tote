@@ -18,13 +18,13 @@ export class QuestionComponent implements OnInit {
   flag: number;
   flagUntilAnswers: any[] = [0];
   NoQuestionListShow: boolean = false;
-  answerListShow: any[];
+  answerListShow: any[]=[];
   showAnswer: boolean = false;
 
   constructor(public mailService: MailService, public userService: UserService, public router: Router) {
-    this.userService.questionList = new Array<Question>();
-    this.userService.questionListShow = new Array<any>();
-    this.answerListShow = new Array<any>();
+    // this.userService.questionList = [];
+    // this.userService.questionListShow = [];
+    this.answerListShow = [];
   }
 
   ngOnInit() {debugger
@@ -33,7 +33,7 @@ export class QuestionComponent implements OnInit {
     this.userService.user = new User(0, this.userService.user.Email, "");
     this.userService.getAllQuestion().subscribe(
       questionListFromDB => {
-        this.userService.questionList = questionListFromDB;//מקבל את כל השאלות מה DB
+        this.userService.questionList = JSON.parse(questionListFromDB) ;//מקבל את כל השאלות מה DB
         for (var q of this.userService.questionList) {
           if (q.questionPath == this.userService.currentPath) {//ממיין את כל השאלות לפי הדף הספציפי
             this.userService.questionListShow.push(q);
@@ -45,10 +45,10 @@ export class QuestionComponent implements OnInit {
       });
     this.userService.getAllAnswers().subscribe(
       answerListFromDB => {debugger
-        this.userService.answerList = answerListFromDB;//מקבל את כל התשובות מה DB
+        this.userService.answerList =   JSON.parse(answerListFromDB);//מקבל את כל התשובות מה DB
         for (var q of this.userService.questionListShow) {
           for (var a of this.userService.answerList) {
-            if (q.Id == a.questionId) {
+            if (q.id == a.questionId) {
               this.showAnswer = true;
               this.answerListShow.push(a);debugger
             }
@@ -67,6 +67,7 @@ export class QuestionComponent implements OnInit {
       good => {
         swal('שאלתך נשלחה בהצלחה!', "תשובות ישלחו אליך למייל");
         this.showQuestionWhisAnswers()
+        this.NoQuestionListShow=!this.NoQuestionListShow;
       });
     }
     else{
@@ -81,7 +82,7 @@ export class QuestionComponent implements OnInit {
   showQuestionWhisAnswers() {
     this.userService.getAllQuestion().subscribe(
       questionListFromDB => {
-        this.userService.questionList = questionListFromDB;//מקבל את כל השאלות מה DB
+        this.userService.questionList =  JSON.parse(questionListFromDB);//מקבל את כל השאלות מה DB
         for (var q of this.userService.questionList) {
           if (q.questionPath == this.userService.currentPath) {//ממיין את כל השאלות לפי הדף הספציפי
             this.userService.questionListShow.push(q);
@@ -93,19 +94,16 @@ export class QuestionComponent implements OnInit {
       });
     this.userService.getAllAnswers().subscribe(
       answerListFromDB => {
-        this.userService.answerList = answerListFromDB;//מקבל את כל התשובות מה DB
+        this.userService.answerList =  JSON.parse(answerListFromDB);//מקבל את כל התשובות מה DB
         for (var q of this.userService.questionListShow) {
           for (var a of this.userService.answerList) {
-            if (q.Id == a.questionId) {
+            if (q.id == a.questionId) {
               this.showAnswer = true;
               this.answerListShow.push(a);
             }
           }
           this.flagUntilAnswers.push(this.answerListShow.length);
         }
-        console.log("questionListShow:        " + this.userService.questionListShow);
-        console.log("answerListShow:        " + this.answerListShow);
-        console.log("flagUntilAnswers:        " + this.flagUntilAnswers);
       });
   }
 }

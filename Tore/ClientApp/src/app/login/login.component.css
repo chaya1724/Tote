@@ -10,19 +10,20 @@ hr {
     height:130px; 
 }
  .wrapQues {
-    padding: 2% 0 1% 0;
+    /* padding: 1% 0 1% 0; */
     background: repeating-linear-gradient(-55deg, #2cd5c4, #2cd5c4 12px, gray 14px, gray 14px);
     text-align: center;
-    height: 700px;
-    width: 98%;
+    height: 100%;
+    width: 100%;
 }
 
    .accordionQues {
     background: #ffffff;
-    padding:5% 6% 10% 6%;
-    border: 0px solid green;
+    padding:2% 2% 2% 2%;
+    /* border: 0px solid green; */
     margin-left:60px ;
-    height: 87%;
+    height: 500px;
+    overflow: auto;
     margin-top: 5%;
 
 }

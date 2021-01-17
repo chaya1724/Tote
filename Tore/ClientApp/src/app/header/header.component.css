@@ -1,0 +1,213 @@
+  .menu {
+    position: relative;
+    border: 0px solid green;
+}
+
+  .menu .flex-container {
+    display: flex;
+    justify-content: center;
+    border: 0px solid green;
+}
+
+  .menu .flex-container > div {
+    border: 0px solid green;
+}
+
+  .menu .flex-container > div.R_side {
+    width: 90%;
+    text-align: center;
+    border: 0px solid green;
+}
+
+
+  .menu .flex-container > div.R_side span.humburger {
+    display: none;
+    width: 3%;
+    float: right;
+    line-height: 100%;
+    border: 0px solid green;
+}
+
+  .menu .flex-container > div.R_side span.humburger a {
+    background: none;
+}
+
+  .menu .flex-container > div.R_side .humburger img.hum {
+    width: 100%;
+}
+                        
+  .menu .flex-container > div.R_side .wrapLink {
+    width: 100%;
+    display: inline-block;
+    line-height: 100%;
+    padding: 2% 0 2% 0;
+    border: 0px solid blue;
+    font-size: large;
+}
+.menu .flex-container > div.R_side .icon {
+    display: inline-block;
+    line-height: 100%;
+    padding: 3% 0 2% 1%;
+    height: 2em;
+    width: 2em;
+}
+                        
+  .menu .flex-container > div.R_side a {
+    color: #000000;
+    text-align: center;
+    line-height: 100%;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.7% 1% 0.7% 1%;
+    font-family: 'simpler-bold';
+    border-radius: 5px;
+    transition: 0.2s all;
+    border: 0px solid green;
+}
+
+  .menu .flex-container > div.R_side a:hover {
+    background: azure;
+    /* border: 1px solid black; */
+}
+
+  .menu .flex-container > div.L_side {
+    width: 10%;
+    border: 0px solid green;
+}
+
+  .menu .flex-container > div.L_side img.logo {
+    width: 150%;
+    float: left; 
+    margin-left: 50px;
+    margin-top: 10px;  
+}
+ .icon {
+    text-align: center;
+    border: 0px solid green;
+    height: 2em;
+    width: 2em;
+
+}
+
+
+/**************** End Menu ******************/
+
+  .wrapCont .bgMainWeb {
+    display: block;
+}
+
+  .wrapCont .bgMainMob {
+    display: none;
+}
+
+  .wrapCont {
+    position: relative;
+}
+
+  .wrapCont .headSec {
+    position: absolute; 
+    top: 9%; 
+    right: 3%; 
+    width: 37%; 
+    text-align: right; 
+    font-family: 'simpler-bold'; 
+    border: 0px solid green;
+}
+
+
+  .wrapCont .headSec h1 span.good {
+    width: 100%;
+    display: block;
+    font-size: 1.7em;
+    font-family: 'simpler-black';
+    line-height: 100%;
+    border: 0px solid green;
+}
+
+  .wrapCont .headSec h1 span.prog {
+	color: #000000;
+	font-size: 2.1em;
+	display: block;
+    line-height: 140%;
+	text-align: center;
+    margin: 2% 0 0 0;
+	font-family: 'simpler-black';
+	border: 0px solid green;
+}
+
+  .wrapCont .headSec h1 span.turk {
+    /*color: #4cd5c1;*/
+    font-size: 3.9em;
+    display: block;
+    line-height: 100%;
+    margin: 1% 0 0 0;
+    border: 0px solid green;
+}
+
+  .wrapCont .headSec h1 span.turk span.speed {
+    color: #2cd5c4;
+    font-size: 1.4em;
+    font-family: 'simpler-black';
+}
+
+
+  .wrapCont .headSec h1 span.get {
+    /*color: #ffffff;*/
+    font-size: 1.30em;
+    line-height: 100%;
+    display: inline-block;
+    font-family: 'simpler-regular';
+    border: 0px solid green;
+}
+
+  .wrapCont .headSec a.animLink {
+    position: relative;
+    display: inline-block;
+    background-color: #2cd5c4;
+    color: #000000;
+    font-size: 2em;
+    text-align: center;
+    padding: 2% 5% 2% 5%;
+    margin: 4% 0 0 0;
+    font-family: 'simpler-black';
+    text-decoration: none;
+    border: 4px solid #000000;
+}
+
+  .wrapCont .headSec a.animLink .text {
+    position: relative;
+    z-index: 2;
+    transition: color 0.2s;
+}
+
+  .wrapCont .headSec a.animLink .hoverLayout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #000000;
+    display: block;
+    z-index: 1;
+    transition: width 1s ease;
+}
+
+  .wrapCont .headSec a.animLink:hover .text {
+    color: #2cd5c4;
+}
+
+  .wrapCont .headSec a.animLink:hover .hoverLayout {
+    width: 100%;
+}
+
+  .wrapCont .headSec .tnai {
+	margin: 19% 0 0 0;
+	display: inline-block;	
+    border: 0px solid green;
+}
+
+  .mainWrapForm {
+    position: relative;
+    /*padding: 27% 0 0% 0;
+    background: #000000;*/
+}
