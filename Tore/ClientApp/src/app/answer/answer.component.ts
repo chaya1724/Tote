@@ -26,8 +26,8 @@ export class AnswerComponent implements OnInit {
   sendAns() {debugger
     this.QuestionIdnum = this.userService.questionListShow[this.userService.indexOfQustion].id;
     this.mailService.email.address = this.userService.questionListShow[this.userService.indexOfQustion].emailFromSendQuestion;
-    this.mailService.email.body = this.userService.questionListShow[this.userService.indexOfQustion].questionText+this.bodyText;
-    // this.mailService.email.body = this.userService.questionListShow[this.userService.indexOfQustion].questionText+"\n"+"תשובה"+"\n"+this.bodyText;
+    this.mailService.email.body = this.userService.questionListShow[this.userService.indexOfQustion].questionText+"\n"+"תשובה"+"\n"+this.bodyText;
+    // this.mailService.email.body = this.userService.questionListShow[this.userService.indexOfQustion].questionText+"\""n"+"תשובה"+"\n"+this.bodyText;
 
     this.mailService.email.subject =this.userService.currentPath;
 

@@ -16,12 +16,12 @@
                 <h5>שאלות שנשאלו לאחרונה</h5>
                 <ol style="list-style-type:none;overflow: auto;">
                     <li *ngFor="let question of questionList;let i=index">
-                        <div class="box">
+                        <!-- <div class="box"> -->
                             <button style="width: 350px;" type="button">
-                                :{{question.questionPath}}
+                                {{question.questionPath}}
                                 <div style="font-weight: bold;">{{question.questionText}}</div>
                             </button>
-                        </div>
+                        <!-- </div> -->
                     </li>
                 </ol>
             </div>

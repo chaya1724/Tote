@@ -28,8 +28,8 @@
     border: 0px solid green;
 }
 
-  .menu .flex-container > div.R_side span.humburger a {
-    background: none;
+  .menu .flex-container > div.R_side span.humburger button {
+    background: transparent;
 }
 
   .menu .flex-container > div.R_side .humburger img.hum {
@@ -52,7 +52,7 @@
     width: 2em;
 }
                         
-  .menu .flex-container > div.R_side a {
+  .menu .flex-container > div.R_side button {
     color: #000000;
     text-align: center;
     line-height: 100%;
@@ -65,7 +65,7 @@
     border: 0px solid green;
 }
 
-  .menu .flex-container > div.R_side a:hover {
+  .menu .flex-container > div.R_side button:hover {
     background: azure;
     /* border: 1px solid black; */
 }

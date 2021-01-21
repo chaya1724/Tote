@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   loading:boolean=true;
   questionList:Question[]=[];
   userData:any[]=[{Id:1,Emaii:"chaya@gmail.com",Password:"111"}];
-  questionData:any[]=[{id:1,questionText:"שאלה מספר 1",emailFromSendQuestion:"hhhת",questionPath:"מסכת ברכות דף ג"}];
+  questionData:any[]=[];
 
 
   constructor(public router: Router, public userService: UserService) {
@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
 }
 
 

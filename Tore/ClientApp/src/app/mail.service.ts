@@ -15,8 +15,10 @@ export class MailService {
    }
   SendMail(): Observable<any> {
     debugger;
-    return this.http.post<any>("http://lilmodulelamed-api.brotech.co.il/api/Mail/SendMail", this.email);
-
+    return this.http.post<any>("https://localhost:44307/api/Mail/SendMail", this.email);
   }
-
+  // SendMail(): Observable<any> {
+  //   debugger;
+  //   return this.http.post<any>("https://tore20210118023949.azurewebsites.net/api/Mail/SendMail", this.email);
+  // }
 }

@@ -12,21 +12,22 @@ import { map } from 'rxjs/operators';
 export class UserService {
 
   public user: User = new User(0, "abc1724@gmail.com", "");
-  public Users: any[]=[];
-  public question: Question;
-  public answer: Answer;
-  public questionList: Question[]=[{id:1,questionText:"שאלה מספר 1",emailFromSendQuestion:"hhhת",questionPath:"מסכת ברכות דף ג"}];
-  public questionListShow: Question[]=[{id:1,questionText:"שאלה מספר 1",emailFromSendQuestion:"hhhת",questionPath:"מסכת ברכות דף ג"}];
-  public answerList: Answer[]=[{Id:1,answerBody:"תשובה מס 1",questionId:1}];
-  public indexOfQustion: number;
-  public pathSO: string;
-  public pathShas: string;
-  public pathRambam: string;
- public currentPath: string;
- flagSelectedPage:boolean=false
-  baseUserUrl = "http://lilmodulelamed-api.brotech.co.il/api/Users/";
-  baseQuestionsUrl = "http://lilmodulelamed-api.brotech.co.il/api/Questions/";
-  baseAnswersUrl = "http://lilmodulelamed-api.brotech.co.il/api/Answers/";
+  Users: any[]=[];
+  question: Question;
+  answer: Answer;
+  questionList: Question[]=[];
+  questionListShow: Question[]=[];
+  answerList: Answer[]=[];
+  answerListShow: any[]=[];
+  indexOfQustion: number;
+  pathSO: string;
+  pathShas: string;
+  pathRambam: string;
+  currentPath: string;
+  flagSelectedPage:boolean=false
+  baseUserUrl = "https://tore20210118023949.azurewebsites.net/api/Users/";
+  baseQuestionsUrl = "https://tore20210118023949.azurewebsites.net/api/Questions/";
+  baseAnswersUrl = "https://tore20210118023949.azurewebsites.net/api/Answers/";
 
 
   baseUserUrl1 = "https://localhost:44307/api/Users/";

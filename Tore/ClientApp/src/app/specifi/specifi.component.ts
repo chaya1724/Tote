@@ -1,22 +1,15 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Email } from 'src/Models/Email';
+import swal from 'sweetalert';
 import { MailService } from '../mail.service';
 import { UserService } from '../user.service';
-// import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-
-import swal from 'sweetalert';
-
-// import {MdSelect} from '@angular/material';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-specifi',
+  templateUrl: './specifi.component.html',
+  styleUrls: ['./specifi.component.css']
 })
-export class MainComponent implements OnInit {
+export class SpecifiComponent implements OnInit {
   mySelect: any;
   hide: boolean = true;
   flag: any;
@@ -258,6 +251,3 @@ export class MainComponent implements OnInit {
     }
   }
 }
-
-
-

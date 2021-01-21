@@ -55,7 +55,8 @@
                     <label for="PasswordTxt" id="PasswordLbl" class="SpanLbl"><span id="NeedPhone"
                             style="color: indianred; display: none;">*</span><span
                             id="PhoneLblTxt">סיסמא:</span></label><br>
-                    <input id="PasswordTxt" name="nope" dir="ltr" type="tel" maxlength="16" class="form-control"
+                    <input id="PasswordTxt" name="password" dir="ltr" type="tel" maxlength="16" class="form-control"
+                    [(ngModel)]="registrationPassword"  #password="ngModel"
                         autocomplete="off" style="text-align: right; width: 100%"><br>
                 </div>
                 <div id="MailSpan" class="SpanDiv">

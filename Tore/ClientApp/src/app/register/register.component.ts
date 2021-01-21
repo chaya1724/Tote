@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   good: any;
   registrationEmail:string="";
-  registrationPassword:string="123";
+  registrationPassword:string="";
   registrationAge:number=0;
   constructor(public router: Router,public userService:UserService) { }
   ngOnInit() {
@@ -39,8 +39,12 @@ Login()
       swal(' כתובת מייל שגויה');
       return;
       }
-      if(this.registrationPassword=="")
-      swal('הזן סיסמא חזקה');
+      debugger;
+    if(this.registrationPassword==""||this.registrationPassword.length<6)
+    {
+      swal(' הזן סיסמא חזקה - לפחות 6 מספרים');
+      return;
+    }else{
     this.userService.user = new User(this.userService.Users.length+1,this.registrationEmail,this.registrationPassword);
     this.userService.register().subscribe(
       good => {
@@ -53,6 +57,7 @@ Login()
       this.loading=false;
         }
       });
+    }
   }
   }
 

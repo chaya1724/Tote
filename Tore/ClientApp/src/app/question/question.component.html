@@ -22,7 +22,7 @@
                         <div *ngIf="showAnswer">
                             <ol style="list-style-type:none">
                                 <li
-                                    *ngFor="let i=index; let answer of answerListShow | slice:flagUntilAnswers[i]:flagUntilAnswers[i+1]">
+                                    *ngFor="let i=index; let answer of userService.answerListShow | slice:flagUntilAnswers[i]:flagUntilAnswers[i+1]">
                                     <textarea class="form-control" class="mytextarea" rows="2"
                                         placeholder={{answer.answerBody}}></textarea>
                                 </li>

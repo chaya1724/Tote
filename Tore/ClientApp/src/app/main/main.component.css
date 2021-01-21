@@ -310,3 +310,9 @@
            margin-top: 450px;
            position: absolute;
        }
+       .teach{
+           float: right;
+           padding-right: 30px;
+           font-weight: bold;
+           font-size: 20px;
+       }
