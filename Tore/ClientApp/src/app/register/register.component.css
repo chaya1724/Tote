@@ -4,27 +4,28 @@ hr {
     border: 1px solid #000000;
 }
  .wrapQues {
-    padding: 2% 0 1% 0;
+    padding: 2% 2% 2% 2%;
     background: repeating-linear-gradient(-55deg, #2cd5c4, #2cd5c4 12px, gray 14px, gray 14px);
     text-align: center;
-    height: 850px;
+    height: 800px;
     /* margin-top: 15px; */
 
 }
 
    .accordionQues {
     background: #ffffff;
-    padding:0% 6% 8% 6%;
+    /* padding: 2% 2% 2% 2%; */
     border: 0px solid green;
-    /* margin-top: 6%; */
-    margin-left:60px ;
+    margin-top: 30;
+    margin-left:160px ;
 }
 .accordionLogin {
     max-width: 50%;
     background: #ffffff;
-    padding:4% 6% 8% 6%;
-    border: 0px solid green;
-    margin-left: 200px;
+    padding:8% 6% 8% 6%;
+    /* border: 0px solid green; */
+    margin:8% 10% 10% 10%;
+    margin-left: 250px;
 }
 
    .wrapQues h3 {

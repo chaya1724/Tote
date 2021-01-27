@@ -26,6 +26,7 @@ export class SpecifiComponent implements OnInit {
   nameSeif: string;
   selected: any;
   flagMasechesSelected: boolean = false;
+  flagPageCheckboxes:boolean = false;
   spezhifiSelected: boolean = false;
   items: any[] = [];
   hlocesList: string[];
@@ -113,6 +114,7 @@ export class SpecifiComponent implements OnInit {
       this.spezhifiSelected = true;
     } else {
       this.flagMasechesSelected = true;
+      this.flagPageCheckboxes=true;
     }
   }
   PageSelect(page: any) {debugger
@@ -220,21 +222,22 @@ export class SpecifiComponent implements OnInit {
       buttons: [' כן', ' לא']
     })
       .then((willDelete) => {
-        if (willDelete) {//כן
-          alert(this.listOfSpzhifiPages);
-          this.spezhifiSelected = false;
-          this.spezhifiSelected1 = false;
+        if (willDelete) {//לא
+          this.hide=true;
+          this.flagMasechesSelected=false;
+          this.flagPageCheckboxes=false;
+
         }
-        else { //לא
+        else { //כן
          debugger;
           for(let page of this.listOfSpzhifiPages){
             this.mailService.selectedMasechesAndPages.push("מסכת " + this.mailService.selectedMaseches + " דף " + page);
           }
-          debugger;
           this.mailService.selectedMasechesAndPages;
           this.userService.user.Email;
-          this.spezhifiSelected = false;
-          this.spezhifiSelected1 = false;
+          this.hide=true;
+          this.flagMasechesSelected=false;
+          this.flagPageCheckboxes=false;
         }
       });
   }

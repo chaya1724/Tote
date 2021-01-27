@@ -17,6 +17,7 @@ import { AnswerComponent } from './answer/answer.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { SpecifiComponent } from './specifi/specifi.component';
+import { AboutComponent } from './about/about.component';
 
 // import {BrowserAnimationsModule} from '@angular/platform browser/animations';
 // import {MdButtonModule, MdCheckboxModule} from '@angular/material';
@@ -35,6 +36,7 @@ import { SpecifiComponent } from './specifi/specifi.component';
     AnswerComponent,
     HeaderComponent,
     SpecifiComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -55,7 +57,7 @@ import { SpecifiComponent } from './specifi/specifi.component';
       { path: 'answer', component: AnswerComponent },
       { path: 'header', component: HeaderComponent },
       { path: 'spcific', component: SpecifiComponent },
-
+      { path: 'about', component: AboutComponent },
     ])
   ],
   providers: [],

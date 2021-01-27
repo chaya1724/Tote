@@ -24,6 +24,7 @@ export class AnswerComponent implements OnInit {
     this.mailService.email = new Email("", "", "")
   }
   sendAns() {debugger
+    if(this.bodyText !=""){
     this.QuestionIdnum = this.userService.questionListShow[this.userService.indexOfQustion].id;
     this.mailService.email.address = this.userService.questionListShow[this.userService.indexOfQustion].emailFromSendQuestion;
     this.mailService.email.body = this.userService.questionListShow[this.userService.indexOfQustion].questionText+"\n"+"תשובה"+"\n"+this.bodyText;
@@ -36,7 +37,11 @@ export class AnswerComponent implements OnInit {
       good => {debugger
         swal('"!תזכה למצוות - תשובתך נשלחה בהצלחה"');
 
-      });debugger
+      });
+    }
+    else{
+      swal("אנא הכנס תשובה");
+    }debugger
       this.mailService.SendMail().subscribe();
 
     if (this.addressText != "") {      

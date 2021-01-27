@@ -17,4 +17,22 @@ export class HeaderComponent implements OnInit {
   {
     this.router.navigate(['/spcific']);
   }
+  back() {
+    if (this.userService.flagSelectedPage == true) {
+    //   this.userService.flagSelectedPage = false;
+    //   this.flagMasechesSelected=false;
+    //   this.spezhifiSelected = false;
+    //   this.spezhifiSelected1 = true;
+    //   this.hide=true;
+    }
+    else {
+      this.router.navigate(['/login']);
+    }
+  }
+  about(){
+    this.router.navigate(['/about']);
+  }
+  contectUs() {}
+  mainPage(){}
+  privateArea(){}
 }

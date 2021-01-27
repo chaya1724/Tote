@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   lastQustionIdnum: any;
   loading:boolean=true;
   questionList:Question[]=[];
+  questionListRevers:Question[]=[];
+
   userData:any[]=[{Id:1,Emaii:"chaya@gmail.com",Password:"111"}];
   questionData:any[]=[];
 
@@ -55,7 +57,7 @@ export class LoginComponent implements OnInit {
         catch (e) {
           this.userService.Users=this.userData;
           console.log(this.userService.Users);
-          console.log("Users gucs cv!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+          console.log("Users");
         }
      
       });
@@ -65,11 +67,12 @@ export class LoginComponent implements OnInit {
       questionListFromDB => {
       try{
       this.questionList = JSON.parse(questionListFromDB);
+     this.questionListRevers= this.questionList.slice().reverse();
         }
       catch (e) {
         questionListFromDB=this.questionData;
         console.log(questionListFromDB);
-        console.log("questionList gucs cv!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        console.log("questionList");
       }
     });
   }

@@ -33,16 +33,15 @@
                     <input  dir="ltr" type=tel class="form-control" style="text-align: right; width: 100%;"><br>
                 </div>
             </div> -->
-                <div id="ClientNameSpan" class="SpanDiv">
+                <!-- <div id="ClientNameSpan" class="SpanDiv">
                     <label for="ClientNameTxt" class="SpanLbl"><span style="color: indianred">*</span><span
-                            id="ClientNameLbl">שם משפחה ושם פרטי:</span></label><br>
+                            id="ClientNameLbl">:שם משפחה ושם פרטי</span></label><br>
                     <input id="ClientNameTxt" name="nope" dir="rtl" type="text" maxlength="50" class="form-control"
                         autocomplete="off" style="text-align: right; width: 50%; width: 100%"><br>
-                </div>
-                <div id="ZeoutSpan" class="SpanDiv">
+                </div> -->
+                <!-- <div id="ZeoutSpan" class="SpanDiv">
                     <label for="ZeoutTxt" class="SpanLbl"><span id="NeedZeout"
-                            style="color: indianred; display: none">*</span><span id="ZeoutLbl">תעודת
-                            זהות:</span></label><br>
+                            style="color: indianred; display: none">*</span><span id="ZeoutLbl">:תעודת זהות</span></label><br>
                     <input id="ZeoutTxt" name="nope" dir="ltr" type="tel" maxlength="9" class="form-control"
                         autocomplete="off" style="text-align: right; width: 100%" required>
                     <div id="LogInLbl" dir="rtl"
@@ -50,25 +49,23 @@
                         <span id="LogInLbl1">משתמש רשום?</span> <span id="LogInLbl2"
                             style="cursor: pointer; color: cornflowerblue;">לחץ כאן</span>
                     </div>
-                </div>
+                </div> -->
                 <div id="PasswordSpan" class="SpanDiv">
                     <label for="PasswordTxt" id="PasswordLbl" class="SpanLbl"><span id="NeedPhone"
-                            style="color: indianred; display: none;">*</span><span
-                            id="PhoneLblTxt">סיסמא:</span></label><br>
-                    <input id="PasswordTxt" name="password" dir="ltr" type="tel" maxlength="16" class="form-control"
-                    [(ngModel)]="registrationPassword"  #password="ngModel"
-                        autocomplete="off" style="text-align: right; width: 100%"><br>
+                            style="color: indianred; display: none;">*</span>
+                        <span id="PhoneLblTxt">:סיסמא</span></label><br>
+                    <input  class="form-control" [(ngModel)]="registrationPassword" #password="ngModel" name="password"
+                        style="text-align: right; width: 100%"><br>
                 </div>
                 <div id="MailSpan" class="SpanDiv">
                     <label for="MailTxt" class="SpanLbl"><span id="NeedMail"
-                            style="color: indianred; display: none;">*</span><span id="MailLbl">מייל:</span></label><br>
-
-                    <input id="MailTxt" name="nope" dir="ltr" type="email" maxlength="50" class="form-control"
-                        [(ngModel)]="registrationEmail" name="email" #email="ngModel" autocomplete="off"
+                            style="color: indianred; display: none;">*</span>
+                        <span id="MailLbl">:מייל</span></label><br>
+                    <input type="email" class="form-control" [(ngModel)]="registrationEmail"  #email="ngModel" name="email"
                         style="text-align: left; width: 100%"><br>
 
                 </div>
-
+<!-- 
                 <div id="PhoneSpan" class="SpanDiv">
                     <label for="PhoneTxt" id="PhoneLbl" class="SpanLbl"><span id="NeedPhone"
                             style="color: indianred; display: none;">*</span><span
@@ -123,12 +120,12 @@
                             הכרטיס </span></span><br>
                     <input id="CvvTxt" name="cvv" dir="ltr" type="tel" maxlength="4" class="form-control"
                         autocomplete="off" style="text-align: right; width: 100%;"><br>
-                </div>
+                </div> -->
 
                 <div id="PayBt" style="margin-top: 30px; text-align: center">
 
                     <input [disabled]="loading" type="submit" id="PayBtBt"
-                        style="width: 60%; cursor: pointer; color: white" value="אישור תשלום" class="NewCardCss">
+                        style="width: 60%; cursor: pointer; color: white" value="אישור הרשמה" class="NewCardCss">
                 </div>
 
             </form>

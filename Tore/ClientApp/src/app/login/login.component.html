@@ -15,7 +15,7 @@
             <div class="accordionQues">
                 <h5>שאלות שנשאלו לאחרונה</h5>
                 <ol style="list-style-type:none;overflow: auto;">
-                    <li *ngFor="let question of questionList;let i=index">
+                    <li *ngFor="let question of questionListRevers;let i=index">
                         <!-- <div class="box"> -->
                             <button style="width: 350px;" type="button">
                                 {{question.questionPath}}

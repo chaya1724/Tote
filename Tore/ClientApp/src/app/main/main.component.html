@@ -88,6 +88,7 @@
 
         <div class="col-md-2"></div>
         <div class="col-md-2">
+            <!-- <p *ngIf="hideMaseches">מסכת {{mailService.selectedMaseches}}</p> -->
             <div *ngIf="hide">
                 <select class="PageSelect" (change)="selectOption($event.target.value)">
                     <option value="" selected disabled hidden>ש"ס</option>
@@ -197,7 +198,7 @@
         <h4> מעבר לשאלות וקושיות שנשאלו לאחרונה</h4>
         <div class="accordionQues">
             <ol style="list-style-type:none;">
-                <li *ngFor="let question of userService.questionList;let i=index">
+                <li *ngFor="let question of questionListRevers;let i=index">
                     <div class="box">
                         <p>{{question.questionPath}}</p>
                         <button style="width: 90%; cursor: pointer;" type="button" class="btn btn-info"

@@ -17,7 +17,7 @@
             <ol style="list-style-type:none;">
                 <li *ngFor="let question of userService.questionListShow;let i=index">
                     <div class="row">
-                        <textarea class="form-control" class="mytextarea" rows="3"
+                        <textarea class="form-control" class="mytextarea" rows="6"
                             placeholder={{question.questionText}}></textarea>
                         <div *ngIf="showAnswer">
                             <ol style="list-style-type:none">
