@@ -33,6 +33,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/about']);
   }
   contectUs() {}
-  mainPage(){}
+  mainPage(){
+    this.router.navigate(['/login']);
+  }
   privateArea(){}
 }

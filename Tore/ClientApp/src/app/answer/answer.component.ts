@@ -28,10 +28,8 @@ export class AnswerComponent implements OnInit {
     this.QuestionIdnum = this.userService.questionListShow[this.userService.indexOfQustion].id;
     this.mailService.email.address = this.userService.questionListShow[this.userService.indexOfQustion].emailFromSendQuestion;
     this.mailService.email.body = this.userService.questionListShow[this.userService.indexOfQustion].questionText+"\n"+"תשובה"+"\n"+this.bodyText;
-    // this.mailService.email.body = this.userService.questionListShow[this.userService.indexOfQustion].questionText+"\""n"+"תשובה"+"\n"+this.bodyText;
-
     this.mailService.email.subject =this.userService.currentPath;
-
+    
     this.userService.answer=new Answer(this.userService.answerList.length+1,this.bodyText,this.QuestionIdnum) 
     this.userService.SendAnswer().subscribe(//הכנסת התשובה ל DB
       good => {debugger

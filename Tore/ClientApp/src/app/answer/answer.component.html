@@ -1,10 +1,12 @@
 <div class="wrapQues">
+    <app-header></app-header>
     <div class="rout">
         <p>&nbsp;תשובה עבור&nbsp;{{userService.currentPath}}</p>
     </div>
     <div class="accordionQues">
-        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder=" כתוב כאן את תשובתך " rows="5" name="body" [(ngModel)]="bodyText" #body="ngModel"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder=" כתוב כאן את תשובתך " rows="6" name="body" [(ngModel)]="bodyText" #body="ngModel"></textarea>
         <br>    
-        <input (click)="sendAns()"  type="submit" value="שלח תירוץ">
+        <input (click)="sendAns()" class="form-control"
+        class="btn btn-primary btn-lg" type="submit" value="שלח תירוץ">
     </div>
 </div>

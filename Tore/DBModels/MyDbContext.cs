@@ -16,6 +16,8 @@ namespace Tore.DBModels
         public DbSet<User> Users { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
+        public DbSet<Specifi> Specific { get; set; }
+
 
     }
 }

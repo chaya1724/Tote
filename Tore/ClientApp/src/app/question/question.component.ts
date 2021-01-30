@@ -7,6 +7,7 @@ import swal from 'sweetalert';
 import { UserService } from '../user.service';
 import { User } from 'src/models/User';
 import { Question } from 'src/Models/Question';
+import { Specifi } from 'src/Models/Specifi';
 
 @Component({
   selector: 'app-question',
@@ -17,6 +18,8 @@ export class QuestionComponent implements OnInit {
   questionText: string="";
   flag: number;
   flagUntilAnswers: any[] = [0];
+  ListMailsToSend:string[]=[];
+  specifisListDB:any[]=[];
   NoQuestionListShow: boolean = false;
   showAnswer: boolean = false;
 
@@ -33,7 +36,7 @@ export class QuestionComponent implements OnInit {
    }
    this.userService.user = new User(0, this.userService.user.Email, "");
   }
-  QuestionSend() {
+  QuestionSend() {debugger
     if(this.questionText!=""){
     this.userService.question = new Question(this.userService.questionList.length + 1, this.questionText, this.userService.user.Email, this.userService.currentPath)
     this.userService.SendQuestion().subscribe(
@@ -42,6 +45,25 @@ export class QuestionComponent implements OnInit {
         this.showQuestionWhisAnswers()
         this.NoQuestionListShow=!this.NoQuestionListShow;
       });
+      this.userService.getAllSpecifis().subscribe(
+        specifiListFromDB=>{
+          this.specifisListDB=JSON.parse(specifiListFromDB);debugger
+          for(let spesifi of this.specifisListDB)
+          {
+            if(spesifi.path==this.userService.currentPath)
+            {
+              this.ListMailsToSend.push(spesifi.Email);
+            }
+          }
+        });
+        debugger
+        for(let spesifiMail of this.ListMailsToSend)// שליחת מייל אם השאלה לכל האנשים שבקשו לקבל את השאלות של הדף/סעיף הזה 
+        {
+        this.mailService.email.address = spesifiMail;
+        this.mailService.email.body = this.questionText;
+        this.mailService.email.subject =this.userService.currentPath;   
+        this.mailService.SendMail().subscribe();
+      }
     }
     else{
       swal("אנא הכנס שאלה");

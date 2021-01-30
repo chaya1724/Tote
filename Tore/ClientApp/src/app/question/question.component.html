@@ -1,5 +1,6 @@
 <section>
     <div class="wrapQues">
+        <app-header></app-header>
         <div class="rout">
             <p>&nbsp;שאלות עבור&nbsp;{{userService.currentPath}}</p>
         </div>
@@ -13,12 +14,24 @@
         </div>
         <br>
         <div class="accordionQues">
-            <label for="exampleFormControlInput">השאלות והקושיות שנשאלו עד עתה</label>
+            <label for="exampleFormControlInput">שאלות וקושיות שנשאלו עד עתה</label>
+            <br />
+            <p class="teach">שאלה</p>
+
             <ol style="list-style-type:none;">
                 <li *ngFor="let question of userService.questionListShow;let i=index">
                     <div class="row">
                         <textarea class="form-control" class="mytextarea" rows="6"
                             placeholder={{question.questionText}}></textarea>
+                        <input class="btn btn-primary" type="button" value="תירוץ הקושיא" (click)="Answer(i)"
+                            style="border-radius: 50px; ">
+                        <br />
+                        <br />
+                    </div>
+                    <div class="row" style="text-align: center;">
+                        <p class="teach">תשובות</p>
+                    </div>
+                    <div class="row">
                         <div *ngIf="showAnswer">
                             <ol style="list-style-type:none">
                                 <li
@@ -28,7 +41,7 @@
                                 </li>
                             </ol>
                         </div>
-                        <input class="btn btn-primary" type="button" value="תירוץ הקושיא" (click)="Answer(i)"
+                        <input class="btn btn-primary" type="button" value="תגובה לתירוץ" (click)="Answer(i)"
                             style="border-radius: 50px; ">
                     </div>
                     <br>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Email } from 'src/Models/Email';
 import swal from 'sweetalert';
 import { MailService } from '../mail.service';
 import { UserService } from '../user.service';
@@ -32,7 +33,8 @@ export class SpecifiComponent implements OnInit {
   hlocesList: string[];
   chackBoxselected: any[] = [];
   listOfSpzhifiPages: any[] = [];
-
+  specifisListDB:any[]=[];
+  hideSeifCheckboxes:boolean=false;
   pageList: string[] = ["ב", ":ב", ".ג", ":ג", ".ד", ":ד", ".ה", ":ה", ".ו", ":ו", ".ז", ":ז", ".ח", ":ח", ".ט", ":ט", ".י", ":י", ".יא", ":יא", ".יב", ":יב", ".יג", ":יג", ".יד", ":יד", ".טו", ":טו", ".טז", ":טז", ".יז", ":יז", ".יח", ":יח", ".יט", ":יט", ".כ", ":כ", ".כא", ":כא", ".כב", ":כב", ".כג", ":כג", ".כד", ":כד", ".כה", ":כה", ".כו", ":כו", ".כז", ":כז", ".כח", ":כח", ".כט", ":כט", ".ל", ":ל", ".לא", ":לא", ".לב", ":לב", ".לג", ":לג", ".לד", ":לד", ".לה", ":לה", ".לו", ":לו", ".לז", ":לז", ".לח", ":לח", ".לט", ":לט", ".מ", ":מ", ".מא", ":מא", ".מב", ":מב", ".מג", ":מג", ".מד", ":מד", ".מה", ":מה", ".מו", ":מו", ".מז", ":מז", ".מח", ":מח", ".מט", ":מט", ".נ", ":נ", ".נא", ":נא", ".נב", ":נב", ".נג", ":נג", ".נד", ":נד", ".נה", ":נה", ".נו", ":נו", ".נז", ":נז", ".נח", ":נח", ".נט", ":נט", ".ס", ":ס", ".סא", ":סא", ".סב", ":סב", ".סג", ":סג", ".סד", ":סד", ".סה", ":סה", ".סו", ":סו", ".סז", ":סז", ".סח", ":סח", ".סט", ":סט", ".ע", ":ע", ".עא", ":עא", ".עב", ":עב", ".עג", ":עג", ".עד", ":עד", ".עה", ":עה", ".עו", ":עו", ".עז", ":עז", ".עח", ":עח", ".עט", ":עט", ".פ", ":פ", ".פא", ":פא", ".פב", ":פב", ".פג", ":פג", ".פד", ":פד", ".פה", ":פה", ".פו", ":פו", ".פז", ":פז", ".פח", ":פח", ".פט", ":פט", ".צ", ":צ", ".צא", ":צא", ".צב", ":צב", ".צג", ":צג", ".צד", ":צד", ".צה", ":צה", ".צו", ":צו", ".צז", ":צז", ".צח", ":צח", ".צט", ":צט", ".ק", ":ק", ".קא", ":קא", ".קב", ":קב", ".קג", ":קג", ".קד", ":קד", ".קה", ":קה", ".קו", ":קו", ".קז", ":קז", ".קח", ":קח", ".קט", ":קט", ".קי", ":קי", ".קיא", ":קיא", ".קיב", ":קיב", ".קיג", ":קיג", ".קיד", ":קיד", ".קטו", ":קטו", ".קטז", ":קטז", ".קיז", ":קיז", ".קיח", ":קיח", ".קיט", ":קיט", ".קכ",
     ":קכ", ".קכא", ":קכא", ".קכב", ":קכב", ".קכג", ":קכג", ".קכד", ":קכד", ".קכה", ":קכה", ".קכו", ":קכו", ".קכז", ":קכז", ".קכח", ":קכח", ".קכט", ":קכט", ".קל", ":קל", ".קלא", ":קלא", ".קלב", ":קלב", ".קלג", ":קלג", ".קלד", ":קלד", ".קלה", ":קלה", ".קלו", ":קלו", ".קלז", ":קלז", ".קלח", ":קלח", ".קלט", ":קלט", ".קמ", ":קמ", ".קמא", ":קמא", ".קמב", ":קמב", ".קמג", ":קמג", ".קמד", ":קמד", ".קמה", ":קמה", ".קמו", ":קמו", ".קמז", ":קמז", ".קמח", ":קמח", ".קמט", ":קמט", ".קנ", ":קנ", ".קנא", ":קנא", ".קנב", ":קנב", ".קנג", ":קנג", ".קנד", ":קנד", ".קנה", ":קנה", ".קנו", ":קנו", ".קנז", ":קנז", ".קנח", ":קנח", ".קנט", ":קנט", ".קס", ":קס", ".קסא", ":קסא", ".קסב", ":קסב", ".קסג", ":קסג", ".קסד", ":קסד", ".קסה", ":קסה", ".קסו", ":קסו", ".קסז", ":קסז", ".קסח", ":קסח", ".קסט", ":קסט", ".קע", ":קע", , ".קעא", ":קעא", ".קעב", ":קעב", ".קעג", ":קעג", ".קעד", ":קעד", ".קעה", ":קעה", ".קעו", ":קעו", ".קעז", ":קעז",]
   simenList: string[] = ["א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "יא", "יב", "יג", "יד", "טו", "טז", "יז", "יח", "יט", "כ", "כא", "כב", "כג", "כד", "כה", "כו", "כז", "כח", "כט", "ל", "לא", "לב", "לג", "לד", "לה", "לו", "לז", "לח", "לט", "מ", "מא", "מב", "מג", "מד", "מה", "מו", "מז", "מח", "מט", "נ", "נא", "נב", "נג", "נד", "נה", "נו", "נז", "נח", "נט",
@@ -85,7 +87,7 @@ export class SpecifiComponent implements OnInit {
     7, 2, 10, 3, 4, 2, 17, 18, 10, 12, 10, 6, 11, 19, 11, 11, 8, 2, 5, 9, 23, 50, 3, 7, 34, 22, 9, 4, 3, 10, 5, 7, 5, 4, 18, 11, 69, 19, 23, 7, 10, 5, 3, 2, 7, 4, 1, 12, 1, 24, 22, 13, 10, 6, 7, 8, 9, 5, 8, 8, 5, 9, 6, 9, 56, 57, 20, 10, 16, 17, 7, 14, 8, 5, 22];
   spezhifiSelected1: boolean=true;
   userData:any[]=[];
-
+  specificId:number;
 
   constructor(public mailService: MailService, public router: Router, public userService: UserService) { }
   ngOnInit() {
@@ -129,6 +131,8 @@ export class SpecifiComponent implements OnInit {
   SeifSelect(simen) {
     this.nameSimen = simen;
     this.hideSeif = false;
+    this.hideSimen=true;
+    this.hideSeifCheckboxes = true;
     this.simenFlag = simen;
     this.i = this.simenList.findIndex(x => x === simen);
     if (this.kindOfSO == 697) {
@@ -196,7 +200,6 @@ export class SpecifiComponent implements OnInit {
   }
   // check if the item are selected
   checked(selectedpage) {
-    debugger;
     if (this.chackBoxselected.indexOf(selectedpage) != -1) {
       return true;
     }
@@ -230,16 +233,32 @@ export class SpecifiComponent implements OnInit {
         }
         else { //כן
          debugger;
+         this.mailService.selectedMasechesAndPages=[];
           for(let page of this.listOfSpzhifiPages){
             this.mailService.selectedMasechesAndPages.push("מסכת " + this.mailService.selectedMaseches + " דף " + page);
-          }
-          this.mailService.selectedMasechesAndPages;
-          this.userService.user.Email;
-          this.hide=true;
-          this.flagMasechesSelected=false;
-          this.flagPageCheckboxes=false;
-        }
-      });
+         } 
+
+          this.userService.getAllSpecifis().subscribe(
+          specifiListFromDB=>{
+          this.specifisListDB=JSON.parse(specifiListFromDB);           
+          this.specificId=this.specifisListDB.length+1;debugger
+          this.userService.specifisList=[];
+          for(let page of this.mailService.selectedMasechesAndPages){
+            this.userService.specifisList.push({"Id":this.specificId,"Email":this.userService.user.Email,"Path":page});
+            this.specificId++;
+          } 
+          this.userService.SendSpecifi().subscribe(
+            good => {
+              swal(" xpmhph bakjשאלתך נשלחה בהצלחה למיילים שבקשו את שאלתך!");
+              console.log(this.userService.specifisList);
+              this.hide=true;debugger
+              this.flagMasechesSelected=false;
+              this.flagPageCheckboxes=false;
+            }            
+          );
+
+        });
+      } });
   }
   back() {
     if (this.userService.flagSelectedPage == true) {

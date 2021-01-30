@@ -7,7 +7,7 @@ hr {
     padding: 0 0 3% 0;
     background: repeating-linear-gradient(-55deg, #2cd5c4, #2cd5c4 12px, gray 14px, gray 14px);
     text-align: center;
-    height: 700px;
+    height: 800px;
 }
 
    .accordionQues {
@@ -172,3 +172,9 @@ input, textarea {
     unicode-bidi:bidi-override; 
     direction: RTL; 
    }
+   .teach{
+    float: right;
+    padding-right: 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
