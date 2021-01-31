@@ -16,12 +16,12 @@
 .PageSelect:hover
 {
     font-weight: bold;
-    width: 160px;
-    height: 80px;
+    width: 150px;
+    height: 70px;
     cursor: pointer;
     position: absulut;
-    color: rgb(32, 180, 190);
-    border-color: rgb(25, 130, 190);
+    color: rgb(5, 131, 139);
+    border-color: rgb(8, 110, 168);
     border-width: 2px;
     padding: 20px;
 }

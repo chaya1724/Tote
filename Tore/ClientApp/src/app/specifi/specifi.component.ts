@@ -91,7 +91,7 @@ export class SpecifiComponent implements OnInit {
   spezhifiSelected1: boolean = true;
   userData: any[] = [];
   specificId: number;
-  baseSpecifisUrl = "https://localhost:44307/api/Specifis/";
+  baseSpecifisUrl = "https://tore20210118023949.azurewebsites.net/api/Specifis/";
   baseSpecifisUrl1 = "https://localhost:44307/api/Specifis/";
   flagSeifSpesifiOnChange: boolean=false;
   listOfSpzhificSeifim: any[];
@@ -257,7 +257,7 @@ export class SpecifiComponent implements OnInit {
     if (this.flagSeifSpesifiOnChange == true) {
       swal({
         title: "בחרת שולחן ערוך - " + this.nameSO + ", " + "סימן " + this.simenFlag + " " + "סעיפים " + this.listOfSpzhificSeifim,
-        text: " ?בסדר? אתה רוצה להמשיך",
+        text: " ? אתה רוצה להמשיך",
         icon: "info",
         buttons: [' כן', ' לא']
       })
@@ -286,7 +286,8 @@ export class SpecifiComponent implements OnInit {
                 } debugger
 
                 observableFrom(this.userService.specifisListSeifim).pipe(
-                  concatMap(entry => this.http.post(this.baseSpecifisUrl1 + 'PostSpecifi', entry))).
+                  // concatMap(entry => this.http.post(this.baseSpecifisUrl1 + 'PostSpecifi', entry))).
+                  concatMap(entry => this.http.post(this.baseSpecifisUrl + 'PostSpecifi', entry))).
                   subscribe(response => {
                     swal(' שאלות מסעיפים אלו ישלחו בעז"ה למייל שלך')
                     this.hideSimen = true;
@@ -331,7 +332,8 @@ export class SpecifiComponent implements OnInit {
                 } debugger
 
                 observableFrom(this.userService.specifisList).pipe(
-                  concatMap(entry => this.http.post(this.baseSpecifisUrl1 + 'PostSpecifi', entry))).
+                  // concatMap(entry => this.http.post(this.baseSpecifisUrl1 + 'PostSpecifi', entry))).
+                  concatMap(entry => this.http.post(this.baseSpecifisUrl + 'PostSpecifi', entry))).
                   subscribe(response => {
                     swal(' שאלות מדפים אלו ישלחו בעז"ה למייל שלך')
                     this.hide = true;

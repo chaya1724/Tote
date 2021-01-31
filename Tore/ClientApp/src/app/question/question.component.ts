@@ -64,7 +64,8 @@ export class QuestionComponent implements OnInit {
                 // this.mailService.SendMail().subscribe();
               }
               observableFrom(this.listMailsToSend).pipe(
-                concatMap(entry => this.http.post<any>("https://localhost:44307/api/Mail/SendMail", entry))).
+                // concatMap(entry => this.http.post<any>("https://localhost:44307/api/Mail/SendMail", entry))).
+                concatMap(entry => this.http.post<any>("https://tore20210118023949.azurewebsites.net/api/Mail/SendMail", entry))).
                 subscribe(response => { 
                 swal('כמו כן שאלתך נשלחה למיילים של אנשים שרצו שאלות מדף זה - תודה') }, //do something with responses 
                   error => console.error(error), // so something on error

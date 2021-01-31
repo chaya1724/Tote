@@ -52,60 +52,60 @@ export class UserService {
   constructor(private http: HttpClient) {
    }
 
-//   getAll(): Observable<any> {debugger
-//     return this.http.get<any>(this.baseUserUrl + 'GetUsers',this.httpOptions);
-//   }
-//   register(): Observable<User> {
-//     return this.http.post<User>(this.baseUserUrl + 'PostUser', this.user);
-//   }
-//   getAllQuestion(): Observable<any> {
-//     return this.http.get<any>(this.baseQuestionsUrl + 'GetQuestions',this.httpOptions);
-//   } 
-//   SendQuestion(): Observable<Question> {
-//     return this.http.post<Question>(this.baseQuestionsUrl + 'PostQuestion', this.question);
-//   }
-//   getAllAnswers(): Observable<any> {
-//     return this.http.get<any>(this.baseAnswersUrl + 'GetAnswers',this.httpOptions);
-//   }
-//   SendAnswer(): Observable<Answer> {debugger
-//     return this.http.post<Answer>(this.baseAnswersUrl + 'PostAnswer', this.answer);
-//   }
-//   getAllSpecifis(): Observable<any> {
-//     return this.http.get<any>(this.baseSpecifisUrl + 'GetSpecifis',this.httpOptions);
-//    }
-//   SendSpecifi(): Observable<Specifi> {debugger
-//   for(let s of this.specifisList){debugger
-//   return this.http.post<Specifi>(this.baseSpecifisUrl + 'PostSpecifi', s);
-//   }
-// }
-  /////////////////////////////////////////////////////////////////////////////
   getAll(): Observable<any> {debugger
-    return this.http.get<any>(this.baseUserUrl1 + 'GetUsers',this.httpOptions);
+    return this.http.get<any>(this.baseUserUrl + 'GetUsers',this.httpOptions);
   }
   register(): Observable<User> {
-    return this.http.post<User>(this.baseUserUrl1 + 'PostUser', this.user);
+    return this.http.post<User>(this.baseUserUrl + 'PostUser', this.user);
   }
   getAllQuestion(): Observable<any> {
-    return this.http.get<any>(this.baseQuestionsUrl1 + 'GetQuestions',this.httpOptions);
+    return this.http.get<any>(this.baseQuestionsUrl + 'GetQuestions',this.httpOptions);
   } 
   SendQuestion(): Observable<Question> {
-    return this.http.post<Question>(this.baseQuestionsUrl1 + 'PostQuestion', this.question);
-    
+    return this.http.post<Question>(this.baseQuestionsUrl + 'PostQuestion', this.question);
   }
   getAllAnswers(): Observable<any> {
-    return this.http.get<any>(this.baseAnswersUrl1 + 'GetAnswers',this.httpOptions);
+    return this.http.get<any>(this.baseAnswersUrl + 'GetAnswers',this.httpOptions);
   }
   SendAnswer(): Observable<Answer> {debugger
-    return this.http.post<Answer>(this.baseAnswersUrl1 + 'PostAnswer', this.answer);
- }
- getAllSpecifis(): Observable<any> {
-  return this.http.get<any>(this.baseSpecifisUrl1 + 'GetSpecific',this.httpOptions);
-}
-SendSpecifi(): Observable<Specifi> {debugger
-  for(let s of this.specifisList){
-      return  this.http.post<Specifi>(this.baseSpecifisUrl1 + 'PostSpecifi', s);
+    return this.http.post<Answer>(this.baseAnswersUrl + 'PostAnswer', this.answer);
+  }
+  getAllSpecifis(): Observable<any> {
+    return this.http.get<any>(this.baseSpecifisUrl + 'GetSpecifis',this.httpOptions);
+   }
+  SendSpecifi(): Observable<Specifi> {debugger
+  for(let s of this.specifisList){debugger
+  return this.http.post<Specifi>(this.baseSpecifisUrl + 'PostSpecifi', s);
   }
 }
+  /////////////////////////////////////////////////////////////////////////////
+//   getAll(): Observable<any> {debugger
+//     return this.http.get<any>(this.baseUserUrl1 + 'GetUsers',this.httpOptions);
+//   }
+//   register(): Observable<User> {
+//     return this.http.post<User>(this.baseUserUrl1 + 'PostUser', this.user);
+//   }
+//   getAllQuestion(): Observable<any> {
+//     return this.http.get<any>(this.baseQuestionsUrl1 + 'GetQuestions',this.httpOptions);
+//   } 
+//   SendQuestion(): Observable<Question> {
+//     return this.http.post<Question>(this.baseQuestionsUrl1 + 'PostQuestion', this.question);
+    
+//   }
+//   getAllAnswers(): Observable<any> {
+//     return this.http.get<any>(this.baseAnswersUrl1 + 'GetAnswers',this.httpOptions);
+//   }
+//   SendAnswer(): Observable<Answer> {debugger
+//     return this.http.post<Answer>(this.baseAnswersUrl1 + 'PostAnswer', this.answer);
+//  }
+//  getAllSpecifis(): Observable<any> {
+//   return this.http.get<any>(this.baseSpecifisUrl1 + 'GetSpecific',this.httpOptions);
+// }
+// SendSpecifi(): Observable<Specifi> {debugger
+//   for(let s of this.specifisList){
+//       return  this.http.post<Specifi>(this.baseSpecifisUrl1 + 'PostSpecifi', s);
+//   }
+// }
 }
 
 
