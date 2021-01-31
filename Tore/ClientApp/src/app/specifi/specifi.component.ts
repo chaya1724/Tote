@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { concatMap } from 'rxjs/operators';
 import { Email } from 'src/Models/Email';
 import swal from 'sweetalert';
 import { MailService } from '../mail.service';
 import { UserService } from '../user.service';
+import { from as observableFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-specifi',
@@ -27,14 +30,14 @@ export class SpecifiComponent implements OnInit {
   nameSeif: string;
   selected: any;
   flagMasechesSelected: boolean = false;
-  flagPageCheckboxes:boolean = false;
+  flagPageCheckboxes: boolean = false;
   spezhifiSelected: boolean = false;
   items: any[] = [];
   hlocesList: string[];
   chackBoxselected: any[] = [];
   listOfSpzhifiPages: any[] = [];
-  specifisListDB:any[]=[];
-  hideSeifCheckboxes:boolean=false;
+  specifisListDB: any[] = [];
+  hideSeifCheckboxes: boolean = false;
   pageList: string[] = ["ב", ":ב", ".ג", ":ג", ".ד", ":ד", ".ה", ":ה", ".ו", ":ו", ".ז", ":ז", ".ח", ":ח", ".ט", ":ט", ".י", ":י", ".יא", ":יא", ".יב", ":יב", ".יג", ":יג", ".יד", ":יד", ".טו", ":טו", ".טז", ":טז", ".יז", ":יז", ".יח", ":יח", ".יט", ":יט", ".כ", ":כ", ".כא", ":כא", ".כב", ":כב", ".כג", ":כג", ".כד", ":כד", ".כה", ":כה", ".כו", ":כו", ".כז", ":כז", ".כח", ":כח", ".כט", ":כט", ".ל", ":ל", ".לא", ":לא", ".לב", ":לב", ".לג", ":לג", ".לד", ":לד", ".לה", ":לה", ".לו", ":לו", ".לז", ":לז", ".לח", ":לח", ".לט", ":לט", ".מ", ":מ", ".מא", ":מא", ".מב", ":מב", ".מג", ":מג", ".מד", ":מד", ".מה", ":מה", ".מו", ":מו", ".מז", ":מז", ".מח", ":מח", ".מט", ":מט", ".נ", ":נ", ".נא", ":נא", ".נב", ":נב", ".נג", ":נג", ".נד", ":נד", ".נה", ":נה", ".נו", ":נו", ".נז", ":נז", ".נח", ":נח", ".נט", ":נט", ".ס", ":ס", ".סא", ":סא", ".סב", ":סב", ".סג", ":סג", ".סד", ":סד", ".סה", ":סה", ".סו", ":סו", ".סז", ":סז", ".סח", ":סח", ".סט", ":סט", ".ע", ":ע", ".עא", ":עא", ".עב", ":עב", ".עג", ":עג", ".עד", ":עד", ".עה", ":עה", ".עו", ":עו", ".עז", ":עז", ".עח", ":עח", ".עט", ":עט", ".פ", ":פ", ".פא", ":פא", ".פב", ":פב", ".פג", ":פג", ".פד", ":פד", ".פה", ":פה", ".פו", ":פו", ".פז", ":פז", ".פח", ":פח", ".פט", ":פט", ".צ", ":צ", ".צא", ":צא", ".צב", ":צב", ".צג", ":צג", ".צד", ":צד", ".צה", ":צה", ".צו", ":צו", ".צז", ":צז", ".צח", ":צח", ".צט", ":צט", ".ק", ":ק", ".קא", ":קא", ".קב", ":קב", ".קג", ":קג", ".קד", ":קד", ".קה", ":קה", ".קו", ":קו", ".קז", ":קז", ".קח", ":קח", ".קט", ":קט", ".קי", ":קי", ".קיא", ":קיא", ".קיב", ":קיב", ".קיג", ":קיג", ".קיד", ":קיד", ".קטו", ":קטו", ".קטז", ":קטז", ".קיז", ":קיז", ".קיח", ":קיח", ".קיט", ":קיט", ".קכ",
     ":קכ", ".קכא", ":קכא", ".קכב", ":קכב", ".קכג", ":קכג", ".קכד", ":קכד", ".קכה", ":קכה", ".קכו", ":קכו", ".קכז", ":קכז", ".קכח", ":קכח", ".קכט", ":קכט", ".קל", ":קל", ".קלא", ":קלא", ".קלב", ":קלב", ".קלג", ":קלג", ".קלד", ":קלד", ".קלה", ":קלה", ".קלו", ":קלו", ".קלז", ":קלז", ".קלח", ":קלח", ".קלט", ":קלט", ".קמ", ":קמ", ".קמא", ":קמא", ".קמב", ":קמב", ".קמג", ":קמג", ".קמד", ":קמד", ".קמה", ":קמה", ".קמו", ":קמו", ".קמז", ":קמז", ".קמח", ":קמח", ".קמט", ":קמט", ".קנ", ":קנ", ".קנא", ":קנא", ".קנב", ":קנב", ".קנג", ":קנג", ".קנד", ":קנד", ".קנה", ":קנה", ".קנו", ":קנו", ".קנז", ":קנז", ".קנח", ":קנח", ".קנט", ":קנט", ".קס", ":קס", ".קסא", ":קסא", ".קסב", ":קסב", ".קסג", ":קסג", ".קסד", ":קסד", ".קסה", ":קסה", ".קסו", ":קסו", ".קסז", ":קסז", ".קסח", ":קסח", ".קסט", ":קסט", ".קע", ":קע", , ".קעא", ":קעא", ".קעב", ":קעב", ".קעג", ":קעג", ".קעד", ":קעד", ".קעה", ":קעה", ".קעו", ":קעו", ".קעז", ":קעז",]
   simenList: string[] = ["א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "יא", "יב", "יג", "יד", "טו", "טז", "יז", "יח", "יט", "כ", "כא", "כב", "כג", "כד", "כה", "כו", "כז", "כח", "כט", "ל", "לא", "לב", "לג", "לד", "לה", "לו", "לז", "לח", "לט", "מ", "מא", "מב", "מג", "מד", "מה", "מו", "מז", "מח", "מט", "נ", "נא", "נב", "נג", "נד", "נה", "נו", "נז", "נח", "נט",
@@ -85,27 +88,32 @@ export class SpecifiComponent implements OnInit {
     3, 6, 8, 4, 3, 4, 20, 9, 11, 8, 10, 1, 2, 4, 2, 19, 1, 8, 5, 1, 1, 1, 4, 6, 3, 10, 3, 12, 12, 10, 8, 13, 11, 9, 2, 4, 6, 1, 11, 7, 9, 3, 3, 6, 9, 1, 1, 9, 4, 4, 1, 1, 5, 4, 2, 4, 1, 16, 20, 12, 12, 1, 4, 6, 1, 10, 2, 5, 5, 4, 2, 1, 3, 2, 3, 5, 4, 2, 4, 38, 7, 5, 3, 2, 3, 1, 7, 18, 3, 44, 14, 2, 4, 11, 5, 1, 10];
   evenHoezerSeifim: number[] = [14, 11, 9, 37, 14, 15, 23, 5, 2, 7, 8, 4, 14, 1, 31, 6, 58, 1, 2, 2, 7, 20, 7, 1, 10, 4, 10, 23, 10, 11, 9, 4, 2, 4, 15, 12, 27, 39, 7, 8, 4, 5, 2, 12, 3, 8, 4, 7, 3, 7, 11, 3, 1, 7, 4, 1, 2, 4, 1, 2, 13, 2, 6, 4, 13, 11, 10, 7, 12, 4, 1, 9, 12, 5, 13, 5, 8, 3, 18, 2, 8, 2, 1, 19, 2, 2, 12, 4, 20, 5, 8, 32, 7, 7, 21, 2, 7, 2, 16, 4, 9, 8, 6,
     7, 2, 10, 3, 4, 2, 17, 18, 10, 12, 10, 6, 11, 19, 11, 11, 8, 2, 5, 9, 23, 50, 3, 7, 34, 22, 9, 4, 3, 10, 5, 7, 5, 4, 18, 11, 69, 19, 23, 7, 10, 5, 3, 2, 7, 4, 1, 12, 1, 24, 22, 13, 10, 6, 7, 8, 9, 5, 8, 8, 5, 9, 6, 9, 56, 57, 20, 10, 16, 17, 7, 14, 8, 5, 22];
-  spezhifiSelected1: boolean=true;
-  userData:any[]=[];
-  specificId:number;
+  spezhifiSelected1: boolean = true;
+  userData: any[] = [];
+  specificId: number;
+  baseSpecifisUrl = "https://localhost:44307/api/Specifis/";
+  baseSpecifisUrl1 = "https://localhost:44307/api/Specifis/";
+  flagSeifSpesifiOnChange: boolean=false;
+  listOfSpzhificSeifim: any[];
+  chackBoxselectedSeif: any[] = [];
 
-  constructor(public mailService: MailService, public router: Router, public userService: UserService) { }
+  constructor(public mailService: MailService, public router: Router, public userService: UserService, private http: HttpClient) { }
   ngOnInit() {
-    this.mailService.selectedMasechesAndPages=[];
+    this.mailService.selectedMasechesAndPages = [];
     this.userService.pathRambam = null;
     this.userService.pathSO = null;
     this.userService.pathShas = null;
     this.userService.getAllQuestion().subscribe(
       questionListFromDB => {
-      try{
-      this.userService.questionList = JSON.parse(questionListFromDB);
+        try {
+          this.userService.questionList = JSON.parse(questionListFromDB);
         }
-      catch (e) {
-        questionListFromDB=this.userData;
-        console.log(questionListFromDB);
-        console.log("zv gucs cv!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      }
-    });
+        catch (e) {
+          questionListFromDB = this.userData;
+          console.log(questionListFromDB);
+          console.log("zv!");
+        }
+      });
   }
   selectOption(maseces) {
     this.hide = false;
@@ -116,10 +124,11 @@ export class SpecifiComponent implements OnInit {
       this.spezhifiSelected = true;
     } else {
       this.flagMasechesSelected = true;
-      this.flagPageCheckboxes=true;
+      this.flagPageCheckboxes = true;
     }
   }
-  PageSelect(page: any) {debugger
+  PageSelect(page: any) {
+    debugger
     this.mailService.selectedpage = page;
     this.userService.currentPath = "מסכת " + this.mailService.selectedMaseches + " דף " + this.mailService.selectedpage;
     this.router.navigate(['/question']);
@@ -131,7 +140,7 @@ export class SpecifiComponent implements OnInit {
   SeifSelect(simen) {
     this.nameSimen = simen;
     this.hideSeif = false;
-    this.hideSimen=true;
+    this.hideSimen = true;
     this.hideSeifCheckboxes = true;
     this.simenFlag = simen;
     this.i = this.simenList.findIndex(x => x === simen);
@@ -204,69 +213,145 @@ export class SpecifiComponent implements OnInit {
       return true;
     }
   }
-  // when checkbox change, add/remove the item from the array
-  onChange(checked, selectedpage) {
-    if (checked) {
-      this.chackBoxselected.push(selectedpage);
-    } else {
-      this.chackBoxselected.splice(this.chackBoxselected.indexOf(selectedpage), 1)
+  checkedSeif(selectedSeif){
+    if (this.chackBoxselectedSeif.indexOf(selectedSeif) != -1) {
+      return true;
     }
-    this.listOfSpzhifiPages = this.chackBoxselected;
   }
   spezhifiPageSelected() {
     this.userService.flagSelectedPage = true;
     //  this.spezhifiSelected=true;
   }
+  SeifSpesifiOnChange(checked, selectedSeif) {
+    this.flagSeifSpesifiOnChange = true;
+    // this.nameSeif = selectedSeif;
+    if (this.kindOfSO == 697) {
+      this.nameSO = "אורח חיים";
+    }
+    if (this.kindOfSO == 403) {
+      this.nameSO = "יורה דעה";
+    }
+    if (this.kindOfSO == 427) {
+      this.nameSO = "חושן משפט";
+    }
+    if (this.kindOfSO == 178) {
+      this.nameSO = "אבן העזר";
+    }
+    if (checked) {debugger
+      this.chackBoxselectedSeif.push(selectedSeif);
+    } else {
+      this.chackBoxselectedSeif.splice(this.chackBoxselectedSeif.indexOf(selectedSeif), 1)
+    }
+    this.listOfSpzhificSeifim = this.chackBoxselectedSeif;debugger
+  }
+    // when checkbox change, add/remove the item from the array
+    onChange(checked, selectedpage) {
+      if (checked) {
+        this.chackBoxselected.push(selectedpage);
+      } else {
+        this.chackBoxselected.splice(this.chackBoxselected.indexOf(selectedpage), 1)
+      }
+      this.listOfSpzhifiPages = this.chackBoxselected;
+    }
   spezhifiPagOk() {
-    swal({
-      title: " האם ברצונך לבחור רשימה זו"+" "+this.listOfSpzhifiPages,
-      text: "",
-      icon: "info",
-      buttons: [' כן', ' לא']
-    })
-      .then((willDelete) => {
-        if (willDelete) {//לא
-          this.hide=true;
-          this.flagMasechesSelected=false;
-          this.flagPageCheckboxes=false;
+    if (this.flagSeifSpesifiOnChange == true) {
+      swal({
+        title: "בחרת שולחן ערוך - " + this.nameSO + ", " + "סימן " + this.simenFlag + " " + "סעיפים " + this.listOfSpzhificSeifim,
+        text: " ?בסדר? אתה רוצה להמשיך",
+        icon: "info",
+        buttons: [' כן', ' לא']
+      })
+        .then((willDelete) => {
+          if (willDelete) {//לא
+            this.hideSimen = true;
+            this.hideSeif = true;
+            this.hideSeifCheckboxes = false;
+            this.listOfSpzhificSeifim=[];
+          }
+          else { //כן
+            debugger;
+            this.mailService.selectedSOAndSeifim = [];
+            for (let seif of this.listOfSpzhificSeifim) {
+              this.mailService.selectedSOAndSeifim.push("שולחן ערוך - " + this.nameSO + ", " + "סימן " + this.simenFlag + " " + "סעיף " + seif);
+            }
 
-        }
-        else { //כן
-         debugger;
-         this.mailService.selectedMasechesAndPages=[];
-          for(let page of this.listOfSpzhifiPages){
-            this.mailService.selectedMasechesAndPages.push("מסכת " + this.mailService.selectedMaseches + " דף " + page);
-         } 
+            this.userService.getAllSpecifis().subscribe(
+              specifiListFromDB => {
+                this.specifisListDB = JSON.parse(specifiListFromDB);
+                this.specificId = this.specifisListDB.length + 1; debugger
+                this.userService.specifisListSeifim = [];
+                for (let seif of this.mailService.selectedSOAndSeifim) {
+                  this.userService.specifisListSeifim.push({ "Id": this.specificId, "Email": this.userService.user.Email, "Path": seif });
+                  this.specificId++;
+                } debugger
 
-          this.userService.getAllSpecifis().subscribe(
-          specifiListFromDB=>{
-          this.specifisListDB=JSON.parse(specifiListFromDB);           
-          this.specificId=this.specifisListDB.length+1;debugger
-          this.userService.specifisList=[];
-          for(let page of this.mailService.selectedMasechesAndPages){
-            this.userService.specifisList.push({"Id":this.specificId,"Email":this.userService.user.Email,"Path":page});
-            this.specificId++;
-          } 
-          this.userService.SendSpecifi().subscribe(
-            good => {
-              swal(" xpmhph bakjשאלתך נשלחה בהצלחה למיילים שבקשו את שאלתך!");
-              console.log(this.userService.specifisList);
-              this.hide=true;debugger
-              this.flagMasechesSelected=false;
-              this.flagPageCheckboxes=false;
-            }            
-          );
-
+                observableFrom(this.userService.specifisListSeifim).pipe(
+                  concatMap(entry => this.http.post(this.baseSpecifisUrl1 + 'PostSpecifi', entry))).
+                  subscribe(response => {
+                    swal(' שאלות מסעיפים אלו ישלחו בעז"ה למייל שלך')
+                    this.hideSimen = true;
+                    this.hideSeif = true;
+                    this.hideSeifCheckboxes = false;
+                  }, //do something with responses 
+                    error => console.error(error), // so something on error
+                    () => console.info("All requests done")); // do something when all requests are done   
+              });
+          }
         });
-      } });
+    }
+    else {
+      swal({
+        title: "בחרת מסכת " + this.mailService.selectedMaseches + " " + "דפים " + this.listOfSpzhifiPages,
+        text: " ?בסדר? אתה רוצה להמשיך",
+        icon: "info",
+        buttons: [' כן', ' לא']
+      })
+        .then((willDelete) => {
+          if (willDelete) {//לא
+            this.hide = true;
+            this.flagMasechesSelected = false;
+            this.flagPageCheckboxes = false;
+
+          }
+          else { //כן
+            debugger;
+            this.mailService.selectedMasechesAndPages = [];
+            for (let page of this.listOfSpzhifiPages) {
+              this.mailService.selectedMasechesAndPages.push("מסכת " + this.mailService.selectedMaseches + " דף " + page);
+            }
+
+            this.userService.getAllSpecifis().subscribe(
+              specifiListFromDB => {
+                this.specifisListDB = JSON.parse(specifiListFromDB);
+                this.specificId = this.specifisListDB.length + 1; debugger
+                this.userService.specifisList = [];
+                for (let page of this.mailService.selectedMasechesAndPages) {
+                  this.userService.specifisList.push({ "Id": this.specificId, "Email": this.userService.user.Email, "Path": page });
+                  this.specificId++;
+                } debugger
+
+                observableFrom(this.userService.specifisList).pipe(
+                  concatMap(entry => this.http.post(this.baseSpecifisUrl1 + 'PostSpecifi', entry))).
+                  subscribe(response => {
+                    swal(' שאלות מדפים אלו ישלחו בעז"ה למייל שלך')
+                    this.hide = true;
+                    this.flagMasechesSelected = false;
+                    this.flagPageCheckboxes = false;
+                  }, //do something with responses 
+                    error => console.error(error), // so something on error
+                    () => console.info("All requests done")); // do something when all requests are done );
+              });
+          }
+        });
+    }
   }
   back() {
     if (this.userService.flagSelectedPage == true) {
       this.userService.flagSelectedPage = false;
-    this.flagMasechesSelected=false;
+      this.flagMasechesSelected = false;
       this.spezhifiSelected = false;
       this.spezhifiSelected1 = true;
-      this.hide=true;
+      this.hide = true;
     }
     else {
       this.router.navigate(['/login']);

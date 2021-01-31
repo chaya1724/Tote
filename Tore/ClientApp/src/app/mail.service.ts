@@ -13,6 +13,7 @@ export class MailService {
   selectedMaseches: string;
   selectedMasechesAndPages: string[]=[];
   ListMailsAndQuestionToSend:Specifi[]=[];
+  selectedSOAndSeifim: any[]=[];
   constructor(private http: HttpClient) {
    }
   SendMail(): Observable<any> {

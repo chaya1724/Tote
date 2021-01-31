@@ -8,6 +8,9 @@ import { UserService } from '../user.service';
 import { User } from 'src/models/User';
 import { Question } from 'src/Models/Question';
 import { Specifi } from 'src/Models/Specifi';
+import { from as observableFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { concatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-question',
@@ -15,57 +18,61 @@ import { Specifi } from 'src/Models/Specifi';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-  questionText: string="";
+  questionText: string = "";
   flag: number;
   flagUntilAnswers: any[] = [0];
-  ListMailsToSend:string[]=[];
-  specifisListDB:any[]=[];
+  ListMailsToSend: string[] = [];
+  specifisListDB: any[] = [];
   NoQuestionListShow: boolean = false;
   showAnswer: boolean = false;
+  listMailsToSend: any[] = [];
+  ListStringMailsToSend: string[] = [];
 
-  constructor(public mailService: MailService, public userService: UserService, public router: Router) {
+  constructor(public mailService: MailService, public userService: UserService, public router: Router, private http: HttpClient) {
   }
 
-  ngOnInit() {debugger
-    if(this.userService.flagLastQuestion==true){
+  ngOnInit() {
+    if (this.userService.flagLastQuestion == true) {
       this.showQuestionWhisAnswersForMainQuestion();
-      this.userService.flagLastQuestion=false;
+      this.userService.flagLastQuestion = false;
     }
-    else{debugger
-    this.showQuestionWhisAnswers();
-   }
-   this.userService.user = new User(0, this.userService.user.Email, "");
+    else {
+      this.showQuestionWhisAnswers();
+    }
+    this.userService.user = new User(0, this.userService.user.Email, "");
   }
-  QuestionSend() {debugger
-    if(this.questionText!=""){
-    this.userService.question = new Question(this.userService.questionList.length + 1, this.questionText, this.userService.user.Email, this.userService.currentPath)
-    this.userService.SendQuestion().subscribe(
-      good => {
-        swal('שאלתך נשלחה בהצלחה!', "תשובות ישלחו אליך למייל");
-        this.showQuestionWhisAnswers()
-        this.NoQuestionListShow=!this.NoQuestionListShow;
-      });
-      this.userService.getAllSpecifis().subscribe(
-        specifiListFromDB=>{
-          this.specifisListDB=JSON.parse(specifiListFromDB);debugger
-          for(let spesifi of this.specifisListDB)
-          {
-            if(spesifi.path==this.userService.currentPath)
-            {
-              this.ListMailsToSend.push(spesifi.Email);
-            }
-          }
+  QuestionSend() {
+    if (this.questionText != "") {
+      this.userService.question = new Question(this.userService.questionList.length + 1, this.questionText, this.userService.user.Email, this.userService.currentPath)
+      this.userService.SendQuestion().subscribe(
+        good => {
+          swal('שאלתך נשלחה בהצלחה!', "תשובות ישלחו אליך למייל");
+          this.showQuestionWhisAnswers()
+          this.NoQuestionListShow = false;
+
+          this.userService.getAllSpecifis().subscribe(
+            specifiListFromDB => {
+              this.specifisListDB = JSON.parse(specifiListFromDB); 
+              for (let spesifi of this.specifisListDB) {
+                if (spesifi.path == this.userService.currentPath) {
+                  this.ListStringMailsToSend.push(spesifi.email);
+                }
+              }              
+              for (let spesifiMail of this.ListStringMailsToSend)// שליחת מייל אם השאלה לכל האנשים שבקשו לקבל את השאלות של הדף/סעיף הזה 
+              {
+                this.listMailsToSend.push({ "address": spesifiMail, "body": this.questionText, "subject": this.userService.currentPath });
+                // this.mailService.SendMail().subscribe();
+              }
+              observableFrom(this.listMailsToSend).pipe(
+                concatMap(entry => this.http.post<any>("https://localhost:44307/api/Mail/SendMail", entry))).
+                subscribe(response => { 
+                swal('כמו כן שאלתך נשלחה למיילים של אנשים שרצו שאלות מדף זה - תודה') }, //do something with responses 
+                  error => console.error(error), // so something on error
+                  () => console.info("All requests done")); // do something when all requests are done );
+            });
         });
-        debugger
-        for(let spesifiMail of this.ListMailsToSend)// שליחת מייל אם השאלה לכל האנשים שבקשו לקבל את השאלות של הדף/סעיף הזה 
-        {
-        this.mailService.email.address = spesifiMail;
-        this.mailService.email.body = this.questionText;
-        this.mailService.email.subject =this.userService.currentPath;   
-        this.mailService.SendMail().subscribe();
-      }
     }
-    else{
+    else {
       swal("אנא הכנס שאלה");
     }
   }
@@ -77,20 +84,20 @@ export class QuestionComponent implements OnInit {
   showQuestionWhisAnswers() {
     this.userService.getAllQuestion().subscribe(
       questionListFromDB => {
-        this.userService.questionList =  JSON.parse(questionListFromDB);//מקבל את כל השאלות מה DB
-        this.userService.questionListShow=[];
+        this.userService.questionList = JSON.parse(questionListFromDB);//מקבל את כל השאלות מה DB
+        this.userService.questionListShow = [];
         for (var q of this.userService.questionList) {
           if (q.questionPath == this.userService.currentPath) {//ממיין את כל השאלות לפי הדף הספציפי
             this.userService.questionListShow.push(q);
           }
-        }        
+        }
         if (this.userService.questionListShow.length == 0)//אם אין עדיין שאלות לדף הספציפי
           this.NoQuestionListShow = true;
       });
     this.userService.getAllAnswers().subscribe(
-      answerListFromDB => {debugger
-        this.userService.answerList =  JSON.parse(answerListFromDB);//מקבל את כל התשובות מה DB
-        this.userService.answerListShow=[];
+      answerListFromDB => {
+        this.userService.answerList = JSON.parse(answerListFromDB);//מקבל את כל התשובות מה DB
+        this.userService.answerListShow = [];
         for (var q of this.userService.questionListShow) {
           for (var a of this.userService.answerList) {
             if (q.id == a.questionId) {
@@ -98,33 +105,33 @@ export class QuestionComponent implements OnInit {
               this.userService.answerListShow.push(a);
             }
           }
-          this.flagUntilAnswers.push(this.userService.answerListShow.length);
+          this.flagUntilAnswers.push(this.userService.answerListShow.length);debugger
+          console.log(this.flagUntilAnswers);
         }
       });
   }
-  showQuestionWhisAnswersForMainQuestion()
-  {
+  showQuestionWhisAnswersForMainQuestion() {
     this.userService.getAllQuestion().subscribe(
       questionListFromDB => {
-        this.userService.questionList =  JSON.parse(questionListFromDB);//מקבל את כל השאלות מה DB
-        this.userService.questionListShow=[];debugger
+        this.userService.questionList = JSON.parse(questionListFromDB);//מקבל את כל השאלות מה DB
+        this.userService.questionListShow = []; 
         for (var q of this.userService.questionList) {
           if (q.id == this.userService.lastQuestionId) {
             this.userService.questionListShow.push(q);
           }
-        }        
+        }
       });
     this.userService.getAllAnswers().subscribe(
       answerListFromDB => {
-        this.userService.answerList =  JSON.parse(answerListFromDB);//מקבל את כל התשובות מה DB
-        this.userService.answerListShow=[];debugger;
+        this.userService.answerList = JSON.parse(answerListFromDB);//מקבל את כל התשובות מה DB
+        this.userService.answerListShow = [];
         for (var q of this.userService.questionListShow) {
           for (var a of this.userService.answerList) {
             if (q.id == a.questionId) {
               this.showAnswer = true;
               this.userService.answerListShow.push(a);
               console.log(this.userService.lastQuestionId);
-              console.log( this.userService.answerListShow);
+              console.log(this.userService.answerListShow);
             }
           }
           // this.flagUntilAnswers.push(this.userService.answerListShow.length);

@@ -186,12 +186,11 @@ export class MainComponent implements OnInit {
   HalocheSelect(page) {
   }
   lastQuestion(questionId: number) {
-    debugger;
     for (let q of this.userService.questionList) {
       if (q.id == questionId) {
         this.userService.lastQuestionId=questionId;
         this.userService.currentPath = q.questionPath;
-        this.userService.answerListShow=[];debugger;
+        this.userService.answerListShow=[];
         this.userService.flagLastQuestion=true;
       }
       else {
@@ -201,7 +200,6 @@ export class MainComponent implements OnInit {
   }
   // check if the item are selected
   checked(selectedpage) {
-    debugger;
     if (this.chackBoxselected.indexOf(selectedpage) != -1) {
       return true;
     }
@@ -233,13 +231,9 @@ export class MainComponent implements OnInit {
           this.spezhifiSelected1 = false;
         }
         else { //לא
-         debugger;
           for(let page of this.listOfSpzhifiPages){
             this.mailService.selectedMasechesAndPages.push("מסכת " + this.mailService.selectedMaseches + " דף " + page);
           }
-          debugger;
-          this.mailService.selectedMasechesAndPages;
-          this.userService.user.Email;
           this.spezhifiSelected = false;
           this.spezhifiSelected1 = false;
         }
@@ -248,7 +242,7 @@ export class MainComponent implements OnInit {
   back() {
     if (this.userService.flagSelectedPage == true) {
       this.userService.flagSelectedPage = false;
-    this.flagMasechesSelected=false;
+      this.flagMasechesSelected=false;
       this.spezhifiSelected = false;
       this.spezhifiSelected1 = true;
       this.hide=true;

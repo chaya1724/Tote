@@ -45,6 +45,7 @@ export class UserService {
 
   
    httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', }), responseType: 'text' as 'json' };
+  specifisListSeifim: any[];
 
 
 
@@ -102,9 +103,8 @@ export class UserService {
 }
 SendSpecifi(): Observable<Specifi> {debugger
   for(let s of this.specifisList){
-            this.SA = this.http.post<Specifi>(this.baseSpecifisUrl1 + 'PostSpecifi', s);
+      return  this.http.post<Specifi>(this.baseSpecifisUrl1 + 'PostSpecifi', s);
   }
-  return this.SA;
 }
 }
 

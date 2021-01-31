@@ -16,11 +16,11 @@
         <div class="accordionQues">
             <label for="exampleFormControlInput">שאלות וקושיות שנשאלו עד עתה</label>
             <br />
-            <p class="teach">שאלה</p>
 
             <ol style="list-style-type:none;">
                 <li *ngFor="let question of userService.questionListShow;let i=index">
                     <div class="row">
+                        <p *ngIf="!NoQuestionListShow" class="teach" style="padding-right: 50%;">שאלה</p>
                         <textarea class="form-control" class="mytextarea" rows="6"
                             placeholder={{question.questionText}}></textarea>
                         <input class="btn btn-primary" type="button" value="תירוץ הקושיא" (click)="Answer(i)"
@@ -28,8 +28,8 @@
                         <br />
                         <br />
                     </div>
-                    <div class="row" style="text-align: center;">
-                        <p class="teach">תשובות</p>
+                    <div *ngIf="showAnswer && flagUntilAnswers[i+2]" class="row" style="text-align: center;">
+                        <p class="teach" style="padding-right: 50%;">תשובות</p>
                     </div>
                     <div class="row">
                         <div *ngIf="showAnswer">
@@ -38,11 +38,11 @@
                                     *ngFor="let i=index; let answer of userService.answerListShow | slice:flagUntilAnswers[i]:flagUntilAnswers[i+1]">
                                     <textarea class="form-control" class="mytextarea" rows="2"
                                         placeholder={{answer.answerBody}}></textarea>
+                                        <input class="btn btn-primary" type="button" value="תגובה לתירוץ" (click)="Answer(i)"
+                                        style="border-radius: 50px; ">
                                 </li>
                             </ol>
-                        </div>
-                        <input class="btn btn-primary" type="button" value="תגובה לתירוץ" (click)="Answer(i)"
-                            style="border-radius: 50px; ">
+                        </div>        
                     </div>
                     <br>
                 </li>

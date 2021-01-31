@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     //   this.hide=true;
     }
     else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/main']);
     }
   }
   about(){

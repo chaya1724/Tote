@@ -70,8 +70,8 @@
                             <div class="custom-control custom-checkbox"
                                 *ngFor="let AB of alefbet  | slice:0:numOfSeif ">
                                 <input type="checkbox" id="check1"
-                                    (change)="SeifSpesifiOnChange($event.target.checked, selectedpage)"
-                                    [checked]="checked(selectedpage)">
+                                    (change)="SeifSpesifiOnChange($event.target.checked, AB)"
+                                    [checked]="checkedSeif(AB)">
                                 סעיף {{AB}}
                             </div>
                         </li>
