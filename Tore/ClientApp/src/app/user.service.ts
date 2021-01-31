@@ -34,7 +34,7 @@ export class UserService {
   baseUserUrl = "https://tore20210118023949.azurewebsites.net/api/Users/";
   baseQuestionsUrl = "https://tore20210118023949.azurewebsites.net/api/Questions/";
   baseAnswersUrl = "https://tore20210118023949.azurewebsites.net/api/Answers/";
-  baseSpecifisUrl = "https://localhost:44307/api/Specifis/";
+  baseSpecifisUrl = "https://tore20210118023949.azurewebsites.net/api/Specifis/";
 
 
 

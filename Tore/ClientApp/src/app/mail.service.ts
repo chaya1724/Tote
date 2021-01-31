@@ -24,14 +24,6 @@ export class MailService {
     debugger;
     return this.http.post<any>("https://tore20210118023949.azurewebsites.net/api/Mail/SendMail", this.email);
   }
-  // SendMailWithQuestion(): Observable<any> {
-  //   debugger;
-  //   return this.http.post<any>("https://localhost:44307/api/Mail/SendMailWithQuestion", this.email);
-  // }
-  //  SendMailWithQuestion(): Observable<any> {
-  //   debugger;
-  //   return this.http.post<any>("https://tore20210118023949.azurewebsites.net/api/Mail/SendMailWithQuestion", this.email);
-  // }
 
 }
 
