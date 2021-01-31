@@ -6,8 +6,8 @@ import { Email } from 'src/Models/Email';
 import { MailService } from '../mail.service';
 import { UserService } from '../user.service';
 // import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-
-import swal from 'sweetalert';
+declare var swal: any;
+// import swal from 'sweetalert';
 import { Question } from 'src/Models/Question';
 
 // import {MdSelect} from '@angular/material';

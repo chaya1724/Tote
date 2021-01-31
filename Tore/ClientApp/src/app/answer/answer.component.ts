@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Answer } from 'src/Models/Answer';
 import { Email } from 'src/Models/Email';
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 import { MailService } from '../mail.service';
 import { UserService } from '../user.service';
-
+declare var swal: any;
 @Component({
   selector: 'app-answer',
   templateUrl: './answer.component.html',

@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/User';
 import { UserService } from '../user.service';
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 import { Question } from 'src/Models/Question';
 import { Answer } from 'src/Models/Answer';
-
+declare var swal: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

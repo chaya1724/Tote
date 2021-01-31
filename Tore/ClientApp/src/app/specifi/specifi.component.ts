@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { concatMap } from 'rxjs/operators';
 import { Email } from 'src/Models/Email';
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 import { MailService } from '../mail.service';
 import { UserService } from '../user.service';
 import { from as observableFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
+declare var swal: any;
 @Component({
   selector: 'app-specifi',
   templateUrl: './specifi.component.html',
@@ -91,7 +91,7 @@ export class SpecifiComponent implements OnInit {
   spezhifiSelected1: boolean = true;
   userData: any[] = [];
   specificId: number;
-  baseSpecifisUrl = "https://localhost:44307/api/Specifis/";
+  baseSpecifisUrl = "https://tore20210118023949.azurewebsites.net/api/Specifis/";
   baseSpecifisUrl1 = "https://localhost:44307/api/Specifis/";
   flagSeifSpesifiOnChange: boolean=false;
   listOfSpzhificSeifim: any[];
@@ -286,7 +286,8 @@ export class SpecifiComponent implements OnInit {
                 } debugger
 
                 observableFrom(this.userService.specifisListSeifim).pipe(
-                  concatMap(entry => this.http.post(this.baseSpecifisUrl1 + 'PostSpecifi', entry))).
+                  // concatMap(entry => this.http.post(this.baseSpecifisUrl1 + 'PostSpecifi', entry))).
+                  concatMap(entry => this.http.post(this.baseSpecifisUrl + 'PostSpecifi', entry))).
                   subscribe(response => {
                     swal(' שאלות מסעיפים אלו ישלחו בעז"ה למייל שלך')
                     this.hideSimen = true;

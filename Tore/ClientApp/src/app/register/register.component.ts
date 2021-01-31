@@ -4,8 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { User } from 'src/models/User';
 import { UserService } from '../user.service';
-import swal from 'sweetalert';
-
+// import swal from 'sweetalert';
+declare var swal: any;
 
 @Component({
   selector: 'app-register',

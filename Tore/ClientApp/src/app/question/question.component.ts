@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Email } from 'src/Models/Email';
 import { MailService } from '../mail.service';
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 import { UserService } from '../user.service';
 import { User } from 'src/models/User';
 import { Question } from 'src/Models/Question';
@@ -11,7 +11,7 @@ import { Specifi } from 'src/Models/Specifi';
 import { from as observableFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { concatMap } from 'rxjs/operators';
-
+declare var swal: any;
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -64,7 +64,9 @@ export class QuestionComponent implements OnInit {
                 // this.mailService.SendMail().subscribe();
               }
               observableFrom(this.listMailsToSend).pipe(
-                concatMap(entry => this.http.post<any>("https://localhost:44307/api/Mail/SendMail", entry))).
+                // concatMap(entry => this.http.post<any>("https://localhost:44307/api/Mail/SendMail", entry))).
+                concatMap(entry => this.http.post<any>("https://tore20210118023949.azurewebsites.net/api/Mail/SendMail", entry))).
+
                 subscribe(response => { 
                 swal('כמו כן שאלתך נשלחה למיילים של אנשים שרצו שאלות מדף זה - תודה') }, //do something with responses 
                   error => console.error(error), // so something on error
